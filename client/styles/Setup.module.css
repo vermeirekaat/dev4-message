@@ -1,0 +1,63 @@
+.container {
+    min-height: 100vh;
+    display: grid; 
+    grid-template-columns: repeat(3, 33vw);
+    grid-template-rows: repeat(2, 50vh);
+    background-image: url(../public/assets/bricks.png);
+    background-repeat: no-repeat; 
+}
+
+.fridge {
+    grid-row: 1;
+    grid-column: 3;
+    display: flex; 
+    place-self: flex-end;
+}
+
+.regular {
+    grid-row: 1; 
+    grid-column: 1; 
+    display: flex;
+    align-self: flex-start;
+    justify-self: flex-end;
+    padding: 5rem;
+}
+
+.margharita {
+    grid-row: 1; 
+    grid-column: 2;
+    display: flex;
+    align-self: center;
+    justify-self: flex-start;
+}
+
+.cosmo {
+    grid-row: 1; 
+    grid-column: 2;
+    display: flex;
+    place-self: flex-end;
+    padding-bottom: 5rem;
+}
+
+
+.bucket {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex; 
+    align-self: flex-end;
+    justify-self: flex-start;
+}
+
+.logo {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex; 
+    place-self: center;
+}
+
+.bar {
+    grid-column: 1 / span 4;
+    grid-row: 2;
+    display: flex; 
+    justify-self: flex-end;
+}
