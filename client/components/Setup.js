@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Setup.module.css";
 import Image from "next/image";
 import Liquor from "../components/Liquor";
+import Soda from "../components/Soda";
 
 export default function Setup({ drinks }) {
     const [buttonClicked, setButtonClicked] = useState({name: ""});
@@ -14,11 +15,31 @@ export default function Setup({ drinks }) {
         setButtonClicked(copy);
     }
 
+    const checkSodas = drinks => {
+        const correctDrinks = [];
+        drinks.map((drink) => {
+            if (drink.alcohol === false) {
+                correctDrinks.push(drink);
+            }
+        })
+        return correctDrinks;
+    }
+
+    const checkLiquors = drinks => {
+        const correctDrinks = [];
+        drinks.map((drink) => {
+            if (drink.alcohol === true) {
+                correctDrinks.push(drink);
+            }
+        })
+        return correctDrinks;
+    }
+
     if (buttonClicked.name === "liquor") {
-        return <Liquor liquors={drinks}/>
+        return <Liquor liquors={checkLiquors(drinks)}/>
     }
     if (buttonClicked.name === "soda") {
-        return <Soda sodas={drinks}/>
+        return <Soda sodas={checkSodas(drinks)}/>
     }
 
     return (
