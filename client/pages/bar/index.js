@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Setup from "../../components/Setup";
 
-export default function Bar({ liquors }) {
+export default function Bar({ data }) {
     return (
         <>
         <Head>
@@ -9,20 +9,18 @@ export default function Bar({ liquors }) {
             <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Setup drinks={liquors}/>       
+        <Setup drinks={data}/>       
         </>
     )
 }
 
 export async function getStaticProps () {
-    const response = await fetch(
-      `${process.env.STRAPI_URL}/liquors`
-    );
-    const liquors = await response.json();
+    const response = await fetch(`${process.env.STRAPI_URL}/drinks`);
+    const data = await response.json();
   
     return {
       props: {
-        liquors,
+        data,
       },
     };
   };

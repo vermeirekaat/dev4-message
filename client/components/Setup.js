@@ -6,7 +6,7 @@ import Liquor from "../components/Liquor";
 export default function Setup({ drinks }) {
     const [buttonClicked, setButtonClicked] = useState({name: ""});
 
-    const handleLiquor = e => {
+    const handleClickButton = e => {
         console.log(e.currentTarget.name);
         const currentClick = e.currentTarget.name; 
         const copy = {...buttonClicked};
@@ -14,8 +14,11 @@ export default function Setup({ drinks }) {
         setButtonClicked(copy);
     }
 
-    if(buttonClicked.name === "liquor") {
+    if (buttonClicked.name === "liquor") {
         return <Liquor liquors={drinks}/>
+    }
+    if (buttonClicked.name === "soda") {
+        return <Soda sodas={drinks}/>
     }
 
     return (
@@ -43,7 +46,7 @@ export default function Setup({ drinks }) {
         </div>
         
         <div className={styles.bucket}>
-            <button onClick={(e) => handleLiquor(e)} name="liquor" className={styles.button}>
+            <button onClick={(e) => handleClickButton(e)} name="liquor" className={styles.button}>
                 <Image src="/assets/ice-bucket.webp"
                     alt="Ice bucket with liquor"
                     width={203}
@@ -54,11 +57,13 @@ export default function Setup({ drinks }) {
         </div>
 
         <div className={styles.fridge}>
+            <button onClick={(e) => handleClickButton(e)} name="soda" className={styles.button}>
             <Image src="/assets/fridge.webp"
                     alt="Fridge with soda"
                     width={247}
                     height={340}
             />
+            </button>
         </div>
 
         <div className={styles.bar}>
