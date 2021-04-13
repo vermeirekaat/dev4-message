@@ -25,7 +25,7 @@ export default function Home() {
           Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toost to a better future!
         </p>
 
-          <Link href="/bar">
+          <Link href="/counter">
           <a className={styles.button}>Let's start shaking</a>
           </Link>
       </main>

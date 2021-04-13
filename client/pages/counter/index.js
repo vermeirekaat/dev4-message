@@ -1,6 +1,7 @@
 import Glasses from "../../components/Glasses";
 import styles from "../../styles/Counter.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Counter({ data }) {
     return (
@@ -14,6 +15,9 @@ export default function Counter({ data }) {
                 height={168}
                 />
                 <p className={styles.question}>Choose a glass</p>
+                <Link href="/bar">
+                    <a className={styles.next}>Next</a>
+                </Link>
             </div>
 
             <Glasses glasses={data}/>
