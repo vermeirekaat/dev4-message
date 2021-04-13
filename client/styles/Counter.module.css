@@ -14,6 +14,18 @@
     display: none;
 }
 
+.placeholder {
+    width: 33vw;
+    color: #F000FF;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: center;
+
+    background: none;
+    border: none;
+}
+
 .context {
     grid-row: 1;
     grid-column: 2; 
@@ -34,10 +46,13 @@
 }
 
 .counter {
+    width: 100vw;
     grid-row: 2;
-    display: grid;
+    display: flex; 
+    flex-direction: row;
+    /* display: grid;
     grid-template-columns: repeat(3, 33vw);
-    padding-bottom: 5rem;
+    padding-bottom: 5rem;*/
 }
 .glassRegular {
     grid-column: 1; 

@@ -1,7 +1,8 @@
+import Glasses from "../../components/Glasses";
 import styles from "../../styles/Counter.module.css";
 import Image from "next/image";
 
-export default function Counter() {
+export default function Counter({ data }) {
     return (
         <div className={styles.container}>
             <h1 className={styles.hidden}>Counter</h1>
@@ -15,41 +16,19 @@ export default function Counter() {
                 <p className={styles.question}>Choose a glass</p>
             </div>
 
-            <div className={styles.counter}>
-                <div className={styles.glassRegular}>
-                    <button className={styles.button} name="regular">
-                        <Image src="/assets/regular.webp"
-                                alt="Regular Glass"
-                                width={214}
-                                height={261}
-                        />
-                    </button>
-                </div>
-               
-               <div className={styles.glassMargha}>
-                   <button className={styles.button} name="margha">
-                        <Image src="/assets/margharita.webp"
-                                alt="Margharita Glass"
-                                width={299}
-                                height={445}
-                        />
-                   </button>
-               
-               </div>
+            <Glasses glasses={data}/>
 
-               <div className={styles.glassCosmo}>
-                <button className={styles.button} name="cosmo">
-                    <Image src="/assets/cosmo.webp"
-                            alt="Cosmopolitan Glass"
-                            width={305}
-                            height={471}
-                />
-                </button>
-              
-               </div>
-                
-               
-            </div>
         </div>
     )
 }
+
+export async function getStaticProps () {
+    const response = await fetch(`${process.env.STRAPI_URL}/glasses`);
+    const data = await response.json();
+  
+    return {
+      props: {
+        data,
+      },
+    };
+  };
