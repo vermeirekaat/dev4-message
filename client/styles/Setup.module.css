@@ -4,12 +4,17 @@
     grid-template-columns: repeat(3, 33vw);
     grid-template-rows: repeat(2, 50vh);
     background-image: url(../public/assets/bricks.png);
+    background-size: cover;
     background-repeat: no-repeat; 
 }
 
 .button {
     background: none;
     border: none;
+}
+
+.button:active {
+    border: .5rem solid #F000FF;
 }
 
 .fridge {

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function Liquor({ liquors }) {
-    console.log(liquors);
+
     return (
         <div>
             <h1>Liquor</h1>
