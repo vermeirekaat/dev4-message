@@ -3,26 +3,11 @@ import styles from "../styles/Setup.module.css";
 import Image from "next/image";
 import Liquor from "../components/Liquor";
 
-export async function getStaticProps () {
-    const result= await fetch(`${process.env.STRAPI_URL}/liquors`)
-    const liquors = await result.json();
-   
-    if (liquors) {
-      return {
-        props: {
-          liquors
-        },
-      }
-    }
-  }
-
-export default function Setup({ liquors }) {
-    console.log(liquors);
-
+export default function Setup({ drinks }) {
     const [buttonClicked, setButtonClicked] = useState({name: ""});
 
     const handleLiquor = e => {
-        // console.log(e.currentTarget.name);
+        console.log(e.currentTarget.name);
         const currentClick = e.currentTarget.name; 
         const copy = {...buttonClicked};
         copy.name = currentClick;
@@ -30,7 +15,7 @@ export default function Setup({ liquors }) {
     }
 
     if(buttonClicked.name === "liquor") {
-        return <Liquor drinks={liquors}/>
+        return <Liquor liquors={drinks}/>
     }
 
     return (
