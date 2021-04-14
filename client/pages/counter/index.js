@@ -1,3 +1,4 @@
+import Navigation from "../../components/Navigation";
 import Glasses from "../../components/Glasses";
 import styles from "../../styles/Counter.module.css";
 import Image from "next/image";
@@ -21,8 +22,7 @@ export default function Counter({ data }) {
             </div>
 
             <Glasses glasses={data}/>
-
-        </div>
+         </div>
     )
 }
 

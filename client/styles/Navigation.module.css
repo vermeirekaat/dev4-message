@@ -1,0 +1,13 @@
+.header {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+}
+
+.link {
+    border-radius: 100%; 
+    padding: 3rem 2rem;
+    background-color: palevioletred; 
+    color: white;
+    margin: 0 4rem;
+}
