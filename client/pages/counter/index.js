@@ -15,7 +15,7 @@ export default function Counter({ data }) {
                 height={168}
                 />
                 <p className={styles.question}>Choose a glass</p>
-                <Link href="/drinks">
+                <Link href="/bar">
                     <a className={styles.next}>Next</a>
                 </Link>
             </div>

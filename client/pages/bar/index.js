@@ -1,11 +1,11 @@
-import styles from "../../styles/Drinks.module.css";
+import styles from "../../styles/Bar.module.css";
 import Display from "../../components/Display";
 import Choice from "../../components/Choice";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Drinks({ data }) {
+export default function Bar({ data }) {
     const [buttonClicked, setButtonClicked] = useState({name: ""});
 
     const handleClickButton = button => {

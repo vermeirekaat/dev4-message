@@ -1,7 +1,7 @@
 import styles from "../styles/Choice.module.css";
 import Image from "next/image";
 
-export default function Choice ({ drinks }) {
+export default function Drinks ({ drinks }) {
 
     console.log(drinks);
 
