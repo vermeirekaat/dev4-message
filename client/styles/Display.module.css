@@ -1,0 +1,24 @@
+.display {
+    display: grid;
+    grid-template-columns: repeat(2, 50vw);
+}
+
+.liquor {
+    grid-column: 1; 
+    place-self: center;
+}
+
+.soda {
+    grid-column: 2; 
+    place-self: center;
+}
+
+.button {
+    background: none;
+    border: none;
+}
+
+.button:active {
+    border: .5rem solid #F000FF;
+    background: rgb(240, 0, 255, 0.5);
+}

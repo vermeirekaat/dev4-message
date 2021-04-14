@@ -1,0 +1,42 @@
+.container {
+    min-height: 100vh;
+    display: grid; 
+    grid-template-columns: repeat(2, 50vw);
+    grid-template-rows: repeat(2, 50vh);
+    z-index: -2;
+    background-image: url(../public/assets/counter.png),
+    url(../public/assets/bricks.png);             
+    background-size: 100vw, cover;
+    background-repeat: no-repeat;
+}
+
+.hidden {
+    display: none;
+}
+
+.next {
+    border: .2rem solid #F000FF;
+    border-radius: .7rem; 
+    padding: 1rem 2rem; 
+    color: #F000FF;
+    background-color: rgba(255, 255, 255, 0.7); 
+}
+
+.context {
+    grid-row: 1;
+    grid-column: 1/ span 2; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.question {
+    width: 50vw;
+    color: white;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 8rem;
+}
