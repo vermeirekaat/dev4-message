@@ -7,7 +7,7 @@ export default function Choice ({ drinks }) {
 
 
     const handleClickBottle = (e) => {
-        console.log(e.currentTargetName);
+        console.log(e.currentTarget.name);
     }
 
     return (
