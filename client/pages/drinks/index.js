@@ -39,7 +39,7 @@ export default function Drinks({ data }) {
         )
     }
     
-    if (buttonClicked.name === "liquor" || buttonClicked.name ==="soda") {
+    if (buttonClicked.name === "liquor") {
         return (
             <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
@@ -56,12 +56,33 @@ export default function Drinks({ data }) {
                 </Link>
             </div>
 
-            <Choice choice={buttonClicked} drinks={data}/>
-
+            <Choice drinks={data.filter((drink) => drink.alcohol === true)}/>
         </div>
         )
     }
-    
+
+    if (buttonClicked.name === "soda") {
+        return (
+            <div className={styles.container}>
+            <h1 className={styles.hidden}>Drinks</h1>
+
+            <div className={styles.context}>
+            <Image src="/assets/letters-glow.png"
+                alt="Cocktail O' Clock"
+                width={654}
+                height={168}
+                />
+                <p className={styles.question}>Add some liquid</p>
+                <Link href="/">
+                    <a className={styles.next}>Next</a>
+                </Link>
+            </div>
+
+            <Choice drinks={data.filter((drink) => drink.alcohol === false)}/>
+        </div>
+        )
+    }
+ 
     return (
         <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>

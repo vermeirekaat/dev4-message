@@ -1,10 +1,10 @@
 import styles from "../styles/Choice.module.css";
 
-export default function Choice ({choice, drinks}) {
+export default function Choice ({ drinks }) {
 
-    console.log(choice);
     console.log(drinks);
-    
+
+
     return (
         <div className={styles.container}>
 
