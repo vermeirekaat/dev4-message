@@ -1,4 +1,4 @@
-.overview {
+.counter {
     width: 100vw;
     grid-row: 2;
     display: flex; 
@@ -6,11 +6,11 @@
     justify-content: center;
 }
 
-.drinkImage {
-    place-self: center;
-    margin: 5rem;
-    position: relative;
-    bottom: 5rem;
+.glassImage {
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: 10rem; 
+    margin-bottom: 3rem;
 }
 
 .button {

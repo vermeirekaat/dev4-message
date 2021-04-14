@@ -1,4 +1,4 @@
-import styles from "../styles/Counter.module.css";
+import styles from "../styles/Glasses.module.css";
 import Image from "next/image";
 
 export default function Glasses({ glasses }) {
@@ -11,8 +11,8 @@ export default function Glasses({ glasses }) {
     return (
         <div className={styles.counter}>
             {glasses.map((glass) => (
-                <div key={glass.id} className={styles.glassRegular}>
-                    <button onClick={(e) => handleClickGlass(e)}className={styles.placeholder} name={glass.name}>
+                <div key={glass.id} className={styles.glassImage}>
+                    <button onClick={(e) => handleClickGlass(e)} className={styles.button} name={glass.name}>
                         <Image 
                             src={process.env.STRAPI_URL + glass.image.url} 
                             width={glass.image.width} 

@@ -41,7 +41,7 @@ export default function Drinks({ data }) {
     
     if (buttonClicked.name === "liquor") {
         return (
-            <div className={styles.container}>
+        <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
 
             <div className={styles.context}>
@@ -50,10 +50,7 @@ export default function Drinks({ data }) {
                 width={654}
                 height={168}
                 />
-                <p className={styles.question}>Add some liquid</p>
-                <Link href="/">
-                    <a className={styles.next}>Next</a>
-                </Link>
+                <p className={styles.question}>Add some liquor</p>
             </div>
 
             <Choice drinks={data.filter((drink) => drink.alcohol === true)}/>
@@ -72,10 +69,7 @@ export default function Drinks({ data }) {
                 width={654}
                 height={168}
                 />
-                <p className={styles.question}>Add some liquid</p>
-                <Link href="/">
-                    <a className={styles.next}>Next</a>
-                </Link>
+                <p className={styles.question}>Add some soda</p>
             </div>
 
             <Choice drinks={data.filter((drink) => drink.alcohol === false)}/>
