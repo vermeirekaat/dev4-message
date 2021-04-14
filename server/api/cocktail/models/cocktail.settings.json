@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cocktails",
+  "info": {
+    "name": "cocktail",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ingredient": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ingredient.ingredient"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "glass": {
+      "type": "string"
+    }
+  }
+}
