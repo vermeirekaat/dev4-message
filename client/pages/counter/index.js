@@ -9,8 +9,8 @@ export default function Counter({ glasses, cocktails }) {
   // console.log(glasses);
 
   const handleSubmit = async (item) => {
-    console.log(JSON.stringify(item));
-    /* const response = fetch(`${process.env.STRAPI_URL}/cocktails/`,
+    console.log(item);
+    const response = fetch(`${process.env.STRAPI_URL}/cocktails/`,
     {
       method: "POST",
       body: JSON.stringify(item), 
@@ -18,7 +18,7 @@ export default function Counter({ glasses, cocktails }) {
         "Content-Type": "application.json", 
       },
     });
-    console.log(response); */
+    console.log(response);
   }
 
     return (
