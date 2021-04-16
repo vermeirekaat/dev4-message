@@ -4,6 +4,7 @@ import Image from "next/image";
 export default function Display({ handleClick }) {
 
     return (
+        <>
         <div className={styles.display}>
             <div className={styles.liquor}>
                 <button onClick={(e) => handleClick(e.currentTarget.name)} name="liquor" className={styles.button}>
@@ -24,6 +25,7 @@ export default function Display({ handleClick }) {
                     />
                 </button>
             </div>
-        </div>     
+        </div>   
+        </>  
     )
 }

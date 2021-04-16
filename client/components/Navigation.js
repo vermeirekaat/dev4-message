@@ -9,7 +9,7 @@ export default function Navigation({ children }) {
         <title>Cocktail O' Clock</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         <Link href="/counter">
             <a className={styles.link}>Glasses</a>
         </Link>
@@ -19,7 +19,7 @@ export default function Navigation({ children }) {
         <Link href="/">
           <a className={styles.link}>Extra's</a>
         </Link>
-      </header>
+      </header> */}
       <main className={styles.main}>{children}</main>
     </div>
   );

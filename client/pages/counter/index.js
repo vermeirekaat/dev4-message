@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Counter({ data }) {
     return (
         <div className={styles.container}>
+          <Navigation/>
             <h1 className={styles.hidden}>Counter</h1>
 
             <div className={styles.context}>

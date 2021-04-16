@@ -1,6 +1,7 @@
 import styles from "../../styles/Bar.module.css";
 import Display from "../../components/Display";
 import Choice from "../../components/Choice";
+import Navigation from "../../components/Navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,6 +19,8 @@ export default function Bar({ data }) {
 
     if(buttonClicked.name === "") {
         return (
+            <>
+            <Navigation/>
             <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
 
@@ -36,11 +39,14 @@ export default function Bar({ data }) {
             <Display handleClick={(button) => handleClickButton(button)}/>
 
         </div>
+        </>
         )
     }
     
     if (buttonClicked.name === "liquor") {
         return (
+            <>
+            <Navigation/>
         <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
 
@@ -55,11 +61,14 @@ export default function Bar({ data }) {
 
             <Choice drinks={data.filter((drink) => drink.alcohol === true)}/>
         </div>
+        </>
         )
     }
 
     if (buttonClicked.name === "soda") {
         return (
+            <>
+            <Navigation/>
             <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
 
@@ -74,6 +83,7 @@ export default function Bar({ data }) {
 
             <Choice drinks={data.filter((drink) => drink.alcohol === false)}/>
         </div>
+        </>
         )
     }
  
