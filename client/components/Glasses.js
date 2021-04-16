@@ -6,16 +6,12 @@ export default function Glasses({ glasses, onSubmit }) {
 
     const [checkedGlass, setCheckedGlass] = useState(null);
     // moet id van de laatst cocktail zijn
-    const [count, setCount] = useState(0);
 
     const addGlass = (e) => {
         e.preventDefault();
         const data = {
-            id: count,
             glass: checkedGlass,
         }
-
-        setCount(count + 1);
 
         e.target.reset();
         onSubmit(data);

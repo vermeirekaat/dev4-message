@@ -7,11 +7,18 @@ import Link from "next/link";
 export default function Counter({ glasses, cocktails }) {
 
   // console.log(glasses);
-  console.log(cocktails);
 
   const handleSubmit = async (item) => {
-    console.log(item);
-
+    console.log(JSON.stringify(item));
+    /* const response = fetch(`${process.env.STRAPI_URL}/cocktails/`,
+    {
+      method: "POST",
+      body: JSON.stringify(item), 
+      headers: {
+        "Content-Type": "application.json", 
+      },
+    });
+    console.log(response); */
   }
 
     return (
@@ -26,9 +33,6 @@ export default function Counter({ glasses, cocktails }) {
                 height={168}
                 />
                 <p className={styles.question}>Choose a glass</p>
-                {/* <Link href="/bar">
-                    <a className={styles.next}>Next</a>
-                </Link> */}
             </div>
 
             <Glasses glasses={glasses} onSubmit={handleSubmit}/>
@@ -53,16 +57,5 @@ export default function Counter({ glasses, cocktails }) {
       fetch(`${process.env.STRAPI_URL}/cocktails`),
     ]);
     const [glasses, cocktails] = await Promise.all([glassesRes.json(), cocktailsRes.json()]);
-    return { props: {glasses, cocktails}};
+    return { props: {glasses, cocktails} };
   }
-
-  /*
-  export async function getServerSideProps() {
-  const [listRes, mouthsRes] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/noses`),
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/mouths`),
-  ]);
-  const [list, mouths] = await Promise.all([listRes.json(), mouthsRes.json()]);
-  return { props: { list, mouths } };
-}
-*/
