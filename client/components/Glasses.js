@@ -1,25 +1,44 @@
 import styles from "../styles/Glasses.module.css";
+import { useState } from "react";
 import Image from "next/image";
 
-export default function Glasses({ glasses }) {
-    // console.log(glasses);
+export default function Glasses({ glasses, onSubmit }) {
 
-    const handleClickGlass = (e) => {
-        console.log(e.currentTarget.name);
+    const [checkedGlass, setCheckedGlass] = useState(null);
+    // moet id van de laatst cocktail zijn
+    const [count, setCount] = useState(0);
+
+    const addGlass = (e) => {
+        e.preventDefault();
+        const data = {
+            id: count,
+            glass: checkedGlass,
+        }
+
+        setCount(count + 1);
+
+        e.target.reset();
+        onSubmit(data);
     }
+    
 
     return (
-        <div className={styles.counter}>
+        <form onSubmit={(e) => addGlass(e)} className={styles.counter}>
+        <input type="submit"  className={styles.button} value="Next"/> 
+        <div className={styles.glassOverview}> 
             {glasses.map((glass) => (
-                <div key={glass.id} className={styles.glassImage}>
-                    <button onClick={(e) => handleClickGlass(e)} className={styles.button} name={glass.name}>
+                <div key={glass.id}  className={styles.glassButton}>
+                    <input onChange={(e) => setCheckedGlass(e.target.value)} type="radio" id={glass.id}
+                        name="glass" value={glass.name}/>
+                    <label htmlFor={glass.name} className={styles.label}>{glass.name}</label>
                         <Image 
                             src={process.env.STRAPI_URL + glass.image.url} 
-                            width={glass.image.width} 
-                            height={glass.image.height}/>
-                    </button>      
-            </div>
-            ))}                 
-        </div>
+                            width={glass.image.width /1.5} 
+                            height={glass.image.height /1.5}/>     
+                </div>            
+            ))}     
+        </div>  
+            
+        </form>
     )
 }

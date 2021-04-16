@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: grid; 
     grid-template-columns: repeat(3, 33vw);
-    grid-template-rows: repeat(2, 50vh);
+    grid-template-rows: 40vh 60vh;
     z-index: -2;
     background-image: url(../public/assets/counter.png),
     url(../public/assets/bricks.png);             

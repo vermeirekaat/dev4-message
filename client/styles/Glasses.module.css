@@ -1,24 +1,36 @@
 .counter {
     width: 100vw;
     grid-row: 2;
+}
+
+.label {
+    color: #F000FF;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.glassOverview {
     display: flex; 
     flex-direction: row;
     justify-content: center;
 }
 
-.glassImage {
-    justify-self: flex-end;
-    align-self: flex-end;
-    margin: 10rem; 
+.glassButton {
+    display: flex; 
+    flex-direction: column;
+    margin: 3rem 10rem; 
     margin-bottom: 3rem;
 }
 
 .button {
-    background: none;
-    border: none;
+    border: .2rem solid #F000FF;
+    border-radius: .7rem; 
+    padding: 1rem 2rem; 
+    color: #F000FF;
+    background-color: rgba(255, 255, 255, 0.7); 
+    margin-left: 90vw;
 }
 
 .button:active {
-    border: .5rem solid #F000FF;
-    background: rgb(240, 0, 255, 0.5);
+    padding: .5rem 1rem;
 }
