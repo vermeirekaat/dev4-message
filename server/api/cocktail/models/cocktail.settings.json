@@ -23,7 +23,7 @@
       "type": "richtext"
     },
     "glass": {
-      "model": "glass"
+      "type": "string"
     }
   }
 }

@@ -2,24 +2,35 @@ import Navigation from "../../components/Navigation";
 import Glasses from "../../components/Glasses";
 import styles from "../../styles/Counter.module.css";
 import Image from "next/image";
-import Link from "next/link";
 
-export default function Counter({ glasses, cocktails }) {
+export default function Counter({ glasses }) {
 
   // console.log(glasses);
+  // console.log(cocktails);
 
   const handleSubmit = async (item) => {
-    console.log(item);
-    const response = fetch(`${process.env.STRAPI_URL}/cocktails/`,
+
+    const cocktail = {
+      ingredient: {
+        name: "test", 
+        quantity: "2.2",
+      },
+      recipient: "test",
+      content: "test text",
+      glass: item,
+    }
+    await fetch(`${process.env.STRAPI_URL}/cocktails`,
+    // const response = await fetch(`http://localhost:1337/cocktails`,
     {
       method: "POST",
-      body: JSON.stringify(item), 
+      body: JSON.stringify(cocktail), 
       headers: {
-        "Content-Type": "application.json", 
+        "Content-type": "application/json; charset=UTF-8", 
       },
     });
-    console.log(response);
-  }
+    refetch();
+    // console.log(response.body);
+  };
 
     return (
         <div className={styles.container}>
@@ -40,22 +51,22 @@ export default function Counter({ glasses, cocktails }) {
     )
 }
 
-/* export async function getStaticProps () {
+export async function getStaticProps () {
     const response = await fetch(`${process.env.STRAPI_URL}/glasses`);
-    const data = await response.json();
+    const glasses = await response.json();
   
     return {
       props: {
-        data,
+        glasses,
       },
     };
-  }; */
+  };
 
-  export async function getServerSideProps() {
+/* export async function getServerSideProps() {
     const [glassesRes, cocktailsRes] = await Promise.all([
       fetch(`${process.env.STRAPI_URL}/glasses`),
       fetch(`${process.env.STRAPI_URL}/cocktails`),
     ]);
     const [glasses, cocktails] = await Promise.all([glassesRes.json(), cocktailsRes.json()]);
     return { props: {glasses, cocktails} };
-  }
+  } */ 
