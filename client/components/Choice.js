@@ -1,9 +1,8 @@
 import styles from "./Choice.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
-export default function Drinks ({ drinks, onSubmit }) {
+export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
     const [bottle, setBottle] = useState([]);
 
@@ -30,9 +29,7 @@ export default function Drinks ({ drinks, onSubmit }) {
         return (
             <>
             <div className={styles.back}>
-            <Link href="/bar">
-                <a className={styles.buttonBack}>Back to bar</a>
-            </Link>
+                <button onClick={(e) => handleClick(e.currentTarget.name)} name="back" className={styles.backButton}>Back to Bar</button>
             </div>
              
             <div className={styles.overview}>
@@ -42,8 +39,8 @@ export default function Drinks ({ drinks, onSubmit }) {
                         <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.name}>
                         <Image 
                             src={process.env.STRAPI_URL + drink.image.formats.small.url} 
-                            width={drink.image.formats.small.width} 
-                            height={drink.image.formats.small.height}/>
+                            width={drink.image.formats.small.width /1.5 } 
+                            height={drink.image.formats.small.height /1.5}/>
                         </button>      
                     </div>
                 ))}

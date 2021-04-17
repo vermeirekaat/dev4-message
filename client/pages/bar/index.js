@@ -7,8 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Bar({ drinks, cocktails }) {
-
-    
+       
     const getId= () => {
         const cocktailIds = [];
         cocktails.map((cocktail) => { 
@@ -18,10 +17,9 @@ export default function Bar({ drinks, cocktails }) {
             return Math.max(a,b);
         })
         return max;
-    }
-    
+    } 
 
-    const [buttonClicked, setButtonClicked] = useState({name: ""});
+    const [buttonClicked, setButtonClicked] = useState({name: "back"});
 
     const handleClickButton = button => {
         // console.log(button);
@@ -48,7 +46,7 @@ export default function Bar({ drinks, cocktails }) {
         );
     }
 
-    if(buttonClicked.name === "") {
+    if(buttonClicked.name === "back") {
         return (
             <>
             <Navigation/>
@@ -87,7 +85,7 @@ export default function Bar({ drinks, cocktails }) {
                 <p className={styles.question}>Add some liquor</p>
             </div>
 
-            <Choice drinks={drinks.filter((drink) => drink.alcohol === true)} onSubmit={handleSubmit}/>
+            <Choice drinks={drinks.filter((drink) => drink.alcohol === true)} onSubmit={handleSubmit} handleClick={(button) => handleClickButton(button)}/>
         </div>
         </>
         )
@@ -109,7 +107,7 @@ export default function Bar({ drinks, cocktails }) {
                 <p className={styles.question}>Add some soda</p>
             </div>
 
-            <Choice drinks={drinks.filter((drink) => drink.alcohol === false)} onSubmit={handleSubmit}/>
+            <Choice drinks={drinks.filter((drink) => drink.alcohol === false)} onSubmit={handleSubmit} handleClick={(button) => handleClickButton(button)}/>
         </div>
         </>
         )
