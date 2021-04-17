@@ -31,9 +31,6 @@ export default function Bar({ data }) {
                 height={168}
                 />
                 <p className={styles.question}>Add some liquid</p>
-                <Link href="/">
-                    <a className={styles.next}>Next</a>
-                </Link>
             </div>
 
             <Display handleClick={(button) => handleClickButton(button)}/>
@@ -47,7 +44,7 @@ export default function Bar({ data }) {
         return (
             <>
             <Navigation/>
-        <div className={styles.container}>
+            <div className={styles.container}>
             <h1 className={styles.hidden}>Drinks</h1>
 
             <div className={styles.context}>

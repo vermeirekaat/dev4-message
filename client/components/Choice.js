@@ -31,7 +31,6 @@ export default function Drinks ({ drinks }) {
                         </button>      
                     </div>
                 ))}
-    
             </div>
         )
     }
@@ -53,7 +52,5 @@ export default function Drinks ({ drinks }) {
 
     return (
         <p>Beverages</p>
-    )
-
-   
+    ) 
 }

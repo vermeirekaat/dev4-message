@@ -1,3 +1,6 @@
+@value values: "../../styles/values.module.css";
+@value titleFont, lineHeight, primaryColor, secondaryColor, buttonBackground, marginLarge, marginExtra from values;
+
 .container {
     min-height: 100vh;
     display: grid; 
@@ -14,26 +17,6 @@
     display: none;
 }
 
-.next {
-    border: .2rem solid #F000FF;
-    border-radius: .7rem; 
-    padding: 1rem 2rem; 
-    color: #F000FF;
-    background-color: rgba(255, 255, 255, 0.7); 
-}
-
-.placeholder {
-    width: 33vw;
-    color: #F000FF;
-    font-size: 2.5rem;
-    line-height: 3rem;
-    display: flex;
-    justify-content: center;
-
-    background: none;
-    border: none;
-}
-
 .context {
     grid-row: 1;
     grid-column: 2; 
@@ -45,10 +28,10 @@
 
 .question {
     width: 50vw;
-    color: white;
-    font-size: 2.5rem;
-    line-height: 3rem;
+    color: secondaryColor;
+    font-size: titleFont;
+    line-height: lineHeight;
     text-align: center;
-    margin-top: 5rem;
-    margin-bottom: 8rem;
+    margin-top: marginLarge;
+    margin-bottom: marginExtra;
 }

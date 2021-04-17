@@ -1,0 +1,14 @@
+@value titleFont: 2.5rem;
+@value placeholderFont: 2rem;
+@value buttonFont: 1.5rem;
+@value bodyFont: 1rem;
+@value lineHeight: 3rem;
+
+@value marginSmall: 2rem;
+@value marginRegular: 4rem;
+@value marginLarge: 5rem;
+@value marginExtra: 8rem;
+
+@value primaryColor: #ff48e9;
+@value secondaryColor: white;
+@value buttonBackground: rgba(255, 255, 255, 0.7);

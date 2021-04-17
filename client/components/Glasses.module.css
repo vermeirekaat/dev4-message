@@ -1,12 +1,38 @@
+@value values: "../styles/values.module.css";
+@value placeholderFont, primaryColor, marginSmall, marginRegular, marginExtra, buttonBackground from values;
+
 .counter {
     width: 100vw;
     grid-row: 2;
 }
 
+.hidden {
+    display: none;
+}
+
+.radioButton { 
+    position: absolute;
+    opacity: 0;
+    width: 20rem;
+    height: 20rem;
+  }
+  
+.radioButton:checked + .glassImage {
+    background-color: buttonBackground;
+}
+
+.glassImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .label {
-    color: #F000FF;
-    font-size: 2rem;
+    color: primaryColor;
+    font-size: placeholderFont;
     text-align: center;
+    position: relative; 
+    top: -5rem;
 }
 
 .glassOverview {
@@ -18,15 +44,15 @@
 .glassButton {
     display: flex; 
     flex-direction: column;
-    margin: 3rem 10rem; 
-    margin-bottom: 3rem;
+    margin: marginRegular marginExtra; 
+    margin-bottom: marginRegular;
 }
 
 .button {
-    border: .2rem solid #F000FF;
+    border: .2rem solid primaryColor;
     border-radius: .7rem; 
     padding: 1rem 2rem; 
-    color: #F000FF;
-    background-color: rgba(255, 255, 255, 0.7); 
+    color: primaryColor;
+    background-color: buttonBackground; 
     margin-left: 90vw;
 }
