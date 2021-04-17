@@ -2,6 +2,7 @@ import Navigation from "../../components/Navigation";
 import Glasses from "../../components/Glasses";
 import styles from "./Counter.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Counter({ glasses }) {
 
@@ -32,7 +33,11 @@ export default function Counter({ glasses }) {
                 height={168}
                 />
                 <p className={styles.question}>Choose a glass</p>
+                <Link href="/bar">
+                  <a className={styles.button}>Beverages</a>
+                </Link>
             </div>
+            
 
             <Glasses glasses={glasses} onSubmit={handleSubmit}/>
          </div>

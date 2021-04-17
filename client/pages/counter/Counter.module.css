@@ -1,5 +1,5 @@
 @value values: "../../styles/values.module.css";
-@value titleFont, lineHeight, primaryColor, secondaryColor, buttonBackground, marginLarge, marginExtra from values;
+@value titleFont, lineHeight, primaryColor, secondaryColor, buttonBackground, marginSmall, marginLarge from values;
 
 .container {
     min-height: 100vh;
@@ -33,5 +33,13 @@
     line-height: lineHeight;
     text-align: center;
     margin-top: marginLarge;
-    margin-bottom: marginExtra;
+    margin-bottom: marginSmall;
+}
+
+.button {
+    border: .2rem solid primaryColor;
+    border-radius: .7rem; 
+    padding: 1rem 2rem; 
+    color: primaryColor;
+    background-color: buttonBackground; 
 }

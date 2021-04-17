@@ -1,23 +1,15 @@
 import styles from "./Glasses.module.css";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 
 export default function Glasses({ glasses, onSubmit }) {
 
     const [checkedGlass, setCheckedGlass] = useState(null);
-    // moet id van de laatst cocktail zijn
 
     const addGlass = (e) => {
         e.preventDefault();
-        /* const data = {
-            ingredient: {
-                name: "test", 
-                quantity: "2",
-              },
-              recipient: "test",
-              content: "test text",
-            glass: checkedGlass,
-        } */ 
 
         const data = {
             glass: checkedGlass,
@@ -32,10 +24,9 @@ export default function Glasses({ glasses, onSubmit }) {
         setCheckedGlass(e.target.value)
     }
     
-
     return (
         <form onSubmit={(e) => addGlass(e)} className={styles.counter}>
-        <input type="submit"  className={styles.button} value="Next"/> 
+        <input type="submit"  className={styles.button} value={checkedGlass}/> 
         <div className={styles.glassOverview}> 
             {glasses.map((glass) => (
                 <div key={glass.id}  className={styles.glassButton}>
