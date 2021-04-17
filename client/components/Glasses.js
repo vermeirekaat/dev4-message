@@ -10,12 +10,21 @@ export default function Glasses({ glasses, onSubmit }) {
     const addGlass = (e) => {
         e.preventDefault();
         /* const data = {
+            ingredient: {
+                name: "test", 
+                quantity: "2",
+              },
+              recipient: "test",
+              content: "test text",
             glass: checkedGlass,
-        } */
+        } */ 
+
+        const data = {
+            glass: checkedGlass,
+        }
 
         e.target.reset();
-        onSubmit(checkedGlass);
-        // onSubmit(data);
+        onSubmit(data);
     }
     
 

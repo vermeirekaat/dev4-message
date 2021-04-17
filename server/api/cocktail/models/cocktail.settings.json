@@ -11,19 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "ingredient": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ingredient.ingredient"
-    },
-    "recipient": {
-      "type": "string"
-    },
-    "content": {
-      "type": "richtext"
-    },
     "glass": {
-      "type": "string"
+      "model": "glass",
+      "via": "cocktail"
     }
   }
 }

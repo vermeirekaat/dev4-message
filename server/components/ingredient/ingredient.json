@@ -2,15 +2,9 @@
   "collectionName": "components_ingredient_ingredients",
   "info": {
     "name": "Ingredient",
-    "icon": "glass-martini-alt"
+    "icon": "glass-martini-alt",
+    "description": ""
   },
   "options": {},
-  "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "decimal"
-    }
-  }
+  "attributes": {}
 }

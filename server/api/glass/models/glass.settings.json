@@ -21,6 +21,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "cocktail": {
+      "via": "glass",
+      "model": "cocktail"
     }
   }
 }

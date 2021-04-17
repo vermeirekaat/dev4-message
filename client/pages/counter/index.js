@@ -8,28 +8,19 @@ export default function Counter({ glasses }) {
   // console.log(glasses);
   // console.log(cocktails);
 
-  const handleSubmit = async (item) => {
+  const handleSubmit = async (data) => {
 
-    const cocktail = {
-      ingredient: {
-        name: "test", 
-        quantity: "2.2",
-      },
-      recipient: "test",
-      content: "test text",
-      glass: item,
-    }
-    await fetch(`${process.env.STRAPI_URL}/cocktails`,
-    // const response = await fetch(`http://localhost:1337/cocktails`,
+    const check = glasses.filter((glass) => glass.name === data.glass); 
+    data.glass = check[0].id; 
+    
+    const response = await fetch(`${process.env.STRAPI_URL}/cocktails/`,
     {
       method: "POST",
-      body: JSON.stringify(cocktail), 
+      body: JSON.stringify(data), 
       headers: {
         "Content-type": "application/json; charset=UTF-8", 
       },
     });
-    refetch();
-    // console.log(response.body);
   };
 
     return (
