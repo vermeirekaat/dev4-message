@@ -33,20 +33,19 @@ export default function Bar({ drinks, cocktails }) {
 
     const handleSubmit = async data => {
         const id = getId();
-        console.log(id);
-        console.log(data);
+        data.cocktail = id;
+        const checkDrink = drinks.filter((drink) => drink.name === data.name); 
+        data.drink = checkDrink[0].id; 
 
-        const check = drinks.filter((drink) => drink.name === data.drinks); 
-        data.drinks = check[0].id; 
-
-        await fetch(`${process.env.STRAPI_URL}/cocktails/${id}`,
-        {
-            method: "PUT",
-            body: JSON.stringify(data), 
+        await fetch(`${process.env.STRAPI_URL}/ingredients/`,
+          {
+            method: "POST",
+            body: JSON.stringify(data),
             headers: {
-            "Content-type": "application/json; charset=UTF-8", 
+              "Content-Type": "application/json",
             },
-        });
+          }
+        );
     }
 
     if(buttonClicked.name === "") {

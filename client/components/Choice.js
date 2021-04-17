@@ -17,11 +17,12 @@ export default function Drinks ({ drinks, onSubmit }) {
         e.preventDefault();
 
         const data = {
-            drinks: e.target.name.value,
+            name: e.target.name.value,
             quantity: e.target.quantity.value,
         }
 
         onSubmit(data);
+        setBottle([]);
     }
 
     if (bottle.length === 0) {
