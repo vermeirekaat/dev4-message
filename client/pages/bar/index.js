@@ -1,4 +1,4 @@
-import styles from "../../styles/Bar.module.css";
+import styles from "./Bar.module.css";
 import Display from "../../components/Display";
 import Choice from "../../components/Choice";
 import Navigation from "../../components/Navigation";

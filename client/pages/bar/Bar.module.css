@@ -4,8 +4,8 @@
     grid-template-columns: repeat(2, 50vw);
     grid-template-rows: repeat(2, 50vh);
     z-index: -2;
-    background-image: url(../public/assets/counter.png),
-    url(../public/assets/bricks.png);             
+    background-image: url(/public/assets/counter.png),
+    url(../../public/assets/bricks.png);             
     background-size: 100vw, cover;
     background-repeat: no-repeat;
 }

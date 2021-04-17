@@ -1,4 +1,4 @@
-import styles from "../styles/Display.module.css";
+import styles from "./Display.module.css";
 import Image from "next/image";
 
 export default function Display({ handleClick }) {

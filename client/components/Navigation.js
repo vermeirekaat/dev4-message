@@ -1,4 +1,4 @@
-import styles from "../styles/Navigation.module.css";
+import styles from "./Navigation.module.css";
 import Head from "next/head";
 import Link from "next/link";
 

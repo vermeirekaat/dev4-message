@@ -1,19 +1,16 @@
 import Navigation from "../../components/Navigation";
 import Glasses from "../../components/Glasses";
-import styles from "../../styles/Counter.module.css";
+import styles from "./Counter.module.css";
 import Image from "next/image";
 
 export default function Counter({ glasses }) {
-
-  // console.log(glasses);
-  // console.log(cocktails);
 
   const handleSubmit = async (data) => {
 
     const check = glasses.filter((glass) => glass.name === data.glass); 
     data.glass = check[0].id; 
-    
-    const response = await fetch(`${process.env.STRAPI_URL}/cocktails/`,
+
+    await fetch(`${process.env.STRAPI_URL}/cocktails/`,
     {
       method: "POST",
       body: JSON.stringify(data), 

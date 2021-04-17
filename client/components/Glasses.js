@@ -1,4 +1,4 @@
-import styles from "../styles/Glasses.module.css";
+import styles from "./Glasses.module.css";
 import { useState } from "react";
 import Image from "next/image";
 
