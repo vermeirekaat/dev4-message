@@ -1,5 +1,6 @@
 import styles from "./Choice.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Drinks ({ drinks, onSubmit }) {
@@ -27,7 +28,15 @@ export default function Drinks ({ drinks, onSubmit }) {
 
     if (bottle.length === 0) {
         return (
+            <>
+            <div className={styles.back}>
+            <Link href="/bar">
+                <a className={styles.buttonBack}>Back to bar</a>
+            </Link>
+            </div>
+             
             <div className={styles.overview}>
+               
                 {drinks.map((drink) => (
                     <div key={drink.id} className={styles.drinkImage}>
                         <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.name}>
@@ -39,6 +48,7 @@ export default function Drinks ({ drinks, onSubmit }) {
                     </div>
                 ))}
             </div>
+        </>
         )
     }
 

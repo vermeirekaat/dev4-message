@@ -130,17 +130,6 @@ export default function Bar({ drinks, cocktails }) {
     )
 }
 
-/* export async function getStaticProps () {
-    const response = await fetch(`${process.env.STRAPI_URL}/drinks`);
-    const data = await response.json();
-  
-    return {
-      props: {
-        data,
-      },
-    };
-  }; */ 
-
 export async function getServerSideProps() {
     const [drinksRes, cocktailsRes] = await Promise.all([
       fetch(`${process.env.STRAPI_URL}/drinks`),

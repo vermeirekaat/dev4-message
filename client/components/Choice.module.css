@@ -9,6 +9,20 @@
     justify-content: center;
 }
 
+.back {
+    position: relative;
+    top: -5rem;
+    left: -5rem;
+}
+
+.buttonBack {
+    border: .2rem solid primaryColor;
+    border-radius: .7rem; 
+    padding: 1rem 2rem; 
+    color: primaryColor;
+    background-color: buttonBackground; 
+}
+
 .drinkImage {
     place-self: center;
     margin: marginLarge;
