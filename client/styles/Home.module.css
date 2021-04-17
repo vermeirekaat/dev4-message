@@ -1,3 +1,6 @@
+@value values: "./values.module.css";
+@value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra, buttonBackground from values;
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -18,16 +21,16 @@
 .description {
   width: 50vw;
   color: white;
-  font-size: 2.5rem;
-  line-height: 3rem;
+  font-size: titleFont;
+  line-height: lineHeight;
   text-align: center;
-  margin-bottom: 8rem;
+  margin-bottom: marginExtra;
 }
 
 .button {
-  border: .2rem solid #F000FF;
+  border: .2rem solid primaryColor;
   border-radius: .7rem; 
   padding: 1rem 2rem; 
-  color: #F000FF;
-  background-color: rgba(255, 255, 255, 0.7); 
+  color: primaryColor;
+  background-color: buttonBackground; 
 }

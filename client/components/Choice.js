@@ -2,20 +2,26 @@ import styles from "./Choice.module.css";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function Drinks ({ drinks }) {
+export default function Drinks ({ drinks, onSubmit }) {
 
     const [bottle, setBottle] = useState([]);
 
-
     const handleClickBottle = (e) => {
-        // console.log(e.currentTarget.name);
         const choice = e.currentTarget.name;
 
         const newChoice = drinks.filter((item) => item.name === choice);
-        // const copy = {...bottle}; 
-        // console.log(copy);
         setBottle(newChoice);
-        console.log(bottle);
+    }
+
+    const handleSubmitQuantity = (e) => {
+        e.preventDefault();
+
+        const data = {
+            drinks: e.target.name.value,
+            quantity: e.target.quantity.value,
+        }
+
+        onSubmit(data);
     }
 
     if (bottle.length === 0) {
@@ -36,10 +42,14 @@ export default function Drinks ({ drinks }) {
     }
 
     if (bottle.length > 0) {
-        console.log(bottle);
         const bottleObj = bottle[0];
         return (
             <div className={styles.overview}>
+                <form onSubmit={(e) => handleSubmitQuantity(e)} className={styles.form}>
+                    <input type="hidden" name="name" value={bottleObj.name}/>
+                    <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
+                    <input className={styles.submitButton} type="submit" value="Add Shots"/>
+                </form>
                     <div className={styles.drinkImage}>
                         <Image 
                             src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 

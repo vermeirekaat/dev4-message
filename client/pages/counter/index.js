@@ -49,12 +49,3 @@ export async function getStaticProps () {
       },
     };
   };
-
-/* export async function getServerSideProps() {
-    const [glassesRes, cocktailsRes] = await Promise.all([
-      fetch(`${process.env.STRAPI_URL}/glasses`),
-      fetch(`${process.env.STRAPI_URL}/cocktails`),
-    ]);
-    const [glasses, cocktails] = await Promise.all([glassesRes.json(), cocktailsRes.json()]);
-    return { props: {glasses, cocktails} };
-  } */ 

@@ -14,6 +14,11 @@
     "glass": {
       "model": "glass",
       "via": "cocktail"
+    },
+    "drinks": {
+      "collection": "drink",
+      "via": "cocktails",
+      "dominant": true
     }
   }
 }
