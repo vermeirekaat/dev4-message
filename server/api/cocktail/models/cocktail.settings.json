@@ -15,9 +15,9 @@
       "model": "glass",
       "via": "cocktail"
     },
-    "drinks": {
-      "collection": "drink",
-      "via": "cocktails",
+    "ingredients": {
+      "collection": "ingredient",
+      "via": "cocktail",
       "dominant": true
     }
   }

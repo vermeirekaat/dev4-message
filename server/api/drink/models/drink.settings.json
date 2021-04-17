@@ -30,9 +30,9 @@
       "type": "integer",
       "default": 0
     },
-    "cocktails": {
-      "via": "drinks",
-      "collection": "cocktail"
+    "ingredient": {
+      "via": "drink",
+      "model": "ingredient"
     }
   }
 }
