@@ -2,12 +2,10 @@ import Navigation from "../../components/Navigation";
 import Glasses from "../../components/Glasses";
 import styles from "./Counter.module.css";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Counter({ glasses }) {
 
   const handleSubmit = async (data) => {
-
     const check = glasses.filter((glass) => glass.name === data.glass); 
     data.glass = check[0].id; 
 
@@ -33,9 +31,6 @@ export default function Counter({ glasses }) {
                 height={168}
                 />
                 <p className={styles.question}>Choose a glass</p>
-                <Link href="/bar">
-                  <a className={styles.button}>Beverages</a>
-                </Link>
             </div>
             
 

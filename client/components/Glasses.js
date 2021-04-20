@@ -1,12 +1,13 @@
 import styles from "./Glasses.module.css";
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 export default function Glasses({ glasses, onSubmit }) {
 
     const [checkedGlass, setCheckedGlass] = useState(null);
+    const router = useRouter();
 
     const addGlass = (e) => {
         e.preventDefault();
@@ -17,6 +18,8 @@ export default function Glasses({ glasses, onSubmit }) {
 
         e.target.reset();
         onSubmit(data);
+
+        router.push("/bar");
     }
 
     const checkGlass = (e) => {
