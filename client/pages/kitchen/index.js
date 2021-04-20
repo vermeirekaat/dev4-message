@@ -35,7 +35,7 @@ export default function Kitchen({ extras, cocktails }) {
         const extraId = getExtraId(data);
         console.log(extraId);
 
-        data.extra = extraId;
+        data.extras = extraId;
 
 
         await fetch(`${process.env.STRAPI_URL}/ingredients/`,

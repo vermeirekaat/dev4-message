@@ -15,7 +15,6 @@ export default function Extras({ extras, onSubmit }) {
         console.log()
 
         const data = {
-            name: e.target.name.value,
             extra: checkedItem,
         }
 

@@ -25,10 +25,6 @@
     },
     "alcohol": {
       "type": "boolean"
-    },
-    "quantity": {
-      "type": "integer",
-      "default": 0
     }
   }
 }

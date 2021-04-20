@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "beverages",
+  "collectionName": "ingredients",
   "info": {
-    "name": "Beverage",
+    "name": "Ingredient",
     "description": ""
   },
   "options": {
@@ -11,17 +11,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "drink": {
-      "model": "drink"
-    },
-    "quantity": {
-      "type": "integer"
-    },
-    "name": {
-      "type": "string"
+    "extras": {
+      "collection": "extra"
     },
     "cocktail": {
-      "via": "beverages",
+      "via": "ingredients",
       "model": "cocktail"
     }
   }
