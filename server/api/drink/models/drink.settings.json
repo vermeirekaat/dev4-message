@@ -29,10 +29,6 @@
     "quantity": {
       "type": "integer",
       "default": 0
-    },
-    "ingredient": {
-      "via": "drink",
-      "model": "ingredient"
     }
   }
 }

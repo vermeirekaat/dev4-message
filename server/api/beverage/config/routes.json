@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/ingredients",
-      "handler": "ingredient.find",
+      "path": "/beverages",
+      "handler": "beverage.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/ingredients/count",
-      "handler": "ingredient.count",
+      "path": "/beverages/count",
+      "handler": "beverage.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/ingredients/:id",
-      "handler": "ingredient.findOne",
+      "path": "/beverages/:id",
+      "handler": "beverage.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/ingredients",
-      "handler": "ingredient.create",
+      "path": "/beverages",
+      "handler": "beverage.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/ingredients/:id",
-      "handler": "ingredient.update",
+      "path": "/beverages/:id",
+      "handler": "beverage.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/ingredients/:id",
-      "handler": "ingredient.delete",
+      "path": "/beverages/:id",
+      "handler": "beverage.delete",
       "config": {
         "policies": []
       }

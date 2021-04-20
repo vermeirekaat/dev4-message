@@ -32,9 +32,9 @@ export default function Bar({ drinks, cocktails }) {
         const id = getId();
         data.cocktail = id;
         const checkDrink = drinks.filter((drink) => drink.name === data.name); 
-        data.drink = checkDrink[0].id; 
+        data.drink = checkDrink[0].id;
 
-        await fetch(`${process.env.STRAPI_URL}/ingredients/`,
+        await fetch(`${process.env.STRAPI_URL}/beverages/`,
           {
             method: "POST",
             body: JSON.stringify(data),

@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "cocktails",
   "info": {
-    "name": "cocktail",
+    "name": "Cocktail",
     "description": ""
   },
   "options": {
@@ -12,13 +12,11 @@
   },
   "attributes": {
     "glass": {
-      "model": "glass",
-      "via": "cocktail"
+      "model": "glass"
     },
-    "ingredients": {
-      "via": "cocktails",
-      "collection": "ingredient",
-      "dominant": true
+    "beverages": {
+      "via": "cocktail",
+      "collection": "beverage"
     }
   }
 }

@@ -21,10 +21,6 @@
       ],
       "plugin": "upload",
       "required": false
-    },
-    "ingredient": {
-      "via": "extra",
-      "model": "ingredient"
     }
   }
 }

@@ -1,12 +1,12 @@
 import styles from "./Choice.module.css";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
     const [bottle, setBottle] = useState([]);
-    const router = useRouter();
+    // const router = useRouter();
 
     const handleClickBottle = (e) => {
         const choice = e.currentTarget.name;
@@ -25,7 +25,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
         onSubmit(data);
         setBottle([]);
-        router.push("/kitchen");
+        // router.push("/kitchen");
     }
 
     if (bottle.length === 0) {
