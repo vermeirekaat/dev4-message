@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 export default function Extras({ extras, onSubmit }) {
 
     const [checkedItem, setCheckedItem] = useState("");
-    // const router = useRouter();
+    const router = useRouter();
 
     const addItem = (e) => {
         e.preventDefault();
@@ -15,24 +15,24 @@ export default function Extras({ extras, onSubmit }) {
         console.log()
 
         const data = {
+            name: e.target.name.value,
             extra: checkedItem,
         }
 
         e.target.reset();
-        // onSubmit(data);
 
-        console.log(data);
+        onSubmit(data);
 
-        // router.push("/bar");
+        router.push("/");
     }
 
     const checkItem = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
 
         const copy = [...checkedItem]
         copy.push(e.target.value);
         setCheckedItem(copy);
-        console.log(checkedItem);
+        // console.log(checkedItem);
     }
     
     return (
@@ -41,6 +41,7 @@ export default function Extras({ extras, onSubmit }) {
         <div className={styles.glassOverview}> 
             {extras.map((extra) => (
                 <div key={extra.id}  className={styles.glassButton}>
+                    <input type="hidden" name="name" value={extra.name}/>
                     <input onChange={(e) => checkItem(e)} type="checkbox" id={extra.id} name="extra" value={extra.name} className={styles.radioButton}/>
                     <div className={styles.glassImage}>
                     <label htmlFor={extra.name} className={styles.label}>{extra.name}</label>

@@ -3,7 +3,6 @@ import Display from "../../components/Display";
 import Choice from "../../components/Choice";
 import Navigation from "../../components/Navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function Bar({ drinks, cocktails }) {

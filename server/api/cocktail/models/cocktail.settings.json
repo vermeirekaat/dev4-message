@@ -16,8 +16,8 @@
       "via": "cocktail"
     },
     "ingredients": {
+      "via": "cocktails",
       "collection": "ingredient",
-      "via": "cocktail",
       "dominant": true
     }
   }

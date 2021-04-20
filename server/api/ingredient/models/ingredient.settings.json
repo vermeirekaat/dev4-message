@@ -11,19 +11,17 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "integer"
-    },
     "drink": {
       "model": "drink",
       "via": "ingredient"
     },
-    "cocktail": {
-      "via": "ingredients",
-      "collection": "cocktail"
+    "extra": {
+      "model": "extra",
+      "via": "ingredient"
+    },
+    "cocktails": {
+      "collection": "cocktail",
+      "via": "ingredients"
     }
   }
 }

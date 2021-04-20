@@ -3,7 +3,51 @@ import Extras from "../../components/Extras";
 import styles from "./Kitchen.module.css";
 import Image from "next/image";
 
-export default function Counter({ extras }) {
+export default function Kitchen({ extras, cocktails }) {
+
+    const getId= () => {
+        const cocktailIds = [];
+        cocktails.map((cocktail) => { 
+            cocktailIds.push(Number(cocktail.id));
+        })
+        const max = cocktailIds.reduce(function(a,b) {
+            return Math.max(a,b);
+        })
+        return max;
+    } 
+
+    const getExtraId = data => {
+        const idArray = [];
+        data.extra.map((item) => {
+            console.log(item);
+            const checkExtra = extras.filter((extra) => extra.name === item)
+            console.log(checkExtra);
+            // data.extra = checkExtra[0].id;
+            idArray.push(checkExtra[0].id);
+        })
+        return idArray;
+    }
+
+      const handleSubmit = async data => {
+        const id = getId();
+        data.cocktail = id;
+
+        const extraId = getExtraId(data);
+        console.log(extraId);
+
+        data.extra = extraId;
+
+
+        await fetch(`${process.env.STRAPI_URL}/ingredients/`,
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+    }
 
     return (
         <div className={styles.container}>
@@ -20,18 +64,16 @@ export default function Counter({ extras }) {
             </div>
             
 
-            <Extras extras={extras}/>
+            <Extras extras={extras} onSubmit={handleSubmit}/>
          </div>
     )
 }
 
-export async function getStaticProps () {
-    const response = await fetch(`${process.env.STRAPI_URL}/extras`);
-    const extras = await response.json();
-  
-    return {
-      props: {
-        extras,
-      },
-    };
-  };
+export async function getServerSideProps() {
+    const [extraRes, cocktailsRes] = await Promise.all([
+      fetch(`${process.env.STRAPI_URL}/extras`),
+      fetch(`${process.env.STRAPI_URL}/cocktails`),
+    ]);
+    const [extras, cocktails] = await Promise.all([extraRes.json(), cocktailsRes.json()]);
+    return { props: {extras, cocktails} };
+  }
