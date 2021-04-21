@@ -1,12 +1,10 @@
-import styles from "./Choice.module.css";
+import styles from "./Drinks.module.css";
 import Image from "next/image";
 import { useState } from "react";
-// import { useRouter } from "next/router";
 
 export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
     const [bottle, setBottle] = useState([]);
-    // const router = useRouter();
 
     const handleClickBottle = (e) => {
         const choice = e.currentTarget.name;
@@ -15,17 +13,17 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         setBottle(newChoice);
     }
 
-    const handleSubmitQuantity = (e) => {
+    const handleSubmitForm = (e) => {
         e.preventDefault();
 
         const data = {
             name: e.target.name.value,
             quantity: e.target.quantity.value,
         }
+        const input = [data, e.target.name];
 
-        onSubmit(data);
+        onSubmit(input);
         setBottle([]);
-        // router.push("/kitchen");
     }
 
     if (bottle.length === 0) {
@@ -56,7 +54,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         const bottleObj = bottle[0];
         return (
             <div className={styles.overview}>
-                <form onSubmit={(e) => handleSubmitQuantity(e)} className={styles.form}>
+                <form name="third" onSubmit={(e) => handleSubmitForm(e)} className={styles.form}>
                     <input type="hidden" name="name" value={bottleObj.name}/>
                     <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
                     <input className={styles.submitButton} type="submit" value="Add Shots"/>

@@ -11,12 +11,13 @@ export default function Glasses({ glasses, onSubmit }) {
         const data = {
             glass: checkedGlass,
         }
-        e.target.reset();
-        onSubmit(data);
+        const input = [data, e.target.name];
+
+        onSubmit(input);
     }
     
     return (
-        <form onSubmit={(e) => addGlass(e)} className={styles.content}>
+        <form name="second" onSubmit={(e) => addGlass(e)} className={styles.content}>
         
         <div className={styles.glassOverview}> 
             {glasses.map((glass) => (
@@ -42,7 +43,7 @@ export default function Glasses({ glasses, onSubmit }) {
             ))}     
         </div>  
 
-        <input type="submit"  className={styles.button} value="Beverages"/>     
+        <input type="submit" className={styles.button} value="Beverages"/>     
         </form>
     )
 }

@@ -1,6 +1,6 @@
 import styles from "./Bar.module.css";
 import Display from "../../components/Display";
-import Choice from "../../components/Choice";
+import Choice from "../../components/Drinks";
 import Navigation from "../../components/Navigation";
 import Image from "next/image";
 import { useState } from "react";
