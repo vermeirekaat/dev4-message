@@ -25,6 +25,12 @@
     top: -10rem;
 }
 
+.bottleImage {
+    margin: marginLarge;
+    position: relative;
+    top: -17rem;
+}
+
 .form {
     display: flex; 
     flex-direction: column; 

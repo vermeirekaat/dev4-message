@@ -58,7 +58,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                     <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
                     <input className={styles.submitButton} type="submit" value="Add Shots"/>
                 </form>
-                <div className={styles.drinkImage}>
+                <div className={styles.bottleImage}>
                     <Image 
                         src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 
                         width={bottleObj.image.formats.small.width} 
