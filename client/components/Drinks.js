@@ -20,9 +20,8 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
             name: e.target.name.value,
             quantity: e.target.quantity.value,
         }
-        const input = [data, e.target.name];
 
-        onSubmit(input);
+        onSubmit(data);
         setBottle([]);
     }
 
@@ -54,17 +53,17 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         const bottleObj = bottle[0];
         return (
             <div className={styles.overview}>
-                <form name="third" onSubmit={(e) => handleSubmitForm(e)} className={styles.form}>
+                <form onSubmit={(e) => handleSubmitForm(e)} className={styles.form}>
                     <input type="hidden" name="name" value={bottleObj.name}/>
                     <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
                     <input className={styles.submitButton} type="submit" value="Add Shots"/>
                 </form>
-                    <div className={styles.drinkImage}>
-                        <Image 
-                            src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 
-                            width={bottleObj.image.formats.small.width} 
-                            height={bottleObj.image.formats.small.height}/>  
-                    </div>
+                <div className={styles.drinkImage}>
+                    <Image 
+                        src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 
+                        width={bottleObj.image.formats.small.width} 
+                        height={bottleObj.image.formats.small.height}/>  
+                </div>
             </div>
         )
     }

@@ -7,27 +7,22 @@
     display: flex; 
     flex-direction: row;
     justify-content: center;
+    padding-top: calc(marginLarge * 1.5);
 }
 
 .back {
-    position: relative;
-    top: -5rem;
-    left: -5rem;
+    display: flex; 
+    justify-content: center;
 }
 
 .backButton {
-    border: .2rem solid primaryColor;
-    border-radius: .7rem; 
-    padding: 1rem 2rem; 
-    color: primaryColor;
-    background-color: buttonBackground; 
+    composes: button from "../styles/action.module.css";    
 }
 
 .drinkImage {
-    place-self: center;
     margin: marginLarge;
-    position: relative;
-    bottom: marginLarge;
+    position: relative; 
+    top: -10rem;
 }
 
 .form {
@@ -36,12 +31,8 @@
 }
 
 .submitButton {
+    composes: button from "../styles/action.module.css";
     margin-top: marginSmall;
-    border: .2rem solid primaryColor;
-    border-radius: .7rem; 
-    padding: 1rem 2rem; 
-    color: primaryColor;
-    background-color: buttonBackground; 
 }
 
 .button {

@@ -43,9 +43,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     setCurrentStep(page);
   };
 
-  const handleSubmitDrinks = async input => {
-    const data = input[0];
-    const page = input[1];
+  const handleSubmitDrinks = async data => {
 
     const id = getId();
     data.cocktail = id;
@@ -60,8 +58,6 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           "Content-Type": "application/json",
         },
       });
-
-    setCurrentStep(page);
 }
 
   if (currentStep === "first") {
@@ -81,6 +77,8 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     <Navigation>
       <div className={styles.content}>
         <p className={styles.description}>Add Some Beverages</p>
+        
+        <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
       </div>
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
@@ -98,7 +96,6 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
         <Drinks drinks={drinks.filter((drink) => drink.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
-        <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.button}>Add Extra's</button>
       </Navigation>
     )
   }
@@ -124,7 +121,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toost to a better future!
         </p>
           
-        <button onClick={(e) => setCurrentStep(e.target.name)} name="first" className={styles.button}>Let's start shaking</button>
+        <button onClick={(e) => setCurrentStep(e.target.name)} name="first" className={styles.nextButton}>Let's start shaking</button>
       </div>
     </Welcome>      
   )
