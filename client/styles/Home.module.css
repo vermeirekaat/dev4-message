@@ -1,5 +1,5 @@
 @value values: "./values.module.css";
-@value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra, buttonBackground from values;
+@value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra from values;
 
 .content {
   margin-top: 10rem;
@@ -19,9 +19,5 @@
 }
 
 .button {
-  border: .2rem solid primaryColor;
-  border-radius: .7rem; 
-  padding: 1rem 2rem; 
-  color: primaryColor;
-  background-color: buttonBackground; 
+  composes: button from "../styles/action.module.css";
 }
