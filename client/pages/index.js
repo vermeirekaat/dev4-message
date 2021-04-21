@@ -4,7 +4,7 @@ import Glasses from "../components/Glasses";
 import Display from "../components/Display";
 import Drinks from "../components/Drinks";
 import Extras from "../components/Extras";
-import styles from "../styles/Home.module.css";
+import styles from "./Home.module.css";
 import { useState } from "react";
 
 export default function Home({ glasses, drinks, extras, cocktails }) {

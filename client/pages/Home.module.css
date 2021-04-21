@@ -1,4 +1,4 @@
-@value values: "./values.module.css";
+@value values: "../styles/values.module.css";
 @value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra from values;
 
 .content {
