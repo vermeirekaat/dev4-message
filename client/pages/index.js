@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import Glasses from "../components/Glasses";
 import Display from "../components/Display";
 import Drinks from "../components/Drinks";
+import Extras from "../components/Extras";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 
@@ -10,8 +11,6 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
 
   const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
-
-  console.log(currentStep);
 
   const getId = () => {
     const cocktailIds = [];
@@ -23,6 +22,18 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     })
     return max;
   } 
+
+  const getExtraId = data => {
+    const idArray = [];
+    data.extra.map((item) => {
+        console.log(item);
+        const checkExtra = extras.filter((extra) => extra.name === item)
+        console.log(checkExtra);
+        // data.extra = checkExtra[0].id;
+        idArray.push(checkExtra[0].id);
+    })
+    return idArray;
+}
 
   const handleSubmitGlasses = async input => {
     const data = input[0];
@@ -60,6 +71,25 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
       });
 }
 
+  const handleSubmitExtra = async data => {
+    const id = getId();
+    data.cocktail = id;
+
+    const extraId = getExtraId(data);
+
+    data.extras = extraId;
+    
+    await fetch(`${process.env.STRAPI_URL}/ingredients/`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+
   if (currentStep === "first") {
     return (
       <Navigation>
@@ -76,7 +106,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     return (
     <Navigation>
       <div className={styles.content}>
-        <p className={styles.description}>Add Some Beverages</p>
+        <p className={styles.description}>Add some beverages</p>
         
         <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
       </div>
@@ -90,7 +120,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     return (
       <Navigation>
         <div className={styles.content}>
-          <p className={styles.description}>Add Some Liquor</p>
+          <p className={styles.description}>Add some liquor</p>
         </div>
   
         <Drinks drinks={drinks.filter((drink) => drink.alcohol === true)} 
@@ -104,12 +134,24 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     return (
       <Navigation>
         <div className={styles.content}>
-          <p className={styles.description}>Add Some Soda</p>
+          <p className={styles.description}>Add some soda</p>
         </div>
   
         <Drinks drinks={drinks.filter((drink) => drink.alcohol === false)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
+      </Navigation>
+    )
+  }
+
+  if (currentStep === "third") {
+    return (
+      <Navigation>
+        <div className={styles.content}>
+          <p className={styles.description}>Give your cocktail some finishing touches</p>
+        </div>
+      
+        <Extras extras={extras} onSubmit={handleSubmitExtra}/>
       </Navigation>
     )
   }
@@ -126,17 +168,6 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     </Welcome>      
   )
 }
-
-/* export async function getStaticProps () {
-  const response = await fetch(`${process.env.STRAPI_URL}/glasses`);
-  const glasses = await response.json();
-
-  return {
-    props: {
-      glasses,
-    },
-  };
-}; */
 
 export async function getServerSideProps() {
   const [glassesRes, drinksRes, extrasRes, cocktailsRes] = await Promise.all([

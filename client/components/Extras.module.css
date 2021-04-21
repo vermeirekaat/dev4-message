@@ -1,27 +1,38 @@
 @value values: "../styles/values.module.css";
 @value placeholderFont, primaryColor, marginSmall, marginRegular, marginExtra, buttonBackground from values;
 
-.counter {
+.content {
     width: 100vw;
     grid-row: 2;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.extraOverview {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
 }
 
 .hidden {
     display: none;
 }
 
-.radioButton { 
+.checkbox { 
     position: absolute;
     opacity: 0;
     width: 20rem;
     height: 20rem;
 }
   
-.radioButton:checked + .glassImage {
+.checkbox:checked + .label {
     background-color: buttonBackground;
+    padding: 1rem;
+    border-radius: .5rem;
 }
 
-.glassImage {
+.extraImage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,17 +42,17 @@
     color: primaryColor;
     font-size: placeholderFont;
     text-align: center;
-    position: relative; 
-    top: -5rem;
+    margin-top: marginSmall;
+    padding: 1rem;
 }
 
-.glassOverview {
+.extraOverview {
     display: flex; 
     flex-direction: row;
     justify-content: center;
 }
 
-.glassButton {
+.extraButton {
     display: flex; 
     flex-direction: column;
     margin: marginRegular marginExtra; 
@@ -49,10 +60,9 @@
 }
 
 .button {
-    border: .2rem solid primaryColor;
-    border-radius: .7rem; 
-    padding: 1rem 2rem; 
-    color: primaryColor;
-    background-color: buttonBackground; 
-    margin-left: 90vw;
+    composes: button from "../styles/action.module.css";
+    display: flex; 
+    place-self: center;
+    position: relative;
+    top: -5rem;
 }
