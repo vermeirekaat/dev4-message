@@ -1,0 +1,13 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../public/assets/bg-image.png);
+    background-repeat: no-repeat;
+  }
+  
+  .hidden {
+      display: none;
+  }

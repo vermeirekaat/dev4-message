@@ -1,17 +1,8 @@
 @value values: "./values.module.css";
 @value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra, buttonBackground from values;
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../public/assets/bg-image.png);
-  background-repeat: no-repeat;
-}
-
-.main {
+.content {
+  margin-top: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

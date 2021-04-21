@@ -1,8 +1,8 @@
-import styles from "./Navigation.module.css";
+import styles from "./Welcome.module.css";
 import Head from "next/head";
 import Image from "next/image";
 
-export default function Navigation({ children }) {
+export default function Welcome({ children }) {
 
   return (
     <div className={styles.container}>
