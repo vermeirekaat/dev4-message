@@ -25,7 +25,7 @@ export default function Glasses({ glasses, onSubmit }) {
 
         setTimeout(() => {
             onSubmit(input)
-        }, 2500);
+        }, 3000);
     }
 
     const individualVariants = {
@@ -82,8 +82,8 @@ export default function Glasses({ glasses, onSubmit }) {
         {clicked && 
             <motion.div className={styles.content}
             variants={individualVariants}
-                    animate={{x: "-75vw", y: 0}}
-                    transition={{delay: 2, duration: 1.5}}>
+                    animate={{x: "-100vw", y: 0}}
+                    transition={{delay: 2, duration: 3}}>
     
                 <motion.div 
                     variants={individualVariants}

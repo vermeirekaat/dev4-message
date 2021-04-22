@@ -198,7 +198,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           onClick={(e) => setCurrentStep(e.target.name)} 
           name="first" 
           className={styles.nextButton}>
-          Let's start shaking</motion.button>
+        Let's start shaking</motion.button>
       </div>
     </Welcome>      
   )
