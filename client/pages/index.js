@@ -23,7 +23,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("");
+  const [currentStep, setCurrentStep] = useState("first");
   const [buttonDrinks, setButtonDrinks] = useState("back");
 
   const getId = () => {

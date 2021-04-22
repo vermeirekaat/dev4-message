@@ -25,12 +25,6 @@
     margin-bottom: marginRegular;
 }
 
-.glassImage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .radioButton { 
     position: absolute;
     opacity: 0;
