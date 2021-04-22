@@ -107,9 +107,12 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   if (currentStep === "first") {
     return (
       <Navigation>
-        <div className={styles.content}>
+        <motion.div className={styles.content}
+          initial={{ y: "-5vw", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 3 }}>
           <p className={styles.description}>Choose a glass</p>
-        </div>
+        </motion.div>
 
         <Glasses glasses={glasses} onSubmit={handleSubmitGlasses}/>
       </Navigation>
@@ -133,9 +136,12 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   if (currentStep === "second" && buttonDrinks === "liquor") {
     return (
       <Navigation>
-        <div className={styles.content}>
+        <motion.div className={styles.content}
+          initial={{ x: "-5vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 3 }}>
           <p className={styles.description}>Add some liquor</p>
-        </div>
+        </motion.div>
   
         <Drinks drinks={drinks.filter((drink) => drink.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
