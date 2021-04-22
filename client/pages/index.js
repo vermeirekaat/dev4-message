@@ -186,7 +186,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           variants={dissolveVariants}
           initial="hidden"
           animate="visible"
-          transition= {{duration: 4,delay: 3}}>
+          transition= {{duration: 5, delay: 3}}>
           Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toost to a better future!
         </motion.p>
           
@@ -194,7 +194,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           variants={dissolveVariants}
           initial="hidden"
           animate="visible"
-          transition= {{duration: 4, delay: 5}}
+          transition= {{duration: 3, delay: 5}}
           onClick={(e) => setCurrentStep(e.target.name)} 
           name="first" 
           className={styles.nextButton}>
