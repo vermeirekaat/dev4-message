@@ -89,7 +89,7 @@ export default function Glasses({ glasses, onSubmit }) {
                     variants={individualVariants}
                     initial={checkedObject[0].name}
                     animate={{x: 0, y: 0, scale: 1.2 }}
-                    transition={{duration: 2, type:"tween", ease: "easeOut"}}
+                    transition={{ duration: 2, type:"tween", ease: "easeOut" }}
                     exit={{x: "-50vw"}}>
                     <Image 
                         src={process.env.STRAPI_URL + checkedObject[0].image.url} 
