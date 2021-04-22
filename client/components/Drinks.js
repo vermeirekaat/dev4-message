@@ -14,7 +14,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         setBottle(newChoice);
     }
 
-    const handleSubmitForm = (e) => {
+    /* const handleSubmitForm = (e) => {
         e.preventDefault();
 
         const data = {
@@ -24,6 +24,24 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
         // onSubmit(data);
         setBottle([]);
+    } */ 
+
+    const handleSubmitShot = (e, name) => {
+        e.preventDefault();
+
+        const data = {
+            name: name,
+            quantity: 1
+        }
+
+        console.log(data);
+
+        setTimeout(() => {
+            onSubmit(data);
+            setBottle([])
+        }, 5000);
+        // onSubmit(data);
+        // setBottle([]);
     }
 
     const animateIndividual = {
@@ -113,9 +131,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                     </div>
                 ))}
                 </motion.div>
-            </AnimatePresence>
-             
-            
+            </AnimatePresence>     
         </>
         )
     }
@@ -138,7 +154,6 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                     >
                     </motion.div> 
                 <motion.div className={styles.shot}>
-                   
                     <div>
                         <Image
                                 src="/../public/assets/shot.png"
@@ -149,6 +164,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                 </motion.div>
                 <AnimatePresence>
                     <motion.div className={styles.bottleImage}
+                        onTapStart={(e) => handleSubmitShot(e, bottleObj.name)}
                         variants={animateIndividual}
                         initial={bottleObj.name}
                         animate={{ x: 0, y: "15vh", scale: 1.5 }}
