@@ -13,13 +13,15 @@ export default function Navigation({ children }) {
 
       <div className={styles.title}>
         <h1 className={styles.hidden}>Cocktail O'Clock</h1>
-         <Image className={styles.headerImage}
-                src="/assets/letters-glow.png"
-                alt="Cocktail O' Clock"
-                width={654}
-                height={168}
-                />
-        </div>
+          <div className={styles.headerImage}>
+            <Image
+                    src="/assets/letters-glow.webp"
+                    alt="Cocktail O' Clock"
+                    width={654}
+                    height={168}
+                    />
+          </div>
+      </div>
 
       <main className={styles.main}>{children}</main>
     </div>

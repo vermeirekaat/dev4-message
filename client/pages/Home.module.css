@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, lineHeight, primaryColor, buttonBackground, marginExtra from values;
+@value titleFont, lineHeight, primaryColor, buttonBackground, marginLarge from values;
 
 .content {
   margin-top: 10rem;
@@ -15,7 +15,7 @@
   font-size: titleFont;
   line-height: lineHeight;
   text-align: center;
-  margin-bottom: marginExtra;
+  margin-bottom: marginLarge;
 }
 
 .nextButton {

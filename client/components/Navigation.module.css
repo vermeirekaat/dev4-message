@@ -1,16 +1,26 @@
 .container {
-  min-height: 100vh;
-  z-index: -2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../public/assets/counter.png),
-  url(../public/assets/bricks.png);             
+  max-height: 100vh;
+  display: grid; 
+  grid-template-rows: 20vh 70vh 10vh;
+  background-image: url(../public/assets/counter.webp),
+  url(../public/assets/bricks.webp);             
   background-size: 100vw, cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .hidden {
     display: none;
+}
+
+.title {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  grid-row: 2;
 }

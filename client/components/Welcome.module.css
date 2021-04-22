@@ -1,10 +1,11 @@
 .container {
     min-height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(../public/assets/bg-image.png);
+    background-image: url(../public/assets/bg-image.webp);
     background-repeat: no-repeat;
   }
   
