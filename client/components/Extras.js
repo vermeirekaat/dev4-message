@@ -46,7 +46,6 @@ export default function Extras({ extras, onSubmit }) {
                         type="checkbox" id={extra.id} name="extra" 
                         value={extra.name} 
                         className={styles.checkbox}/>
-                    <label htmlFor={extra.name} className={styles.label}>{extra.name}</label> 
 
                     <div className={styles.extraImage}>
                     

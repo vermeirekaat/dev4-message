@@ -129,7 +129,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           <p className={styles.description}>Add some beverages</p>
       </motion.div>
 
-      {/*  <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button> */}
+      {<button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>}
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
     </Navigation>

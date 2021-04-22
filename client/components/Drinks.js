@@ -23,10 +23,14 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         }
 
         // onSubmit(data);
-        //setBottle([]);
+        setBottle([]);
     }
 
     const animateIndividual = {
+        active: {
+            rotate: -120,
+            y: "-5vw",
+        },
         Rum: {
             x: "-25vw", 
             y: "10vh",
@@ -120,19 +124,37 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         const bottleObj = bottle[0];
         return (
             <div className={styles.overview}>
-                <form 
+                {/* <form 
                     onSubmit={(e) => handleSubmitForm(e)} 
                     className={styles.form}>
                     <input type="hidden" name="name" value={bottleObj.name}/>
                     <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
                     <input className={styles.submitButton} type="submit" value="Add Shots"/>
-                </form>
+                </form> */}
+
+                <motion.div className={styles.overlay}
+                    variants={animateIndividual}
+                    initial={{ opacity: 0 }}
+                    >
+                    </motion.div> 
+                <motion.div className={styles.shot}>
+                   
+                    <div>
+                        <Image
+                                src="/../public/assets/shot.png"
+                                width="132"
+                                height="219"
+                        />    
+                    </div> 
+                </motion.div>
                 <AnimatePresence>
                     <motion.div className={styles.bottleImage}
                         variants={animateIndividual}
                         initial={bottleObj.name}
                         animate={{ x: 0, y: "15vh", scale: 1.5 }}
                         transition={{ duration: 2, type:"tween", ease: "easeOut" }}
+
+                        whileTap="active"
                         >
                         <Image 
                             src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 
