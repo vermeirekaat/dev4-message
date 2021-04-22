@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value primaryColor, buttonBackground, marginSmall, marginLarge, buttonBackground from values;
+@value primaryColor, buttonBackground, titleFont, lineHeight, marginSmall, marginLarge, buttonBackground from values;
 
 .overview {
     width: 100vw;
@@ -50,13 +50,6 @@
     position: relative;
 }
 
-
-
-.submitButton {
-    composes: button from "../styles/action.module.css";
-    margin-top: marginSmall;
-}
-
 .button {
     background: none;
     border: none;
@@ -64,4 +57,12 @@
 
 .button:active {
     background: buttonBackground;
+}
+
+.description {
+    width: 50vw;
+    color: white;
+    font-size: titleFont;
+    line-height: lineHeight;
+    text-align: center;
 }

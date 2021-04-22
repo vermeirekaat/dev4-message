@@ -23,7 +23,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("second");
+  const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
 
   const getId = () => {
@@ -129,7 +129,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           <p className={styles.description}>Add some beverages</p>
       </motion.div>
 
-      {<button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>}
+      {/* <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>*/}
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
     </Navigation>
@@ -140,8 +140,8 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     return (
       <Navigation>
         <motion.div className={styles.content}
-          initial={{ x: "-5vw", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ y: "-5vw", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 3 }}>
           <p className={styles.description}>Add some liquor</p>
         </motion.div>

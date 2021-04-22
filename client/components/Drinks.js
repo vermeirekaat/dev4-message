@@ -139,14 +139,14 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
     if (bottle.length > 0) {
         const bottleObj = bottle[0];
         return (
+            <>
+            <motion.div className={styles.content}
+                initial={{ x: "-5vw", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 3 }}>
+                <p className={styles.description}>Click the bottle to fill up the shot</p>
+            </motion.div>
             <div className={styles.overview}>
-                {/* <form 
-                    onSubmit={(e) => handleSubmitForm(e)} 
-                    className={styles.form}>
-                    <input type="hidden" name="name" value={bottleObj.name}/>
-                    <input type="number" name="quantity" defaultValue={bottleObj.quantity} min="0"/>
-                    <input className={styles.submitButton} type="submit" value="Add Shots"/>
-                </form> */}
 
                 <motion.div className={styles.overlay}
                     variants={animateIndividual}
@@ -179,6 +179,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                     </motion.div>
                 </AnimatePresence>
             </div>
+            </>
         )
     }
 
