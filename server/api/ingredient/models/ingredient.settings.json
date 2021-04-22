@@ -13,10 +13,6 @@
   "attributes": {
     "extras": {
       "collection": "extra"
-    },
-    "cocktail": {
-      "via": "ingredients",
-      "model": "cocktail"
     }
   }
 }

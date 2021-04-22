@@ -15,12 +15,10 @@
       "model": "glass"
     },
     "beverages": {
-      "collection": "beverage",
-      "via": "cocktail"
+      "collection": "beverage"
     },
     "ingredients": {
-      "collection": "ingredient",
-      "via": "cocktail"
+      "collection": "ingredient"
     }
   }
 }

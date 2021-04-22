@@ -19,10 +19,6 @@
     },
     "name": {
       "type": "string"
-    },
-    "cocktail": {
-      "via": "beverages",
-      "model": "cocktail"
     }
   }
 }
