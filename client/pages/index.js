@@ -6,6 +6,7 @@ import Drinks from "../components/Drinks";
 import Extras from "../components/Extras";
 import styles from "./Home.module.css";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home({ glasses, drinks, extras, cocktails }) {
 

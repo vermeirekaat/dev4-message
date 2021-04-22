@@ -12,3 +12,14 @@
   .hidden {
       display: none;
   }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headerImage {
+      position: absolute;
+  }
