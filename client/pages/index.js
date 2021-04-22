@@ -10,6 +10,19 @@ import { motion } from "framer-motion";
 
 export default function Home({ glasses, drinks, extras, cocktails }) {
 
+  // MOTION
+  const dissolveVariants = {
+    hidden: {
+      opacity: 0,
+      y: -100
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    },
+  } 
+
+  // USESTATES
   const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
 
@@ -160,11 +173,23 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   return (
     <Welcome>
       <div className={styles.content}>
-        <p className={styles.description}>
+        <motion.p className={styles.description}
+          variants={dissolveVariants}
+          initial="hidden"
+          animate="visible"
+          transition= {{duration: 4,delay: 3}}>
           Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toost to a better future!
-        </p>
+        </motion.p>
           
-        <button onClick={(e) => setCurrentStep(e.target.name)} name="first" className={styles.nextButton}>Let's start shaking</button>
+        <motion.button 
+          variants={dissolveVariants}
+          initial="hidden"
+          animate="visible"
+          transition= {{duration: 4, delay: 5}}
+          onClick={(e) => setCurrentStep(e.target.name)} 
+          name="first" 
+          className={styles.nextButton}>
+          Let's start shaking</motion.button>
       </div>
     </Welcome>      
   )
