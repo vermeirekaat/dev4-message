@@ -51,11 +51,3 @@
     margin-top: marginSmall;
     padding: 1rem;
 }
-
-.button {
-    composes: button from "../styles/action.module.css";
-    display: flex; 
-    place-self: center;
-    position: relative;
-    top: -5rem;
-}

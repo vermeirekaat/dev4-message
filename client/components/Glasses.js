@@ -1,23 +1,21 @@
 import styles from "./Glasses.module.css";
-import { useState } from "react";
 import Image from "next/image";
 
 export default function Glasses({ glasses, onSubmit }) {
 
-    const [checkedGlass, setCheckedGlass] = useState();
-
     const addGlass = (e) => {
         e.preventDefault();
         const data = {
-            glass: checkedGlass,
+            glass: e.target.value,
         }
-        const input = [data, e.target.name];
+        const page = "second";
+        const input = [data, page];
 
         onSubmit(input);
     }
     
     return (
-        <form name="second" onSubmit={(e) => addGlass(e)} className={styles.content}>
+        <form className={styles.content}>
         
         <div className={styles.glassOverview}> 
             {glasses.map((glass) => (
@@ -30,7 +28,7 @@ export default function Glasses({ glasses, onSubmit }) {
                             height={glass.image.height /1.5}/>           
                     </div>   
 
-                    <input onChange={(e) => setCheckedGlass(e.target.value)} 
+                    <input onChange={(e) => addGlass(e)} 
                             type="radio" 
                             id={glass.id} 
                             name="glass" 
@@ -41,9 +39,7 @@ export default function Glasses({ glasses, onSubmit }) {
                         {glass.name}</label>
                 </div>            
             ))}     
-        </div>  
-
-        <input type="submit" className={styles.button} value="Beverages"/>     
+        </div>    
         </form>
     )
 }
