@@ -5,6 +5,7 @@ import { useState } from "react";
 
 
 export default function Glasses({ glasses, onSubmit }) {
+    
 
     const [clicked, setClicked] = useState(false);
     
@@ -14,7 +15,7 @@ export default function Glasses({ glasses, onSubmit }) {
         e.preventDefault();
 
         setClicked(true);
-        const choice = glasses.filter((glass) => glass.name === e.target.value);
+        const choice = glasses.filter((glass) => glass.fields.name === e.target.value);
         setCheckedObject(choice);
 
         const data = {
@@ -56,20 +57,19 @@ export default function Glasses({ glasses, onSubmit }) {
                     > 
                     
                     {glasses.map((glass) => (
-                        <div key={glass.id}  className={styles.glassButton}>
+                        <div key={glass.sys.id}  className={styles.glassButton}>
 
                             <motion.div className={styles.glassImage}>
                                 <Image 
-                                    src={process.env.STRAPI_URL + glass.image.url} 
-                                    width={glass.image.width /1.5} 
-                                    height={glass.image.height /1.5}/>           
+                                    src={"https:" + glass.fields.image.fields.file.url} 
+                                    width={glass.fields.image.fields.file.details.image.width / 1.5} 
+                                    height={glass.fields.image.fields.file.details.image.height / 1.5}/>           
                             </motion.div>   
 
                             <input onChange={(e) => addGlass(e)} 
                                     type="radio" 
-                                    id={glass.id} 
                                     name="glass" 
-                                    value={glass.name} 
+                                    value={glass.fields.name} 
                                     className={styles.radioButton}/>
                         </div>            
                     ))}     
@@ -87,14 +87,14 @@ export default function Glasses({ glasses, onSubmit }) {
     
                 <motion.div 
                     variants={individualVariants}
-                    initial={checkedObject[0].name}
+                    initial={checkedObject[0]}
                     animate={{x: 0, y: 0, scale: 1.2 }}
                     transition={{ duration: 2, type:"tween", ease: "easeOut" }}
                     exit={{x: "-50vw"}}>
                     <Image 
-                        src={process.env.STRAPI_URL + checkedObject[0].image.url} 
-                        width={checkedObject[0].image.width / 1.5} 
-                        height={checkedObject[0].image.height / 1.5}/>          
+                        src={"https:" + checkedObject[0].fields.image.fields.file.url} 
+                        width={checkedObject[0].fields.image.fields.file.details.image.width / 1.5} 
+                        height={checkedObject[0].fields.image.fields.file.details.image.height / 1.5}/>          
                 </motion.div> 
             </motion.div>   
         }

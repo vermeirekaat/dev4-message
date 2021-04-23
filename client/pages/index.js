@@ -8,7 +8,17 @@ import styles from "./Home.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Home({ glasses, drinks, extras, cocktails }) {
+import { createClient } from "contentful";
+
+export default function Home({ result }) {
+
+  const glassesAr = result.items.filter((item) => item.fields.name === "Glasses");
+  const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
+
+  const glasses = glassesAr[0].fields.objects;
+  // console.log(glassesRes.fields.objects);
+  // const drinksRes = drinksAr[0];
+
 
   // MOTION
   const dissolveVariants = {
@@ -24,7 +34,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
 
   // USESTATES
   const [currentStep, setCurrentStep] = useState("");
-  const [buttonDrinks, setButtonDrinks] = useState("back");
+  /* const [buttonDrinks, setButtonDrinks] = useState("back");
 
   const getId = () => {
     const cocktailIds = [];
@@ -47,28 +57,34 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
         idArray.push(checkExtra[0].id);
     })
     return idArray;
-}
+} */ 
 
   const handleSubmitGlasses = async input => {
     const data = input[0];
     const page = input[1];
 
-    const check = glasses.filter((glass) => glass.name === data.glass); 
-    data.glass = check[0].id; 
+    const check = glasses.filter((glass) => glass.fields.name === data.glass); 
+    data.glass = check[0].sys.id; 
 
-    await fetch(`${process.env.STRAPI_URL}/cocktails/`,
-    {
+    console.log(check);
+
+    const client = createClient({
+      space: process.env.CONTENTFUL_SPACE,
+      accessToken: process.env.CONTENTFUL_TOKEN,
+    });
+
+    await client.getContentType({ content_type: ["cocktails"] }), {
       method: "POST",
       body: JSON.stringify(data), 
       headers: {
         "Content-type": "application/json; charset=UTF-8", 
       },
-    });
+    };
 
     setCurrentStep(page);
   };
 
-  const handleSubmitDrinks = async data => {
+  /* const handleSubmitDrinks = async data => {
 
     const id = getId();
     data.cocktail = id;
@@ -102,7 +118,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
         },
       }
     );
-  }
+  } */
 
   if (currentStep === "first") {
     return (
@@ -119,7 +135,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
     )
   }
 
-  if (currentStep === "second" && buttonDrinks === "back") {
+  /* if (currentStep === "second" && buttonDrinks === "back") {
     return (
     <Navigation>
       <motion.div className={styles.content}
@@ -129,7 +145,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
           <p className={styles.description}>Add some beverages</p>
       </motion.div>
 
-      {/* <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>*/}
+      {<button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>}
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
     </Navigation>
@@ -177,7 +193,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
         <Extras extras={extras} onSubmit={handleSubmitExtra}/>
       </Navigation>
     )
-  }
+  } */
 
   return (
     <Welcome>
@@ -204,7 +220,7 @@ export default function Home({ glasses, drinks, extras, cocktails }) {
   )
 }
 
-export async function getServerSideProps() {
+/* export async function getServerSideProps() {
   const [glassesRes, drinksRes, extrasRes, cocktailsRes] = await Promise.all([
     fetch(`${process.env.STRAPI_URL}/glasses`),
     fetch(`${process.env.STRAPI_URL}/drinks`),
@@ -213,4 +229,21 @@ export async function getServerSideProps() {
   ]);
   const [glasses, drinks, extras, cocktails] = await Promise.all([glassesRes.json(), drinksRes.json(), extrasRes.json(), cocktailsRes.json()]);
   return { props: {glasses, drinks, extras, cocktails} };
+} */
+
+export async function getStaticProps() {
+
+  // connect to connectful
+  const client = createClient({
+      space: process.env.CONTENTFUL_SPACE,
+      accessToken: process.env.CONTENTFUL_TOKEN,
+  });
+
+  const result = await client.getEntries({ content_type: ["data"] }); 
+
+  return {
+    props: {
+      result
+    }
+  }
 }
