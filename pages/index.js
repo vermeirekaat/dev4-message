@@ -33,8 +33,8 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("");
-  /* const [buttonDrinks, setButtonDrinks] = useState("back");
+  const [currentStep, setCurrentStep] = useState("first");
+  const [buttonDrinks, setButtonDrinks] = useState("back");
 
   const getId = () => {
     const cocktailIds = [];
@@ -47,7 +47,7 @@ export default function Home({ result }) {
     return max;
   } 
 
-  const getExtraId = data => {
+  /* const getExtraId = data => {
     const idArray = [];
     data.extra.map((item) => {
         console.log(item);
@@ -68,12 +68,14 @@ export default function Home({ result }) {
 
     console.log(check);
 
+    console.log(data);
+
     const client = createClient({
       space: process.env.CONTENTFUL_SPACE,
       accessToken: process.env.CONTENTFUL_TOKEN,
     });
 
-    await client.getContentType({ content_type: ["cocktails"] }), {
+    await client.getEntries({ content_type: ["cocktails"] }), {
       method: "POST",
       body: JSON.stringify(data), 
       headers: {
@@ -84,7 +86,7 @@ export default function Home({ result }) {
     setCurrentStep(page);
   };
 
-  /* const handleSubmitDrinks = async data => {
+  const handleSubmitDrinks = async data => {
 
     const id = getId();
     data.cocktail = id;
@@ -101,7 +103,7 @@ export default function Home({ result }) {
       });
 }
 
-  const handleSubmitExtra = async data => {
+  /* const handleSubmitExtra = async data => {
     const id = getId();
     data.cocktail = id;
 
@@ -135,7 +137,7 @@ export default function Home({ result }) {
     )
   }
 
-  /* if (currentStep === "second" && buttonDrinks === "back") {
+  if (currentStep === "second" && buttonDrinks === "back") {
     return (
     <Navigation>
       <motion.div className={styles.content}
@@ -183,7 +185,7 @@ export default function Home({ result }) {
     )
   }
 
-  if (currentStep === "third") {
+  /* if (currentStep === "third") {
     return (
       <Navigation>
         <div className={styles.content}>
