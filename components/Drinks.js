@@ -10,38 +10,21 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
     const handleClickBottle = (e) => {
         const choice = e.currentTarget.name;
 
-        const newChoice = drinks.filter((item) => item.name === choice);
+        const newChoice = drinks.filter((item) => item.fields.name === choice);
         setBottle(newChoice);
     }
-
-    /* const handleSubmitForm = (e) => {
-        e.preventDefault();
-
-        const data = {
-            name: e.target.name.value,
-            quantity: e.target.quantity.value,
-        }
-
-        // onSubmit(data);
-        setBottle([]);
-    } */ 
 
     const handleSubmitShot = (e, name) => {
         e.preventDefault();
 
         const data = {
-            name: name,
-            quantity: 1
+            drink: name,
         }
-
-        console.log(data);
 
         setTimeout(() => {
             onSubmit(data);
             setBottle([])
         }, 5000);
-        // onSubmit(data);
-        // setBottle([]);
     }
 
     const animateIndividual = {
@@ -121,12 +104,12 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                     >
                 
                 {drinks.map((drink) => (
-                    <div key={drink.id} className={styles.drinkImage}>
-                        <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.name}>
+                    <div key={drink.sys.id} className={styles.drinkImage}>
+                        <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.fields.name}>
                         <Image 
-                            src={process.env.STRAPI_URL + drink.image.formats.small.url} 
-                            width={drink.image.formats.small.width /1.5 } 
-                            height={drink.image.formats.small.height /1.5}/>
+                            src={"https:" + drink.fields.image.fields.file.url} 
+                            width={drink.fields.image.fields.file.details.image.width / 1.5} 
+                            height={drink.fields.image.fields.file.details.image.height / 1.5}/>           
                         </button>      
                     </div>
                 ))}
@@ -164,18 +147,18 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                 </motion.div>
                 <AnimatePresence>
                     <motion.div className={styles.bottleImage}
-                        onTapStart={(e) => handleSubmitShot(e, bottleObj.name)}
+                        onTapStart={(e) => handleSubmitShot(e, bottleObj.fields.name)}
                         variants={animateIndividual}
-                        initial={bottleObj.name}
+                        initial={bottleObj.fields.name}
                         animate={{ x: 0, y: "15vh", scale: 1.5 }}
                         transition={{ duration: 2, type:"tween", ease: "easeOut" }}
 
                         whileTap="active"
                         >
                         <Image 
-                            src={process.env.STRAPI_URL + bottleObj.image.formats.small.url} 
-                            width={bottleObj.image.formats.small.width /1.5 } 
-                            height={bottleObj.image.formats.small.height / 1.5 }/>  
+                            src={"https:" + bottleObj.fields.image.fields.file.url} 
+                            width={bottleObj.fields.image.fields.file.details.image.width / 1.5} 
+                            height={bottleObj.fields.image.fields.file.details.image.height / 1.5}/>           
                     </motion.div>
                 </AnimatePresence>
             </div>

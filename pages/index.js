@@ -16,8 +16,16 @@ export default function Home({ result }) {
   const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
 
   const glasses = glassesAr[0].fields.objects;
-  // console.log(glassesRes.fields.objects);
-  // const drinksRes = drinksAr[0];
+  const drinks = drinksAr[0].fields.objects;
+
+  const getClient = () => {
+     const client = createClient({
+      space: process.env.CONTENTFUL_SPACE,
+      accessToken: process.env.CONTENTFUL_TOKEN,
+    });
+
+    return client;
+  }
 
 
   // MOTION
@@ -66,14 +74,7 @@ export default function Home({ result }) {
     const check = glasses.filter((glass) => glass.fields.name === data.glass); 
     data.glass = check[0].sys.id; 
 
-    console.log(check);
-
-    console.log(data);
-
-    const client = createClient({
-      space: process.env.CONTENTFUL_SPACE,
-      accessToken: process.env.CONTENTFUL_TOKEN,
-    });
+    const client = getClient();
 
     await client.getEntries({ content_type: ["cocktails"] }), {
       method: "POST",
@@ -90,8 +91,8 @@ export default function Home({ result }) {
 
     const id = getId();
     data.cocktail = id;
-    const checkDrink = drinks.filter((drink) => drink.name === data.name); 
-    data.drink = checkDrink[0].id;
+    const checkDrink = drinks.filter((drink) => drink.fields.name === data.drink); 
+    data.drink = checkDrink[0].sys.id;
 
     await fetch(`${process.env.STRAPI_URL}/beverages/`,
       {
@@ -164,7 +165,7 @@ export default function Home({ result }) {
           <p className={styles.description}>Add some liquor</p>
         </motion.div>
   
-        <Drinks drinks={drinks.filter((drink) => drink.alcohol === true)} 
+        <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
       </Navigation>
@@ -178,7 +179,7 @@ export default function Home({ result }) {
           <p className={styles.description}>Add some soda</p>
         </div>
   
-        <Drinks drinks={drinks.filter((drink) => drink.alcohol === false)} 
+        <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === false)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
       </Navigation>
@@ -222,20 +223,8 @@ export default function Home({ result }) {
   )
 }
 
-/* export async function getServerSideProps() {
-  const [glassesRes, drinksRes, extrasRes, cocktailsRes] = await Promise.all([
-    fetch(`${process.env.STRAPI_URL}/glasses`),
-    fetch(`${process.env.STRAPI_URL}/drinks`),
-    fetch(`${process.env.STRAPI_URL}/extras`),
-    fetch(`${process.env.STRAPI_URL}/cocktails`),
-  ]);
-  const [glasses, drinks, extras, cocktails] = await Promise.all([glassesRes.json(), drinksRes.json(), extrasRes.json(), cocktailsRes.json()]);
-  return { props: {glasses, drinks, extras, cocktails} };
-} */
-
 export async function getStaticProps() {
 
-  // connect to connectful
   const client = createClient({
       space: process.env.CONTENTFUL_SPACE,
       accessToken: process.env.CONTENTFUL_TOKEN,
