@@ -76,13 +76,14 @@ export default function Home({ result }) {
 
     const client = getClient();
 
-    await client.getEntries({ content_type: ["cocktails"] }), {
-      method: "POST",
-      body: JSON.stringify(data), 
-      headers: {
-        "Content-type": "application/json; charset=UTF-8", 
-      },
-    };
+    await client.createContentTypeWithId( "cocktail", {
+      name: 'Test',
+      fields: [
+        {
+        glass: data,
+        }
+      ]   
+    });
 
     setCurrentStep(page);
   };
