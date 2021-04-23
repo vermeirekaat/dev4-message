@@ -230,7 +230,7 @@ export async function getStaticProps() {
       accessToken: process.env.CONTENTFUL_TOKEN,
   });
 
-  const result = await client.getEntries({ content_type: ["data"] }); 
+  const result = await client.getEntries({ content_type: "data" }); 
 
   return {
     props: {
