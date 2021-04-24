@@ -9,7 +9,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { createClient as deliveryClient } from "contentful";
-// import { createClient as managementClient } from "contentful-management";
+import { createClient as managementClient } from "contentful-management";
 
 export default function Home({ result }) {
 
@@ -73,20 +73,6 @@ export default function Home({ result }) {
       }, 
       body: JSON.stringify({ data }),
     })
-    const dataReq = await response.json();
-    console.log(dataReq);
-    // await dataReq.publish();
-
-    /* const client = getClient();
-
-    await client.createContentTypeWithId( "cocktail", {
-      name: 'Test',
-      fields: [
-        {
-        glass: data,
-        }
-      ]   
-    }); */ 
 
     setCurrentStep(page);
     };
