@@ -30,6 +30,7 @@
     opacity: 0;
     width: 20rem;
     height: 20rem;
+    z-index: 9;
 }
   
 .radioButton:checked + .label {

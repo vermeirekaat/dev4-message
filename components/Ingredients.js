@@ -1,5 +1,6 @@
 import styles from "./Ingredients.module.css";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 
@@ -34,7 +35,11 @@ export default function Ingredients({ ingredients, onSubmit }) {
     return (
         <form onSubmit={(e) => addItem(e)} className={styles.content}>
              <input type="submit"  className={styles.button} value="Complete Cocktail"/>        
-        <div className={styles.extraOverview}> 
+        <motion.div className={styles.extraOverview}
+                initial={{ x: "50vw" }}
+                animate={{ x: 0 }}
+                transition={{ type: "tween", duration: 3, ease: "easeIn", staggerChildren: .5}}
+                >
             {ingredients.map((extra) => (
                 <div key={extra.sys.id}  className={styles.extraButton}>
                 <input type="hidden" 
@@ -54,7 +59,7 @@ export default function Ingredients({ ingredients, onSubmit }) {
                     </div> 
                 </div>            
             ))}     
-        </div>  
+        </motion.div>  
 
     </form>
     )
