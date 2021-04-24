@@ -1,19 +1,17 @@
-import styles from "./Extras.module.css";
+import styles from "./Ingredients.module.css";
 import { useState } from "react";
 import Image from "next/image";
 
 
-export default function Extras({ extras, onSubmit }) {
+export default function Ingredients({ ingredients, onSubmit }) {
 
     const [checkedItem, setCheckedItem] = useState("");
 
     const addItem = (e) => {
         e.preventDefault();
 
-        console.log()
-
         const data = {
-            extra: checkedItem,
+            ingredient: checkedItem,
         }
         onSubmit(data);
     }

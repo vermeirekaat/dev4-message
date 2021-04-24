@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import Glasses from "../components/Glasses";
 import Display from "../components/Display";
 import Drinks from "../components/Drinks";
-import Extras from "../components/Extras";
+import Extras from "../components/Ingredients";
 import styles from "./Home.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -14,10 +14,12 @@ export default function Home({ result }) {
 
   const glassesAr = result.items.filter((item) => item.fields.name === "Glasses");
   const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
+  const ingredientsAr = result.items.filter((item) => item.fields.name === "Ingredients");
 
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
-
+  const ingredients = ingredientsAr[0].fields.objects;
+  console.log(ingredients);
 
   // MOTION
   const dissolveVariants = {
@@ -32,26 +34,13 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("first");
+  const [currentStep, setCurrentStep] = useState("second");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
     beverages: [], 
     ingredients: [],
   })
-
-  /* const getExtraId = data => {
-    const idArray = [];
-    data.extra.map((item) => {
-        console.log(item);
-        const checkExtra = extras.filter((extra) => extra.name === item)
-        console.log(checkExtra);
-        // data.extra = checkExtra[0].id;
-        idArray.push(checkExtra[0].id);
-    })
-    return idArray;
-} */ 
-
 
   /* const handleSubmitCocktail = async () => {
     const response = await fetch("/api/postGlass", {
@@ -64,19 +53,16 @@ export default function Home({ result }) {
   } */ 
 
 
-  const handleSubmitGlasses = async input => {
-    const data = input[0];
-    const page = input[1];
+  const handleSubmitGlasses = async data => {
 
     const copy = {...cocktailItem};
     copy.glass = data.glass;
     setCocktailItem(copy);
 
-    setCurrentStep(page);
+    setCurrentStep("second");
     };
 
   const handleSubmitDrinks = async data => {
-
     const copy = {...cocktailItem};
     const copyDrinks = [...copy.beverages];
     copyDrinks.push(data.drink);
@@ -86,24 +72,15 @@ export default function Home({ result }) {
     setCurrentStep("second"); 
   }
 
-  /* const handleSubmitExtra = async data => {
-    const id = getId();
-    data.cocktail = id;
+  const handleSubmitIngredients = async data => {
+    const copy = {...cocktailItem};
+    const copyExtras = [...copy.ingredients];
+    console.log(data);
+    // copyExtras.push(data.ingredient);
+    // copy.ingredients = copyExtras;
 
-    const extraId = getExtraId(data);
-
-    data.extras = extraId;
-    
-    await fetch(`${process.env.STRAPI_URL}/ingredients/`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-  } */
+    // setCocktailItem(copy);
+  } 
 
   if (currentStep === "first") {
     return (
@@ -130,7 +107,10 @@ export default function Home({ result }) {
           <p className={styles.description}>Add some beverages</p>
       </motion.div>
 
-      {<button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>}
+      <div className={styles.buttonDisplay}>
+        <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
+      </div>
+     
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
     </Navigation>
@@ -168,17 +148,17 @@ export default function Home({ result }) {
     )
   }
 
-  /* if (currentStep === "third") {
+  if (currentStep === "third") {
     return (
       <Navigation>
         <div className={styles.content}>
           <p className={styles.description}>Give your cocktail some finishing touches</p>
         </div>
       
-        <Extras extras={extras} onSubmit={handleSubmitExtra}/>
+        <Extras ingredients={ingredients} onSubmit={handleSubmitIngredients}/>
       </Navigation>
     )
-  } */
+  }
 
   return (
     <Welcome>

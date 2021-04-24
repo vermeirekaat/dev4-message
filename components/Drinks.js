@@ -108,8 +108,8 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                         <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.fields.name}>
                         <Image 
                             src={"https:" + drink.fields.image.fields.file.url} 
-                            width={drink.fields.image.fields.file.details.image.width / 1.5} 
-                            height={drink.fields.image.fields.file.details.image.height / 1.5}/>           
+                            width={drink.fields.image.fields.file.details.image.width / 2 } 
+                            height={drink.fields.image.fields.file.details.image.height / 2 }/>           
                         </button>      
                     </div>
                 ))}
@@ -157,8 +157,8 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                         >
                         <Image 
                             src={"https:" + bottleObj.fields.image.fields.file.url} 
-                            width={bottleObj.fields.image.fields.file.details.image.width / 1.5} 
-                            height={bottleObj.fields.image.fields.file.details.image.height / 1.5}/>           
+                            width={bottleObj.fields.image.fields.file.details.image.width / 2} 
+                            height={bottleObj.fields.image.fields.file.details.image.height / 2}/>           
                     </motion.div>
                 </AnimatePresence>
             </div>

@@ -18,6 +18,11 @@
   margin-bottom: marginLarge;
 }
 
+.buttonDisplay {
+  display: flex; 
+  justify-content: center;
+}
+
 .nextButton {
   composes: button from "../styles/action.module.css";
 }

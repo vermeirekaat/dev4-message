@@ -21,11 +21,9 @@ export default function Glasses({ glasses, onSubmit }) {
         const data = {
             glass: e.target.value,
         }
-        const page = "second";
-        const input = [data, page];
 
         setTimeout(() => {
-            onSubmit(input)
+            onSubmit(data);
         }, 3000);
     }
 
