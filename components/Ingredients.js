@@ -33,18 +33,23 @@ export default function Ingredients({ ingredients, onSubmit }) {
     }
     
     return (
-        <form onSubmit={(e) => addItem(e)} className={styles.content}>
+
+        <div className={styles.container}>
+
+            <div className={styles.glass}>
+
+
+            </div>
+
+            <form onSubmit={(e) => addItem(e)} className={styles.content}>
              <input type="submit"  className={styles.button} value="Complete Cocktail"/>        
-        <motion.div className={styles.extraOverview}
+            <motion.div className={styles.extraOverview}
                 initial={{ x: "50vw" }}
                 animate={{ x: 0 }}
                 transition={{ type: "tween", duration: 3, ease: "easeIn", staggerChildren: .5}}
                 >
             {ingredients.map((extra) => (
                 <div key={extra.sys.id}  className={styles.extraButton}>
-                <input type="hidden" 
-                        name="name" 
-                        value={extra.fields.name}/>
                 <input onChange={(e) => checkItem(e)} 
                         type="checkbox" name="extra" 
                         value={extra.fields.name} 
@@ -54,13 +59,13 @@ export default function Ingredients({ ingredients, onSubmit }) {
                     
                         <Image 
                             src={"https:" + extra.fields.image.fields.file.url} 
-                            width={extra.fields.image.fields.file.details.image.width * 2} 
-                            height={extra.fields.image.fields.file.details.image.height * 2}/>          
+                            width={extra.fields.image.fields.file.details.image.width / 4} 
+                            height={extra.fields.image.fields.file.details.image.height / 4}/>          
                     </div> 
                 </div>            
             ))}     
-        </motion.div>  
-
-    </form>
+            </motion.div>  
+        </form>
+    </div>
     )
 }

@@ -1,12 +1,19 @@
 @value values: "../styles/values.module.css";
-@value placeholderFont, primaryColor, marginSmall, marginRegular, marginExtra, buttonBackground from values;
+@value placeholderFont, primaryColor, marginSmall, marginRegular, buttonBackground from values;
+
+.container {
+    grid-row: 2;
+    display: grid; 
+    grid-template-columns: 50vw 50vw;
+}
+
+.glass {
+    grid-column: 1; 
+}
 
 .content {
-    width: 100vw;
-    grid-row: 2;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
+    width: 50vw;
+    grid-column: 2;
 }
 
 .extraOverview {
@@ -34,27 +41,27 @@
 }
 
 .extraImage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 1rem;
+    display: flex;
+    place-self: center;
 }
 
 .extraOverview {
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
+    display: grid; 
+    grid-template-rows: repeat(2, 10rem);
+    grid-template-columns: repeat(2, 10rem);
+    grid-gap: 2.5rem;
 }
 
 .extraButton {
     display: flex; 
     flex-direction: column;
-    margin: marginRegular marginExtra; 
-    margin-bottom: marginRegular;
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
     composes: button from "../styles/action.module.css";
     display: flex; 
-    place-self: center;
+    place-self: flex-start;
 }
