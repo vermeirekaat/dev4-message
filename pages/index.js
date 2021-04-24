@@ -8,7 +8,8 @@ import styles from "./Home.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import { createClient } from "contentful";
+import { createClient as deliveryClient } from "contentful";
+// import { createClient as managementClient } from "contentful-management";
 
 export default function Home({ result }) {
 
@@ -17,15 +18,6 @@ export default function Home({ result }) {
 
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
-
-  const getClient = () => {
-     const client = createClient({
-      space: process.env.CONTENTFUL_SPACE,
-      accessToken: process.env.CONTENTFUL_TOKEN,
-    });
-
-    return client;
-  }
 
 
   // MOTION
@@ -71,10 +63,21 @@ export default function Home({ result }) {
     const data = input[0];
     const page = input[1];
 
-    const check = glasses.filter((glass) => glass.fields.name === data.glass); 
-    data.glass = check[0].sys.id; 
+    // const check = glasses.filter((glass) => glass.fields.name === data.glass); 
+    // data.glass = check[0].sys.id; 
 
-    const client = getClient();
+    const response = await fetch("/api/postGlass", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify({ data }),
+    })
+    const dataReq = await response.json();
+    console.log(dataReq);
+    // await dataReq.publish();
+
+    /* const client = getClient();
 
     await client.createContentTypeWithId( "cocktail", {
       name: 'Test',
@@ -83,12 +86,12 @@ export default function Home({ result }) {
         glass: data,
         }
       ]   
-    });
+    }); */ 
 
     setCurrentStep(page);
-  };
+    };
 
-  const handleSubmitDrinks = async data => {
+  /* const handleSubmitDrinks = async data => {
 
     const id = getId();
     data.cocktail = id;
@@ -103,7 +106,7 @@ export default function Home({ result }) {
           "Content-Type": "application/json",
         },
       });
-}
+} */
 
   /* const handleSubmitExtra = async data => {
     const id = getId();
@@ -226,7 +229,7 @@ export default function Home({ result }) {
 
 export async function getStaticProps() {
 
-  const client = createClient({
+  const client = deliveryClient({
       space: process.env.CONTENTFUL_SPACE,
       accessToken: process.env.CONTENTFUL_TOKEN,
   });
