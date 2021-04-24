@@ -16,6 +16,10 @@
   line-height: lineHeight;
   text-align: center;
   margin-bottom: marginLarge;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonDisplay {

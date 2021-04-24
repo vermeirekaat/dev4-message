@@ -4,6 +4,13 @@ import Image from "next/image";
 
 export default function Navigation({ overview, children }) {
 
+  /* overview.beverages.map((drink) => {
+    console.log(drink);
+  });
+  overview.ingredients.map((extra) => {
+    console.log(extra);
+  }) */
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,11 +34,9 @@ export default function Navigation({ overview, children }) {
         <div className={styles.content}>
         <h2 className={styles.subtitle}>Your Cocktail</h2>
             <p className={styles.item}>{overview.glass}</p>
-          <h3 className={styles.part}>Shots</h3>
               {overview.beverages.map((drink) => {
                 <p className={styles.item}>{drink}</p>
               })}
-            <h3 className={styles.part}>Extra</h3>
               {overview.ingredients.map((extra) => {
                 <p className={styles.item}>{extra}</p>
               })}

@@ -32,42 +32,42 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
             rotate: -120,
             y: "-5vw",
         },
-        Rum: {
+        Campari: {
             x: "-25vw", 
             y: "10vh",
             scale: 1
         },
-        Campari: {
+        Cointreau: {
             x: "-15vw",
             y: "10vh", 
             scale: 1,
         },
-        Tequila: {
+        Gin: {
             x: "-5vw", 
             y: "10vh",
             scale: 1,
         }, 
-        Cointreau: {
+        Rum: {
             x: "5vw",
             y: "10vh", 
             scale: 1,
         }, 
-        Vodka: {
+        Tequila: {
             x: "15vw",
             y: "10vh", 
             scale: 1,
         },
-        Gin: {
+        Vodka: {
             x: "25vw", 
             y: "10vh",
             scale: 1,
         },
-        Ginger: {
+        Cola: {
             x: "-25vw", 
             y: "10vh",
             scale: 1,
         },
-        Cola: {
+        Ginger: {
             x: "-15vw", 
             y: "10vh", 
             scale: 1,
@@ -108,8 +108,8 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                         <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.fields.name}>
                         <Image 
                             src={"https:" + drink.fields.image.fields.file.url} 
-                            width={drink.fields.image.fields.file.details.image.width / 2 } 
-                            height={drink.fields.image.fields.file.details.image.height / 2 }/>           
+                            width={drink.fields.image.fields.file.details.image.width / 2.5 } 
+                            height={drink.fields.image.fields.file.details.image.height / 2.5 }/>           
                         </button>      
                     </div>
                 ))}

@@ -5,7 +5,7 @@
   max-height: 100vh;
   display: grid; 
   grid-template-columns: 70vw 30vw;
-  grid-template-rows: 30vh 60vh 10vh;
+  grid-template-rows: 20vh 70vh 10vh;
   background-image: url(../public/assets/counter.webp),
   url(../public/assets/bricks.webp);             
   background-size: 100vw, cover;
@@ -45,12 +45,6 @@
   padding: 1rem;
 }
 
-.part {
-  font-size: buttonFont;
-  padding-left: 1.5rem;
-  padding-bottom: 1rem;
-}
-
 .item {
   font-size: bodyFont;
   padding-left: 2rem;
@@ -59,4 +53,5 @@
 
 .main {
   grid-row: 2;
+  grid-column: 1/ span 2;
 }
