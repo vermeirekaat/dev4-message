@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 
-export default function Ingredients({ ingredients, onSubmit }) {
+export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
+    const glass = cocktailGlass[0];
 
     const [checkedItem, setCheckedItem] = useState("");
 
@@ -37,8 +38,10 @@ export default function Ingredients({ ingredients, onSubmit }) {
         <div className={styles.container}>
 
             <div className={styles.glass}>
-
-
+                <Image 
+                    src={"https:" + glass.fields.image.fields.file.url} 
+                    width={glass.fields.image.fields.file.details.image.width} 
+                    height={glass.fields.image.fields.file.details.image.height}/>           
             </div>
 
             <form onSubmit={(e) => addItem(e)} className={styles.content}>

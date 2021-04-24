@@ -39,7 +39,7 @@ export default function Home({ result }) {
     glass: "", 
     beverages: [], 
     ingredients: [],
-  })
+  });
 
   /* const handleSubmitCocktail = async () => {
     const response = await fetch("/api/postGlass", {
@@ -151,7 +151,7 @@ export default function Home({ result }) {
           <p className={styles.description}>Give your cocktail some finishing touches</p>
         </div>
       
-        <Extras ingredients={ingredients} onSubmit={handleSubmitIngredients}/>
+        <Extras ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
       </Navigation>
     )
   }

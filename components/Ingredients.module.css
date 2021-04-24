@@ -9,6 +9,8 @@
 
 .glass {
     grid-column: 1; 
+    display: flex; 
+    justify-content: center;
 }
 
 .content {
