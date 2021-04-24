@@ -33,12 +33,12 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("third");
+  const [currentStep, setCurrentStep] = useState("first");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
     beverages: [], 
-    ingredients: "",
+    ingredients: [],
   })
 
   /* const handleSubmitCocktail = async () => {
@@ -80,7 +80,7 @@ export default function Home({ result }) {
 
   if (currentStep === "first") {
     return (
-      <Navigation>
+      <Navigation overview={cocktailItem}>
         <motion.div className={styles.content}
           initial={{ y: "-5vw", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -95,7 +95,7 @@ export default function Home({ result }) {
 
   if (currentStep === "second" && buttonDrinks === "back") {
     return (
-    <Navigation>
+    <Navigation overview={cocktailItem}>
       <motion.div className={styles.content}
           initial={{ y: "-5vw", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -115,7 +115,7 @@ export default function Home({ result }) {
 
   if (currentStep === "second" && buttonDrinks === "liquor") {
     return (
-      <Navigation>
+      <Navigation overview={cocktailItem}>
         <motion.div className={styles.content}
           initial={{ y: "-5vw", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -132,7 +132,7 @@ export default function Home({ result }) {
 
   if (currentStep === "second" && buttonDrinks === "soda") {
     return (
-      <Navigation>
+      <Navigation overview={cocktailItem}>
         <div className={styles.content}>
           <p className={styles.description}>Add some soda</p>
         </div>
@@ -146,7 +146,7 @@ export default function Home({ result }) {
 
   if (currentStep === "third") {
     return (
-      <Navigation>
+      <Navigation overview={cocktailItem}>
         <div className={styles.content}>
           <p className={styles.description}>Give your cocktail some finishing touches</p>
         </div>
