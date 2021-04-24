@@ -1,5 +1,6 @@
 import styles from "./Ingredients.module.css";
 import { useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -8,6 +9,7 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     const glass = cocktailGlass[0];
 
     const [checkedItem, setCheckedItem] = useState("");
+    const constraintRef = useRef(null);
 
     const addItem = (e) => {
         e.preventDefault();
@@ -18,24 +20,24 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
         onSubmit(data);
     }
 
-    const checkItem = (e) => {
-        if (e.target.checked === true) {
+    const dragItem = (e, name) => {
+        if (e.x <= 500) {
             const copy = [...checkedItem]
-            copy.push(e.target.value);
+            copy.push(name);
             setCheckedItem(copy);
         }
+        if (e.x >= 500) {
+            const copy = [...checkedItem];
 
-        if (e.target.checked === false) {
-           const copy = [...checkedItem];
-
-            const deleteItem = copy.findIndex((check) => check === e.target.value);
+            const deleteItem = copy.findIndex((check) => check === name);
             checkedItem.splice(deleteItem, 1);
         }
     }
     
     return (
 
-        <div className={styles.container}>
+        <motion.div className={styles.container}
+            ref={constraintRef}>
 
             <div className={styles.glass}>
                 <Image 
@@ -52,11 +54,15 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
                 transition={{ type: "tween", duration: 3, ease: "easeIn", staggerChildren: .5}}
                 >
             {ingredients.map((extra) => (
-                <div key={extra.sys.id}  className={styles.extraButton}>
-                <input onChange={(e) => checkItem(e)} 
-                        type="checkbox" name="extra" 
+                <motion.div key={extra.sys.id}  className={styles.extraButton}
+                drag 
+                dragConstraints={constraintRef}
+                onDragEnd={(e) => dragItem(e, extra.fields.name)}
+                >
+                <input type="checkbox" name="extra" 
                         value={extra.fields.name} 
-                        className={styles.checkbox}/>
+                        className={styles.checkbox}
+                        />
 
                     <div className={styles.extraImage}>
                     
@@ -65,10 +71,10 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
                             width={extra.fields.image.fields.file.details.image.width / 4} 
                             height={extra.fields.image.fields.file.details.image.height / 4}/>          
                     </div> 
-                </div>            
+                </motion.div>            
             ))}     
             </motion.div>  
         </form>
-    </div>
+    </motion.div>
     )
 }

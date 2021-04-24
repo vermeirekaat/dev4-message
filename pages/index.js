@@ -78,6 +78,8 @@ export default function Home({ result }) {
     setCocktailItem(copy);
   };
 
+  console.log(cocktailItem);
+
   if (currentStep === "first") {
     return (
       <Navigation overview={cocktailItem}>

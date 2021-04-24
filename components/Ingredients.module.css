@@ -33,13 +33,7 @@
     opacity: 0;
     width: 10rem;
     height: 10rem;
-    z-index: 9;
-}
-  
-.checkbox:checked + .extraImage {
-    background-color: buttonBackground;
-    padding: 1rem;
-    border-radius: .5rem;
+    /* z-index: 9; */
 }
 
 .extraImage {
