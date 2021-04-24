@@ -22,11 +22,12 @@
 .checkbox { 
     position: absolute;
     opacity: 0;
-    width: 20rem;
-    height: 20rem;
+    width: 10rem;
+    height: 10rem;
+    z-index: 9;
 }
   
-.checkbox:checked + .label {
+.checkbox:checked + .extraImage {
     background-color: buttonBackground;
     padding: 1rem;
     border-radius: .5rem;
@@ -36,13 +37,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.label {
-    color: primaryColor;
-    font-size: placeholderFont;
-    text-align: center;
-    margin-top: marginSmall;
     padding: 1rem;
 }
 

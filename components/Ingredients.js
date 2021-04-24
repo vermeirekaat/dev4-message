@@ -35,22 +35,22 @@ export default function Ingredients({ ingredients, onSubmit }) {
         <form onSubmit={(e) => addItem(e)} className={styles.content}>
              <input type="submit"  className={styles.button} value="Complete Cocktail"/>        
         <div className={styles.extraOverview}> 
-            {extras.map((extra) => (
-                <div key={extra.id}  className={styles.extraButton}>
+            {ingredients.map((extra) => (
+                <div key={extra.sys.id}  className={styles.extraButton}>
                 <input type="hidden" 
                         name="name" 
-                        value={extra.name}/>
+                        value={extra.fields.name}/>
                 <input onChange={(e) => checkItem(e)} 
-                        type="checkbox" id={extra.id} name="extra" 
-                        value={extra.name} 
+                        type="checkbox" name="extra" 
+                        value={extra.fields.name} 
                         className={styles.checkbox}/>
 
                     <div className={styles.extraImage}>
                     
                         <Image 
-                            src={process.env.STRAPI_URL + extra.image.url} 
-                            width={extra.image.width /1.5} 
-                            height={extra.image.height /1.5}/>          
+                            src={"https:" + extra.fields.image.fields.file.url} 
+                            width={extra.fields.image.fields.file.details.image.width * 2} 
+                            height={extra.fields.image.fields.file.details.image.height * 2}/>          
                     </div> 
                 </div>            
             ))}     

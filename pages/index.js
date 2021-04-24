@@ -19,7 +19,6 @@ export default function Home({ result }) {
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
   const ingredients = ingredientsAr[0].fields.objects;
-  console.log(ingredients);
 
   // MOTION
   const dissolveVariants = {
@@ -39,7 +38,7 @@ export default function Home({ result }) {
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
     beverages: [], 
-    ingredients: [],
+    ingredients: "",
   })
 
   /* const handleSubmitCocktail = async () => {
@@ -74,13 +73,10 @@ export default function Home({ result }) {
 
   const handleSubmitIngredients = async data => {
     const copy = {...cocktailItem};
-    const copyExtras = [...copy.ingredients];
-    console.log(data);
-    // copyExtras.push(data.ingredient);
-    // copy.ingredients = copyExtras;
+    copy.ingredients = data.ingredient;
 
-    // setCocktailItem(copy);
-  } 
+    setCocktailItem(copy);
+  };
 
   if (currentStep === "first") {
     return (
