@@ -8,6 +8,17 @@ import Image from "next/image";
 export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     const glass = cocktailGlass[0];
 
+    const transformProps = {
+        hidden: {
+            opacity: 0,
+            y: "25vh"
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+        }
+    }
+
     const [checkedItem, setCheckedItem] = useState("");
     const constraintRef = useRef(null);
 
@@ -39,12 +50,16 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
         <motion.div className={styles.container}
             ref={constraintRef}>
 
-            <div className={styles.glass}>
+            <motion.div className={styles.glass}
+             variants={transformProps}
+             initial="hidden"
+             animate="visible"
+             transition={{ type: "tween", duration: 3, ease: "easeOut"}}>
                 <Image 
                     src={"https:" + glass.fields.image.fields.file.url} 
                     width={glass.fields.image.fields.file.details.image.width} 
                     height={glass.fields.image.fields.file.details.image.height}/>           
-            </div>
+            </motion.div>
 
             <form onSubmit={(e) => addItem(e)} className={styles.content}>
              <input type="submit"  className={styles.button} value="Complete Cocktail"/>        

@@ -28,7 +28,7 @@ export default function Glasses({ glasses, onSubmit }) {
     }
 
     const individualVariants = {
-        Regular: {
+        Cosmopolitan: {
             x: "-20vw", 
             scale: 1
         }, 
@@ -37,7 +37,7 @@ export default function Glasses({ glasses, onSubmit }) {
             y: "5vw",
             scale: 1,
         },
-        Cosmopolitan: {
+        Regular: {
             x: "20vw", 
             scale: 1
         }

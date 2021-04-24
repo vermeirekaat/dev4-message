@@ -83,12 +83,13 @@ export default function Home({ result }) {
   if (currentStep === "first") {
     return (
       <Navigation overview={cocktailItem}>
-        <motion.div className={styles.content}
-          initial={{ y: "-5vw", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 3 }}>
-          <p className={styles.description}>Choose a glass</p>
-        </motion.div>
+        <div className={styles.content}>
+          <motion.p className={styles.description}
+            initial={{ y: "-5vw", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, delay: 3 }}>
+          Choose a glass</motion.p>
+        </div>
 
         <Glasses glasses={glasses} onSubmit={handleSubmitGlasses}/>
       </Navigation>
@@ -98,12 +99,13 @@ export default function Home({ result }) {
   if (currentStep === "second" && buttonDrinks === "back") {
     return (
     <Navigation overview={cocktailItem}>
-      <motion.div className={styles.content}
-          initial={{ y: "-5vw", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 3 }}>
-          <p className={styles.description}>Add some beverages</p>
-      </motion.div>
+      <div className={styles.content}>
+          <motion.p className={styles.description}
+           initial={{ y: "-5vw", opacity: 0 }}
+           animate={{ y: 0, opacity: 1 }}
+           transition={{ duration: 1.5, delay: 3 }}
+          >Add some beverages</motion.p>
+      </div>
 
       <div className={styles.buttonDisplay}>
         <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
@@ -118,12 +120,13 @@ export default function Home({ result }) {
   if (currentStep === "second" && buttonDrinks === "liquor") {
     return (
       <Navigation overview={cocktailItem}>
-        <motion.div className={styles.content}
+        <div className={styles.content}>
+          <motion.p className={styles.description}
           initial={{ y: "-5vw", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 3 }}>
-          <p className={styles.description}>Add some liquor</p>
-        </motion.div>
+          transition={{ duration: 1.5, delay: 3 }}
+          >Add some liquor</motion.p>
+        </div>
   
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
@@ -136,7 +139,11 @@ export default function Home({ result }) {
     return (
       <Navigation overview={cocktailItem}>
         <div className={styles.content}>
-          <p className={styles.description}>Add some soda</p>
+          <motion.p className={styles.description}
+                initial={{ y: "-5vw", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 3 }}>
+              Add some soda</motion.p>
         </div>
   
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === false)} 
@@ -150,7 +157,11 @@ export default function Home({ result }) {
     return (
       <Navigation overview={cocktailItem}>
         <div className={styles.content}>
-          <p className={styles.description}>Give your cocktail some finishing touches</p>
+          <motion.p className={styles.description}
+              initial={{ y: "-5vw", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 3 }}>
+            Drag the ingredients to add them to your cocktail</motion.p>
         </div>
       
         <Extras ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
