@@ -9,7 +9,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { createClient as deliveryClient } from "contentful";
-import { createClient as managementClient } from "contentful-management";
 
 export default function Home({ result }) {
 
@@ -35,17 +34,11 @@ export default function Home({ result }) {
   // USESTATES
   const [currentStep, setCurrentStep] = useState("first");
   const [buttonDrinks, setButtonDrinks] = useState("back");
-
-  const getId = () => {
-    const cocktailIds = [];
-    cocktails.map((cocktail) => { 
-        cocktailIds.push(Number(cocktail.id));
-    })
-    const max = cocktailIds.reduce(function(a,b) {
-        return Math.max(a,b);
-    })
-    return max;
-  } 
+  const [cocktailItem, setCocktailItem] = useState({
+    glass: "", 
+    beverages: [], 
+    ingredients: [],
+  })
 
   /* const getExtraId = data => {
     const idArray = [];
@@ -59,13 +52,8 @@ export default function Home({ result }) {
     return idArray;
 } */ 
 
-  const handleSubmitGlasses = async input => {
-    const data = input[0];
-    const page = input[1];
 
-    // const check = glasses.filter((glass) => glass.fields.name === data.glass); 
-    // data.glass = check[0].sys.id; 
-
+  /* const handleSubmitCocktail = async () => {
     const response = await fetch("/api/postGlass", {
       method: "POST", 
       headers: {
@@ -73,26 +61,30 @@ export default function Home({ result }) {
       }, 
       body: JSON.stringify({ data }),
     })
+  } */ 
+
+
+  const handleSubmitGlasses = async input => {
+    const data = input[0];
+    const page = input[1];
+
+    const copy = {...cocktailItem};
+    copy.glass = data.glass;
+    setCocktailItem(copy);
 
     setCurrentStep(page);
     };
 
-  /* const handleSubmitDrinks = async data => {
+  const handleSubmitDrinks = async data => {
 
-    const id = getId();
-    data.cocktail = id;
-    const checkDrink = drinks.filter((drink) => drink.fields.name === data.drink); 
-    data.drink = checkDrink[0].sys.id;
+    const copy = {...cocktailItem};
+    const copyDrinks = [...copy.beverages];
+    copyDrinks.push(data.drink);
+    copy.beverages = copyDrinks;
 
-    await fetch(`${process.env.STRAPI_URL}/beverages/`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-} */
+    setCocktailItem(copy);
+    setCurrentStep("second"); 
+  }
 
   /* const handleSubmitExtra = async data => {
     const id = getId();
