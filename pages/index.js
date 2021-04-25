@@ -44,12 +44,12 @@ export default function Home({ result }) {
   });
 
   const handleSubmitCocktail = async () => {
-    const response = await fetch("/api/postCocktail", {
+    const response = await fetch("/api/post", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
       }, 
-      body: JSON.stringify({ cocktailItem }),
+      body: JSON.stringify(cocktailItem),
     })
     await response.json();
   }
@@ -86,11 +86,10 @@ export default function Home({ result }) {
     console.log(data);
     const copy = {...cocktailItem};
     copy.message = data.message;
-    setCocktailItem(copy);
+    await setCocktailItem(copy);
 
-    // handleSubmitCocktail();
+    handleSubmitCocktail();
   };
-  console.log(cocktailItem);
 
   if (currentStep === "first") {
     return (
@@ -184,8 +183,6 @@ export default function Home({ result }) {
   if (currentStep === "fourth") {
     return (
       <Navigation overview={cocktailItem}>
-
-      <button onClick={() => handleSubmitCocktail()} className={styles.nextButton}>Submit Cocktail</button>
 
         <Message onSubmit={handleSubmitMessage}/>
 
