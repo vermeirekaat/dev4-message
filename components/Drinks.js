@@ -126,7 +126,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
             <motion.div className={styles.content}
                 initial={{ x: "-5vw", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1.5, delay: 3 }}>
+                transition={{ duration: 1.5, delay: 1.5 }}>
                 <p className={styles.description}>Click the bottle to fill up the shot</p>
             </motion.div>
             <div className={styles.overview}>

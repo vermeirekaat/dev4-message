@@ -3,7 +3,8 @@ import Navigation from "../components/Navigation";
 import Glasses from "../components/Glasses";
 import Display from "../components/Display";
 import Drinks from "../components/Drinks";
-import Extras from "../components/Ingredients";
+import Ingredients from "../components/Ingredients";
+import Message from "../components/Message";
 import styles from "./Home.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -33,7 +34,7 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("first");
+  const [currentStep, setCurrentStep] = useState("fourth");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
@@ -76,9 +77,8 @@ export default function Home({ result }) {
     copy.ingredients = data.ingredient;
 
     setCocktailItem(copy);
+    setCurrentStep("fourth");
   };
-
-  console.log(cocktailItem);
 
   if (currentStep === "first") {
     return (
@@ -164,7 +164,17 @@ export default function Home({ result }) {
             Drag the ingredients to add them to your cocktail</motion.p>
         </div>
       
-        <Extras ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
+        <Ingreidents ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
+      </Navigation>
+    )
+  }
+
+  if (currentStep === "fourth") {
+    return (
+      <Navigation overview={cocktailItem}>
+
+        <Message/>
+
       </Navigation>
     )
   }
@@ -177,7 +187,7 @@ export default function Home({ result }) {
           initial="hidden"
           animate="visible"
           transition= {{duration: 5, delay: 3}}>
-          Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toost to a better future!
+          Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toast to a better future!
         </motion.p>
           
         <motion.button 
