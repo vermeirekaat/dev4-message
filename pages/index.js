@@ -34,27 +34,25 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("fourth");
+  const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
     beverages: [], 
     ingredients: [],
-    message: {
-      content: "", 
-      language: "",
-    },
+    message: "",
   });
 
-  /* const handleSubmitCocktail = async () => {
-    const response = await fetch("/api/postGlass", {
+  const handleSubmitCocktail = async () => {
+    const response = await fetch("/api/postCocktail", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
       }, 
-      body: JSON.stringify({ data }),
+      body: JSON.stringify({ cocktailItem }),
     })
-  } */ 
+    await response.json();
+  }
 
 
   const handleSubmitGlasses = async data => {
@@ -87,12 +85,11 @@ export default function Home({ result }) {
   const handleSubmitMessage = async data => {
     console.log(data);
     const copy = {...cocktailItem};
-    copy.message.content = data.message;
-    copy.message.language = data.language;
-
+    copy.message = data.message;
     setCocktailItem(copy);
-  };
 
+    // handleSubmitCocktail();
+  };
   console.log(cocktailItem);
 
   if (currentStep === "first") {
@@ -187,6 +184,8 @@ export default function Home({ result }) {
   if (currentStep === "fourth") {
     return (
       <Navigation overview={cocktailItem}>
+
+      <button onClick={() => handleSubmitCocktail()} className={styles.nextButton}>Submit Cocktail</button>
 
         <Message onSubmit={handleSubmitMessage}/>
 

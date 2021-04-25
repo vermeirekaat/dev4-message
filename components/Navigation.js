@@ -4,12 +4,12 @@ import Image from "next/image";
 
 export default function Navigation({ overview, children }) {
 
-  overview.beverages.map((drink) => {
+  /* overview.beverages.map((drink) => {
     console.log(drink);
   });
   overview.ingredients.map((extra) => {
     console.log(extra);
-  })
+  }) */
 
   return (
     <div className={styles.container}>

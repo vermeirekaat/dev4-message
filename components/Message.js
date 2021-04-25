@@ -32,7 +32,6 @@ export default function Message ({ onSubmit }) {
         const saveMessage = () => {
             const data = {
                 message: transcript, 
-                language: language,
             }; 
             onSubmit(data);
         }

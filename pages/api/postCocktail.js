@@ -2,6 +2,10 @@ import { createClient as managementClient } from "contentful-management";
 
 export default async (req, res) => {
     if (req.method === "POST") {
+
+        const cocktail = req.body.cocktailItem;
+        console.log(cocktail);
+        const content = req.body.cocktailItem.message.content;
         
         try {
 
@@ -10,16 +14,23 @@ export default async (req, res) => {
         });
 
         const response = client.getSpace(process.env.CONTENTFUL_SPACE).then((space) => space.getEnvironment(process.env.CONTENTFUL_ENVI)).then((environment) => 
-        environment.createEntry("cocktail", {
+        environment.createEntry("cocktails", {
             fields: {
                 glass: {
-                  "en-US": req.body.data.glass
+                  "en-US": cocktail.glass
                 },
-                recipient: {
-                  "en-US": "test"
-                },
+                beverages: [
+                    cocktail.beverages.map((item) => {
+                        "en-US"; item
+                    }),
+                ],
+                ingredients: [
+                    cocktail.ingredients.map((item) => {
+                        "en-US"; item
+                    }),
+                ],
                 message: {
-                    "en-US": "test-message"
+                    "en-US": content
                 },
             },
         })).then((entry) => entry.publish());
