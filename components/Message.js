@@ -1,5 +1,6 @@
 import styles from "./Message.module.css";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 export default function Message ({ onSubmit }) {
@@ -17,16 +18,33 @@ export default function Message ({ onSubmit }) {
                 language: language})
         }
 
+        const transformProps = {
+            hidden: {
+                opacity: 0,
+                y: "25vh"
+            },
+            visible: {
+                opacity: 1,
+                y: 0,
+            }
+        }
+
         const saveMessage = () => {
             const data = {
-                message: transcript
+                message: transcript, 
+                language: language,
             }; 
             onSubmit(data);
         }
 
     return (
         
-        <motion.div className={styles.container}>
+        <motion.div className={styles.container}
+                variants={transformProps}
+                initial="hidden"
+                animate="visible"
+                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
+                >
             <div className={styles.languages}>
                 <input type="button" className={styles.button} onClick={()=> setLanguage("en-US")} value="EN"/>
                 <input type="button" className={styles.button} onClick={()=> setLanguage("nl-NL")} value="NL"/>

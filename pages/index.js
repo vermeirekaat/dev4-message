@@ -40,6 +40,10 @@ export default function Home({ result }) {
     glass: "", 
     beverages: [], 
     ingredients: [],
+    message: {
+      content: "", 
+      language: "",
+    },
   });
 
   /* const handleSubmitCocktail = async () => {
@@ -82,7 +86,14 @@ export default function Home({ result }) {
 
   const handleSubmitMessage = async data => {
     console.log(data);
-  }
+    const copy = {...cocktailItem};
+    copy.message.content = data.message;
+    copy.message.language = data.language;
+
+    setCocktailItem(copy);
+  };
+
+  console.log(cocktailItem);
 
   if (currentStep === "first") {
     return (
