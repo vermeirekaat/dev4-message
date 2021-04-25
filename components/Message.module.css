@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
+@value titleFont, bodyFont, lineHeight, buttonFont placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
 
 .container {
     display: grid;
@@ -11,24 +11,81 @@
     border-radius: 2rem;
 }
 
+.languages {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex; 
+    flex-direction: column;
+}
+
 .intro {
     grid-row: 1;
     grid-column: 1 / span 2; 
     display: flex; 
     flex-direction: column;
     align-items: center;
+    margin-bottom: marginLarge;
 }
+
 .title {
     color: primaryColor; 
     font-size: titleFont;
     margin-bottom: marginSmall;
 }
 
+
+.transcript {
+    width: 50vw;
+}
+
+.info {
+    font-size: bodyFont;
+    color: white;
+    margin-bottom: marginRegular;
+}
+
+.info span {
+    text-decoration: underline;
+    color: primaryColor;
+}
+
+.message {
+    color: white; 
+    font-size: placeholderFont; 
+    line-height: lineHeight; 
+}
 .description {
     width: 50vw;
     color: white;
     font-size: placeholderFont;
     line-height: lineHeight;
     text-align: center;
-    margin-bottom: marginLarge;
+    margin-bottom: marginSmall;
+}
+
+.submitButton {
+    composes: button from "../styles/action.module.css";
+}
+
+.speech {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    display: flex; 
+    flex-direction: row; 
+}
+
+.controls {
+    display: flex; 
+    flex-direction: column;
+    margin-left: marginRegular;
+}
+
+.button {
+    width: 5rem;
+    height: 2.5rem;
+    background-color: buttonBackground;
+    border-radius: 2rem; 
+    border: .2rem solid primaryColor;
+    font-size: butttonFont;
+    margin: marginSmall;
 }

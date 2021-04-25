@@ -80,6 +80,10 @@ export default function Home({ result }) {
     setCurrentStep("fourth");
   };
 
+  const handleSubmitMessage = async data => {
+    console.log(data);
+  }
+
   if (currentStep === "first") {
     return (
       <Navigation overview={cocktailItem}>
@@ -164,7 +168,7 @@ export default function Home({ result }) {
             Drag the ingredients to add them to your cocktail</motion.p>
         </div>
       
-        <Ingreidents ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
+        <Ingredients ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
       </Navigation>
     )
   }
@@ -173,7 +177,7 @@ export default function Home({ result }) {
     return (
       <Navigation overview={cocktailItem}>
 
-        <Message/>
+        <Message onSubmit={handleSubmitMessage}/>
 
       </Navigation>
     )
