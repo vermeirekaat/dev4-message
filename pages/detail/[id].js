@@ -19,11 +19,11 @@ const client = deliveryClient({
 
 export async function getStaticProps ({ params }) {
 
-    const result = await client.getEntries({ content_type: "cocktails", "sys.id": params.id });
+    const { items } = await client.getEntries({ content_type: "cocktails", "sys.id": params.id });
 
     return {
         props: {
-            cocktail: result
+            cocktail: items
         },
         revalidate: 1,
     }

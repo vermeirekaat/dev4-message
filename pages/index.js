@@ -22,11 +22,7 @@ export default function Home({ result }) {
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
   const ingredients = ingredientsAr[0].fields.objects;
-  const newCocktails = ingredientsAr[0].fields.objects;
-
-  newCocktails.map((item) => {
-    console.log(item.sys.id);
-  })
+  const newCocktails = cocktailsAr[0].fields.objects;
 
   // MOTION
   const dissolveVariants = {
