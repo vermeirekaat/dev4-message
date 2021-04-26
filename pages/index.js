@@ -6,7 +6,7 @@ import Drinks from "../components/Drinks";
 import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { createClient as deliveryClient } from "contentful";
@@ -34,16 +34,19 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("fourth");
+  const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
     beverages: [], 
     ingredients: [],
     message: "",
+    sender: "", 
+    receiver: "",
   });
 
   const handleSubmitCocktail = async () => {
+    console.log(cocktailItem)
     const response = await fetch("/api/post", {
       method: "POST", 
       headers: {
@@ -58,10 +61,10 @@ export default function Home({ result }) {
   const handleSubmitGlasses = async data => {
     const copy = {...cocktailItem};
     copy.glass = data.glass;
-    setCocktailItem(copy);
 
+    setCocktailItem(copy);
     setCurrentStep("second");
-    };
+  };
 
   const handleSubmitDrinks = async data => {
     const copy = {...cocktailItem};
@@ -70,22 +73,25 @@ export default function Home({ result }) {
     copy.beverages = copyDrinks;
 
     setCocktailItem(copy);
-    setCurrentStep("second"); 
+    setCurrentStep("second");
   }
 
   const handleSubmitIngredients = async data => {
     const copy = {...cocktailItem};
     copy.ingredients = data.ingredient;
 
-    setCocktailItem(copy);
+    setCocktailItem(copy)
     setCurrentStep("fourth");
   };
 
   const handleSubmitMessage = async data => {
     console.log(data);
     const copy = {...cocktailItem};
-    // copy.message = data.message;
-    // setCocktailItem(copy);
+    copy.message = data.message;
+    copy.sender = data.sender;
+    copy.receiver = data.receiver;
+    setCocktailItem(copy);
+    handleSubmitCocktail();
   };
 
   if (currentStep === "first") {

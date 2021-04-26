@@ -2,13 +2,6 @@ import { createClient as managementClient } from "contentful-management";
 
 export default async (req, res) => {
 
-    const mapArray = array => {
-        array.map((item) => {
-            console.log(item);
-            return item;
-        })
-    }
-
     if (req.method === "POST") {
         
         try {
@@ -31,6 +24,12 @@ export default async (req, res) => {
                 },
                 message: {
                     "en-US": req.body.message
+                },
+                sender: {
+                    "en-US": req.body.sender
+                },
+                receiver: {
+                    "en-US": req.body.receiver
                 },
             },
         })).then((entry) => entry.publish());

@@ -34,12 +34,12 @@ export default function Navigation({ overview, children }) {
         <div className={styles.content}>
         <h2 className={styles.subtitle}>Your Cocktail</h2>
             <p className={styles.item}>{overview.glass}</p>
-              {overview.beverages.map((drink) => {
+              {/* overview.beverages.map((drink) => {
                 <p className={styles.item}>{drink}</p>
               })}
               {overview.ingredients.map((extra) => {
                 <p className={styles.item}>{extra}</p>
-              })}
+              }) */}
         </div>
       </div>
 
