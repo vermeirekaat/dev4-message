@@ -1,5 +1,5 @@
 import styles from "./Message.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 // import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
@@ -46,7 +46,7 @@ export default function Message ({ onSubmit }) {
             message: transcript, 
             sender: e.target.sender.value,
             receiver: e.target.receiver.value,
-        }
+        };
 
         onSubmit(data);
     }

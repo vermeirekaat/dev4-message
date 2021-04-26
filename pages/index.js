@@ -40,19 +40,27 @@ export default function Home({ result }) {
     glass: "", 
     beverages: [], 
     ingredients: [],
+  });
+
+  const [cocktailFinal, setCocktailFinal] = useState({
+    glass: "", 
+    beverages: [], 
+    ingredients: [],
     message: "",
     sender: "", 
     receiver: "",
-  });
+  })
 
   const handleSubmitCocktail = async () => {
-    console.log(cocktailItem)
+    if (cocktailFinal.glass === "") {
+      return false;
+    }
     const response = await fetch("/api/post", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
       }, 
-      body: JSON.stringify(cocktailItem),
+      body: JSON.stringify(cocktailFinal),
     })
     await response.json();
   }
@@ -85,14 +93,23 @@ export default function Home({ result }) {
   };
 
   const handleSubmitMessage = async data => {
-    console.log(data);
-    const copy = {...cocktailItem};
+    const copyItem = {...cocktailItem};
+    const copy = {...cocktailFinal};
+    copy.glass = copyItem.glass;
+    copy.beverages = copyItem.beverages;
+    copy.ingredients = copyItem.ingredients;
     copy.message = data.message;
     copy.sender = data.sender;
     copy.receiver = data.receiver;
-    setCocktailItem(copy);
-    handleSubmitCocktail();
+
+    setCocktailFinal(copy);
+
+    // handleSubmitCocktail();
   };
+
+  useEffect(() => {
+     handleSubmitCocktail(cocktailFinal);
+  },[cocktailFinal]);
 
   if (currentStep === "first") {
     return (

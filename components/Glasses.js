@@ -6,7 +6,6 @@ import { useState } from "react";
 
 export default function Glasses({ glasses, onSubmit }) {
     
-
     const [clicked, setClicked] = useState(false);
     
     const [checkedObject, setCheckedObject] = useState([]);
