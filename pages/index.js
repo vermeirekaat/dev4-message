@@ -1,5 +1,5 @@
 import Welcome from "../components/Welcome";
-import Navigation from "../components/Navigation";
+import Layout from "../components/Layout";
 import Glasses from "../components/Glasses";
 import Display from "../components/Display";
 import Drinks from "../components/Drinks";
@@ -7,6 +7,7 @@ import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { createClient as deliveryClient } from "contentful";
@@ -16,10 +17,16 @@ export default function Home({ result }) {
   const glassesAr = result.items.filter((item) => item.fields.name === "Glasses");
   const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
   const ingredientsAr = result.items.filter((item) => item.fields.name === "Ingredients");
+  const cocktailsAr = result.items.filter((item) => item.fields.name === "Cocktails");
 
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
   const ingredients = ingredientsAr[0].fields.objects;
+  const newCocktails = ingredientsAr[0].fields.objects;
+
+  newCocktails.map((item) => {
+    console.log(item.sys.id);
+  })
 
   // MOTION
   const dissolveVariants = {
@@ -113,7 +120,7 @@ export default function Home({ result }) {
 
   if (currentStep === "first") {
     return (
-      <Navigation overview={cocktailItem}>
+      <Layout overview={cocktailItem}>
         <div className={styles.content}>
           <motion.p className={styles.description}
             initial={{ y: "-5vw", opacity: 0 }}
@@ -123,13 +130,13 @@ export default function Home({ result }) {
         </div>
 
         <Glasses glasses={glasses} onSubmit={handleSubmitGlasses}/>
-      </Navigation>
+      </Layout>
     )
   }
 
   if (currentStep === "second" && buttonDrinks === "back") {
     return (
-    <Navigation overview={cocktailItem}>
+    <Layout overview={cocktailItem}>
       <div className={styles.content}>
           <motion.p className={styles.description}
            initial={{ y: "-5vw", opacity: 0 }}
@@ -144,13 +151,13 @@ export default function Home({ result }) {
      
 
       <Display handleClick={(button) => setButtonDrinks(button)}/>
-    </Navigation>
+    </Layout>
     )
   }
 
   if (currentStep === "second" && buttonDrinks === "liquor") {
     return (
-      <Navigation overview={cocktailItem}>
+      <Layout overview={cocktailItem}>
         <div className={styles.content}>
           <motion.p className={styles.description}
           initial={{ y: "-5vw", opacity: 0 }}
@@ -162,13 +169,13 @@ export default function Home({ result }) {
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
-      </Navigation>
+      </Layout>
     )
   }
 
   if (currentStep === "second" && buttonDrinks === "soda") {
     return (
-      <Navigation overview={cocktailItem}>
+      <Layout overview={cocktailItem}>
         <div className={styles.content}>
           <motion.p className={styles.description}
                 initial={{ y: "-5vw", opacity: 0 }}
@@ -180,13 +187,13 @@ export default function Home({ result }) {
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === false)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
-      </Navigation>
+      </Layout>
     )
   }
 
   if (currentStep === "third") {
     return (
-      <Navigation overview={cocktailItem}>
+      <Layout overview={cocktailItem}>
         <div className={styles.content}>
           <motion.p className={styles.description}
               initial={{ y: "-5vw", opacity: 0 }}
@@ -196,22 +203,23 @@ export default function Home({ result }) {
         </div>
       
         <Ingredients ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
-      </Navigation>
+      </Layout>
     )
   }
 
   if (currentStep === "fourth") {
     return (
-      <Navigation overview={cocktailItem}>
+      <Layout overview={cocktailItem}>
 
         <Message onSubmit={handleSubmitMessage}/>
 
-      </Navigation>
+      </Layout>
     )
   }
 
   return (
     <Welcome>
+
       <div className={styles.content}>
         <motion.p className={styles.description}
           variants={dissolveVariants}
@@ -229,7 +237,15 @@ export default function Home({ result }) {
           onClick={(e) => setCurrentStep(e.target.name)} 
           name="first" 
           className={styles.nextButton}>
-        Let's start shaking</motion.button>
+          Let's start shaking</motion.button>
+
+          {newCocktails.map((item) => (
+            <Link key={item.sys.id} href={"/detail/" + item.sys.id}>
+              <a className={styles.nextButton}>
+                <p>Detail</p>
+              </a>
+          </Link>
+          ))}
       </div>
     </Welcome>      
   )

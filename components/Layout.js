@@ -1,8 +1,8 @@
-import styles from "./Navigation.module.css";
+import styles from "./Layout.module.css";
 import Head from "next/head";
 import Image from "next/image";
 
-export default function Navigation({ overview, children }) {
+export default function Layout({ overview, children }) {
 
   /* overview.beverages.map((drink) => {
     console.log(drink);

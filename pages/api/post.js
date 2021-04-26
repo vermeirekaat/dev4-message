@@ -32,6 +32,12 @@ export default async (req, res) => {
                     "en-US": req.body.receiver
                 },
             },
+            sys: {
+                type: "Link", 
+                linkType: "Entry", 
+                id: "data",
+                name:"Cocktails",
+            }
         })).then((entry) => entry.publish());
 
         if (response.status === 201) {
