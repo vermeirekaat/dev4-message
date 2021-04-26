@@ -47,13 +47,13 @@ export default function Message ({ onSubmit }) {
                 transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
                 >
             <div className={styles.languages}>
-            <input type="button" className={styles.submitButton} onClick={(e) => saveMessage(e)} value="Save my toast"/>
                 <input type="button" className={styles.button} onClick={()=> setLanguage("en-US")} value="EN"/>
                 <input type="button" className={styles.button} onClick={()=> setLanguage("nl-NL")} value="NL"/>
             </div>
             <div className={styles.intro}>
                 <h2 className={styles.title}>Your Toast</h2>
                 <p className={styles.description}>Let's toast to a better future where we can actually drink cocktails in real life.</p>
+                <input type="button" className={styles.submitButton} onClick={(e) => saveMessage(e)} value="Save my toast"/>
             </div>
 
             <div className={styles.speech}>

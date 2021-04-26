@@ -4,7 +4,7 @@
 .container {
     display: grid;
     grid-template-columns: 30vw 50vw 10vw;
-    grid-template-rows: 20vh 80vh; 
+    grid-template-rows: 30vh 70vh; 
     margin: marginLarge;
     padding: marginRegular;
     background-color: rgba(0, 0, 0, 0.500);

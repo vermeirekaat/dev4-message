@@ -56,7 +56,6 @@ export default function Home({ result }) {
 
 
   const handleSubmitGlasses = async data => {
-
     const copy = {...cocktailItem};
     copy.glass = data.glass;
     setCocktailItem(copy);
@@ -83,12 +82,9 @@ export default function Home({ result }) {
   };
 
   const handleSubmitMessage = async data => {
-    console.log(data);
     const copy = {...cocktailItem};
     copy.message = data.message;
-    await setCocktailItem(copy);
-
-    handleSubmitCocktail();
+    setCocktailItem(copy);
   };
 
   if (currentStep === "first") {
