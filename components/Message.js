@@ -1,13 +1,11 @@
 import styles from "./Message.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+// import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 export default function Message ({ onSubmit }) {
 
-    const { transcript, resetTranscript } = useSpeechRecognition("");
-
-    const [information, setInformation] = useState(false);
+    /* const { transcript, resetTranscript } = useSpeechRecognition("");
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null
@@ -18,7 +16,10 @@ export default function Message ({ onSubmit }) {
             continuous: true,
             language: "en-US"
         })
-    }
+    } */
+
+    const [information, setInformation] = useState(false);
+    const [transcript, setTranscript] = useState("");
 
     const transformProps = {
         hidden: {
@@ -29,6 +30,13 @@ export default function Message ({ onSubmit }) {
             opacity: 1,
             y: 0,
         },
+    }
+
+    const saveMessage = (e) => {
+        e.preventDefault();
+
+        setTranscript(e.target.message.value);
+        setInformation(!information);
     }
 
     const sendMessage = (e) => {
@@ -68,8 +76,16 @@ export default function Message ({ onSubmit }) {
                 animate="visible"
                 transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
                 >
+
+            <form className={styles.mail} onSubmit={(e) => saveMessage(e)} >
+                <label className={styles.information}>Your Toast
+                    <input className={styles.input} name="message" type="text" rows="20" cols="10" placeholder="Write down your message"/>
+                </label>
+
+                <input type="submit" className={styles.submitButton} value="Save my Toast"/>
+            </form>
             
-            <div className={styles.intro}>
+            {/* <div className={styles.intro}>
                 <h2 className={styles.title}>Your Toast</h2>
                 <p className={styles.description}>Let's toast to a better future where we can actually drink cocktails in real life.</p>
                 <input type="button" className={styles.submitButton} onClick={() => setInformation(!information)} value="Save my toast"/>
@@ -83,8 +99,9 @@ export default function Message ({ onSubmit }) {
                     <button className={styles.button} onClick={()=> startListening()}>Start</button>
                     <button className={styles.button} onClick={() => SpeechRecognition.stopListening}>Stop</button>
                     <button className={styles.button} onClick={resetTranscript}>Reset</button>
-            </div>
-            </div>
+                </div>
+            </div>*/}
+
         </motion.div>
     )
 }

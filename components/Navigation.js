@@ -30,7 +30,7 @@ export default function Navigation({ overview, children }) {
           </div>
       </div>
 
-      <div className={styles.overview}>
+      {/* <div className={styles.overview}>
         <div className={styles.content}>
         <h2 className={styles.subtitle}>Your Cocktail</h2>
             <p className={styles.item}>{overview.glass}</p>
@@ -39,9 +39,9 @@ export default function Navigation({ overview, children }) {
               })}
               {overview.ingredients.map((extra) => {
                 <p className={styles.item}>{extra}</p>
-              }) */}
+              })}
         </div>
-      </div>
+            </div>*/}
 
       <main className={styles.main}>{children}</main>
     </div>
