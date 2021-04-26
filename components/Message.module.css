@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, bodyFont, lineHeight, buttonFont placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
+@value titleFont, bodyFont, lineHeight, buttonFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
 
 .container {
     display: grid;
@@ -11,9 +11,28 @@
     border-radius: 2rem;
 }
 
-.languages {
-    grid-column: 1;
+.mail {
+    grid-column: 1/ span 2;
     grid-row: 1;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.input {
+    margin-top: marginSmall;
+    color: white;
+    width: 30vw;
+    background:rgba(0, 0, 0, 0.500);
+    padding: .5rem;
+}
+
+.information {
+    margin: marginSmall;
+    color: white;
+    font-size: placeholderFont;
     display: flex; 
     flex-direction: column;
 }

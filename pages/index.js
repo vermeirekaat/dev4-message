@@ -34,7 +34,7 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("");
+  const [currentStep, setCurrentStep] = useState("fourth");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
@@ -82,9 +82,10 @@ export default function Home({ result }) {
   };
 
   const handleSubmitMessage = async data => {
+    console.log(data);
     const copy = {...cocktailItem};
-    copy.message = data.message;
-    setCocktailItem(copy);
+    // copy.message = data.message;
+    // setCocktailItem(copy);
   };
 
   if (currentStep === "first") {
