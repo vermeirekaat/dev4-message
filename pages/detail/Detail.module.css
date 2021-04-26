@@ -1,0 +1,45 @@
+@value values: "../../styles/values.module.css";
+@value placeholderFont, buttonFont, bodyFont, primaryColor, buttonBackground, marginSmall, marginRegular from values;
+
+.overview {
+    display: grid; 
+    grid-template-columns: 40vw, 60vw;
+    width: 50vw;
+    margin: marginSmall;
+    background: buttonBackground;
+    border-radius: 1rem;
+    margin-top: 20vh;
+    margin-left: 25vw;
+  }
+  
+  .content {
+    grid-column: 1;
+    padding: 1rem;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .information {
+      grid-column: 2;
+      padding: 1rem;
+  }
+  
+  .subtitle {
+    color: primaryColor;
+    font-size: placeholderFont;
+    padding: 1rem;
+  }
+  
+  .item {
+    font-size: bodyFont;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .message {
+      margin: marginSmall;
+      border: .5rem solid primaryColor;
+      padding: marginRegular;
+  }

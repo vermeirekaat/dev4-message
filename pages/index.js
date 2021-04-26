@@ -6,7 +6,7 @@ import Drinks from "../components/Drinks";
 import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRouter } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 

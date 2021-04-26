@@ -1,13 +1,26 @@
 import Layout from "../../components/Layout";
+import styles from "./Detail.module.css";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
-
-    console.log(cocktail);
+    const cocktailItems = cocktail[0].fields;
 
     return (
         <Layout>
-            <p>Detail Page</p>
+
+        <div className={styles.overview}>
+            <div className={styles.content}>
+                <h2 className={styles.subtitle}>{cocktailItems.glass}</h2>
+                    <p className={styles.item}>{cocktailItems.beverages}</p>
+                    <p className={styles.item}>{cocktailItems.ingredients}</p>
+            </div>
+
+            <div className={styles.information}>
+                <p className={styles.item}>To: {cocktailItems.receiver}</p>
+                <p className={styles.message}> Message: {cocktailItems.message}</p>
+                <p className={styles.item}>From: {cocktailItems.sender}</p>
+            </div>
+        </div>
         </Layout>
     )
 }
