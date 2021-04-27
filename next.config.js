@@ -7,6 +7,7 @@ module.exports = {
         CONTENTFUL_POST: process.env.CONTENTFUL_POST,
         IMAGES_DOMAIN: process.env.IMAGES_DOMAIN,
         URL_DOMAIN: process.env.URL_DOMAIN,
+        SENDGRID_TOKEN: process.env.SENDGRID_TOKEN,
     },
 
     images: {

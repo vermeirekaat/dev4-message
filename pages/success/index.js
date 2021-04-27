@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import Email from "../../components/Email";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClient as deliveryClient } from "contentful";
 // import styles from "./Success.module.css";
 
@@ -15,6 +15,21 @@ export default function Success({ result }) {
         email: "",
     });
 
+    const handleSendEmail = async () => {
+        if (emailInformation.email === "") {
+            return false;
+        }
+
+        const response = await fetch("/api/email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailInformation),
+        });
+        await response.json();
+    }
+
     const handleSubmitEmail = data => {
        console.log(data);
 
@@ -23,7 +38,9 @@ export default function Success({ result }) {
        setEmailInfromation(copy);
     }
 
-    console.log(emailInformation);
+    useEffect(() => {
+        handleSendEmail(emailInformation);
+     },[emailInformation]);
 
     return (
         <Layout>
