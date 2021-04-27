@@ -7,7 +7,6 @@ export default function Success({ }) {
         <Layout>
             <div className={styles.container}>
                 <h2 className={styles.title}>Your cocktail is being made</h2>
-                <p className={styles.information}>Send a private link to your friend</p>
 
                 <form className={styles.mail}>
 

@@ -2,11 +2,12 @@
 @value titleFont, bodyFont, lineHeight, buttonFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
 
 .container {
-    display: grid;
-    margin: marginLarge;
     padding: marginRegular;
     background-color: rgba(0, 0, 0, 0.500);
     border-radius: 2rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+    max-width: 40vw;
 }
 
 .mail {
