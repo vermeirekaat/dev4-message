@@ -233,13 +233,13 @@ export default function Home({ result }) {
           className={styles.nextButton}>
           Let's start shaking</motion.button>
 
-          {newCocktails.map((item) => (
+          {/* newCocktails.map((item) => (
             <Link key={item.sys.id} href={"/detail/" + item.sys.id}>
               <a className={styles.nextButton}>
                 <p>Detail</p>
               </a>
           </Link>
-          ))}
+          )) */}
       </div>
     </Welcome>      
   )
