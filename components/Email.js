@@ -5,8 +5,6 @@ export default function Email ({ onSubmit }) {
     const handleSubmitEmail = (e) => {
         e.preventDefault(); 
 
-        console.log(e.target.email.value);
-
         const data = {
             email: e.target.email.value,
         }
@@ -16,7 +14,7 @@ export default function Email ({ onSubmit }) {
 
     return (
         <div className={styles.container}>
-        <h2 className={styles.title}>Your cocktail is being made</h2>
+        <h2 className={styles.title}>Send your virtual cocktail</h2>
 
         <form className={styles.mail} onSubmit={(e) => handleSubmitEmail(e)}>
 
