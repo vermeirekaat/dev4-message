@@ -106,8 +106,6 @@ export default function Home({ result }) {
     copy.receiver = data.receiver;
 
     setCocktailFinal(copy);
-
-    // handleSubmitCocktail();
   };
 
   useEffect(() => {

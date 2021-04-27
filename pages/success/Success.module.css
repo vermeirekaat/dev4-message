@@ -1,0 +1,46 @@
+@value values: "../../styles/values.module.css";
+@value titleFont, bodyFont, lineHeight, buttonFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
+
+.container {
+    display: grid;
+    margin: marginLarge;
+    padding: marginRegular;
+    background-color: rgba(0, 0, 0, 0.500);
+    border-radius: 2rem;
+}
+
+.mail {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.input {
+    margin-top: marginSmall;
+    color: white;
+    width: 30vw;
+    background:rgba(0, 0, 0, 0.500);
+    padding: .5rem;
+}
+
+.label {
+    margin: marginSmall;
+    color: white;
+    font-size: placeholderFont;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: primaryColor; 
+    font-size: titleFont;
+    margin-bottom: marginSmall;
+    text-align: center;
+}
+
+.submitButton {
+    composes: button from "../../styles/action.module.css";
+}
