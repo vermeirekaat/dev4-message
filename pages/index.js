@@ -55,6 +55,9 @@ export default function Home({ result }) {
     nano: nanoid(),
   })
 
+  console.log(cocktailFinal.nano); 
+  // KcHfAnCRrOm7DvMUt4NyK
+
   const handleSubmitCocktail = async () => {
     if (cocktailFinal.glass === "") {
       return false;
