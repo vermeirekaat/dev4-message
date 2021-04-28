@@ -101,19 +101,15 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
             </motion.div>
             <div className={styles.overview}>
 
-                <motion.div className={styles.overlay}
-                    variants={animateIndividual}
-                    initial={{ opacity: 0 }}
-                    >
-                    </motion.div> 
-                <motion.div className={styles.shot}>
-                    <div>
+                <motion.div className={styles.shot}
+                    initial={{y: "25vh", opacity: 0}}
+                    animate={{ y: 0, opacity: 1}}
+                    transition={{ duration: 2, type:"tween", ease: "easeOut", delay: 2 }}>
                         <Image
                                 src="/assets/shot.png"
                                 width="132"
                                 height="219"
                         />    
-                    </div> 
                 </motion.div>
                 <AnimatePresence>
                     <motion.div className={styles.bottleImage}
