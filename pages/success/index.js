@@ -15,6 +15,8 @@ export default function Success({ result }) {
         email: "",
     });
 
+    console.log(emailInformation.url);
+
     const handleSendEmail = async () => {
         if (emailInformation.email === "") {
             return false;
