@@ -31,7 +31,6 @@ export default function Success({ result }) {
     }
 
     const handleSubmitEmail = data => {
-       console.log(data);
 
        const copy = {...emailInformation};
        copy.email = data.email, 

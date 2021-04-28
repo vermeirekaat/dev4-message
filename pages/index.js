@@ -7,8 +7,8 @@ import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
 import { useEffect, useState, useRouter } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 import { createClient as deliveryClient } from "contentful";
 
@@ -52,7 +52,10 @@ export default function Home({ result }) {
     message: "",
     sender: "", 
     receiver: "",
+    nano: nanoid(),
   })
+
+  console.log(cocktailFinal.nano);
 
   const handleSubmitCocktail = async () => {
     if (cocktailFinal.glass === "") {

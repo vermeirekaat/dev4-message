@@ -11,7 +11,8 @@ export default async (req, res) => {
         });
 
         const response = client.getSpace(process.env.CONTENTFUL_SPACE).then((space) => space.getEnvironment(process.env.CONTENTFUL_ENVI)).then((environment) => 
-        environment.createEntry("cocktails", {
+        environment.createEntryWithId("cocktails", req.body.nano,
+        {
             fields: {
                 glass: {
                     "en-US": req.body.glass
@@ -32,12 +33,6 @@ export default async (req, res) => {
                     "en-US": req.body.receiver
                 },
             },
-            sys: {
-                type: "Link", 
-                linkType: "Entry", 
-                id: "data",
-                name:"Cocktails",
-            }
         })).then((entry) => entry.publish());
 
         if (response.status === 201) {

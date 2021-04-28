@@ -2,14 +2,8 @@ import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import { createClient as deliveryClient } from "contentful";
 
-export default function Detail () {
-    <Layout>
-        <h2>Detail Page</h2>
-    </Layout>
-}
-
-/* export default function Detail ({ cocktail }) {
-    const cocktailItems = cocktail[0].fields;
+export default function Detail ({ cocktail }) {
+    console.log(cocktail);
 
     return (
         <Layout>
@@ -62,4 +56,4 @@ export async function getStaticPaths () {
         paths,
         fallback: true,
     }
-} */
+}
