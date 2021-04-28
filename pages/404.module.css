@@ -5,7 +5,6 @@
     min-height: 100vh;
     min-width: 100vw;
     background-image: url(../public/assets/bricks.webp);  
-    background-color: rgba(0, 0, 0, 0.753);           
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;

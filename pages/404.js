@@ -1,37 +1,51 @@
 import Layout from "../components/Layout";
 import styles from "./404.module.css";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 
 export default function NotFound () {
+
+  const [headerImage, setHeaderImage] = useState(true);
+
+  setTimeout(() => {
+    setHeaderImage(false);
+  }, 1500); 
     
   const router = useRouter()
 
   useEffect(() => {
     setTimeout(() => {
       router.push('/')
-    }, 4000)
-  }, [])
+    }, 5000)
+  }, []);
 
   const opacityTransition = {
     hidden: {
       opacity: 0,
-      transition: {type: 'spring', stiffness: 120, duration: .3, repeat: 4, repeatType: "mirror"},
-      y: 0,
+      transition: {type: 'spring', stiffness: 120, duration: .3, repeat: 2, repeatType: "mirror"},
+      y: "20vh",
     },
     visible: {
       opacity: 1,
-      transition: { type: 'spring', stiffness: 120, duration: .3, repeat: 4, repeatType: "mirror"},
-      y: 0,
+      transition: { type: 'spring', stiffness: 120, duration: .3, repeat: 2, repeatType: "mirror"},
+      y: "20vh",
     }, 
+    active: {
+      opacity: 1, 
+      transition: {duration: 1},
+      y: 0,
+    }
   }
 
   return (
         <div className={styles.container}>
             <div className={styles.image}>
-                    <motion.div className={styles.headerImage}
+              <AnimatePresence>
+                {headerImage &&
+                <>
+              <motion.div className={styles.headerImage}
                         key="glow"
                         variants={opacityTransition}
                         initial="visible"
@@ -57,11 +71,29 @@ export default function NotFound () {
                                 height={168}
                                 />
                     </motion.div>
+                    </>}
+                {!headerImage &&
+                    <motion.div className={styles.headerImage}
+                    key="glow"
+                    variants={opacityTransition}
+                    initial="visible"
+                    animate="active"
+                    >
+                    <Image src="/assets/letters-white.webp"
+                            alt="Cocktail O' Clock"
+                            width={654}
+                            height={168}
+                            />
+                  </motion.div>}
+              </AnimatePresence>
             </div>
-            <div className={styles.content}>
+            <motion.div className={styles.content}
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition= {{duration: 2, delay: 1.5, delayChildren: .5}}>
                 <h2 className={styles.title}>OOPS</h2>
-                <p className={styles.description}>Your Cocktail has been smashed to pieces, it doesn't exist</p>
-            </div>
+                <p className={styles.description}>Someone else drank your cocktail, it doesn't exist.</p>
+            </motion.div>
         </div>
   );
 }

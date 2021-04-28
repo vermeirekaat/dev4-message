@@ -2,21 +2,16 @@ import styles from "./Welcome.module.css";
 import Head from "next/head";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Welcome({ children }) {
 
   const [headerImage, setHeaderImage] = useState(true);
 
   setTimeout(() => {
-    setHeaderImage(!headerImage)
-  }, 3000);
+    setHeaderImage(false);
+  }, 3000); 
 
-  const setDelay = e => {
-    setTimeout(() => {
-      setCurrentStep(e.target.name)
-    }, 5000)
-  }
 
   const sliderTransition = {
     initial: {
@@ -96,7 +91,6 @@ export default function Welcome({ children }) {
             variants={opacityTransition}
             initial="hidden"
             animate="visible"
-            transition={{delay: 5}}
           >
             <Image src="/assets/letters-white.webp"
                     alt="Cocktail O' Clock"
@@ -111,7 +105,6 @@ export default function Welcome({ children }) {
             variants={opacityTransition}
             initial="visible"
             animate="hidden"
-            transition={{delay: 5}}
             >
             <Image src="/assets/letters-glow.webp"
                     alt="Cocktail O' Clock"
@@ -125,7 +118,6 @@ export default function Welcome({ children }) {
             variants={opacityTransition}
             initial="visible"
             animate="active"
-            exit="hidden"
             >
             <Image src="/assets/letters-glow.webp"
                     alt="Cocktail O' Clock"
