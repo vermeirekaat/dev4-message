@@ -46,7 +46,8 @@ export default function Home({ result }) {
   });
 
   const [cocktailFinal, setCocktailFinal] = useState({
-    glass: "", 
+    glassName: "", 
+    glass: "",
     beverages: [], 
     ingredients: [],
     message: "",
@@ -72,7 +73,12 @@ export default function Home({ result }) {
 
   const handleSubmitGlasses = async data => {
     const copy = {...cocktailItem};
-    copy.glass = data.glass;
+    copy.glassName = data.glass;
+
+    const check = glasses.filter((item) => item.fields.name === data.glass);
+    console.log(check);
+
+    copy.glass = check[0].sys.id
 
     setCocktailItem(copy);
     setCurrentStep("second");
@@ -99,6 +105,7 @@ export default function Home({ result }) {
   const handleSubmitMessage = async data => {
     const copyItem = {...cocktailItem};
     const copy = {...cocktailFinal};
+    copy.glassName = copyItem.glassName;
     copy.glass = copyItem.glass;
     copy.beverages = copyItem.beverages;
     copy.ingredients = copyItem.ingredients;
@@ -107,7 +114,7 @@ export default function Home({ result }) {
     copy.receiver = data.receiver;
 
     setCocktailFinal(copy);
-    router.push("/success");
+    // router.push("/success");
   };
 
   useEffect(() => {
@@ -155,10 +162,14 @@ export default function Home({ result }) {
   }
 
   if (currentStep === "third") {
+
+    const checkedGlass = glasses.filter((item) => item.fields.name === cocktailItem.glassName); 
+
     return (
+
       <Layout overview={cocktailItem}>
       
-        <Ingredients ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
+        <Ingredients ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glassName)} onSubmit={handleSubmitIngredients}/>
       </Layout>
     )
   }

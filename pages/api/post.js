@@ -14,8 +14,17 @@ export default async (req, res) => {
         environment.createEntryWithId("cocktails", req.body.nano,
         {
             fields: {
+                glassName: {
+                    "en-US": req.body.glassName
+                },
                 glass: {
-                    "en-US": req.body.glass
+                    "en-US": {
+                        sys: {
+                            type: "Link",
+                            linkType: "Entry",
+                            id: req.body.glass,
+                        }
+                    }
                 }, 
                 beverages: {
                     "en-US": req.body.beverages.toString()

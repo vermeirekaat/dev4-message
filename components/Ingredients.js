@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     const glass = cocktailGlass[0];
+    console.log(cocktailGlass);
 
     const transformProps = {
         hidden: {
