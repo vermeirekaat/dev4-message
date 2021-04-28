@@ -7,11 +7,12 @@ import { createClient as deliveryClient } from "contentful";
 export default function Success({ result }) {
     
     const cocktail = result.items[0];
+    console.log(result);
 
     const [emailInformation, setEmailInfromation] = useState({
         receiver: cocktail.fields.receiver, 
         sender: cocktail.fields.sender, 
-        url: `${process.env.URL_DOMAIN}/detail/` + cocktail.sys.id, 
+        url: `${process.env.NEXT_PUBLIC_URL_DOMAIN}/detail/` + cocktail.sys.id, 
         email: "",
     });
 

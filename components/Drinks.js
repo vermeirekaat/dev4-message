@@ -139,7 +139,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                 <motion.div className={styles.shot}>
                     <div>
                         <Image
-                                src="/../public/assets/shot.png"
+                                src="/assets/shot.png"
                                 width="132"
                                 height="219"
                         />    
