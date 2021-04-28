@@ -143,7 +143,7 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
                         initial={{ y: "-5vw", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1.5, delay: 3}}>
-                Add some beverages</motion.p>
+                Choose your favourite</motion.p>
             <motion.button onClick={(e) => handleClick(e.currentTarget.name)} 
                             name="back" 
                             className={styles.backButton}

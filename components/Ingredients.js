@@ -46,6 +46,14 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     }
     
     return (
+        <>
+        <div className={styles.information}>
+          <motion.p className={styles.description}
+              initial={{ y: "-5vw", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 3 }}>
+            Drag the ingredients to add them to your cocktail</motion.p>
+        </div>
 
         <motion.div className={styles.container}
             ref={constraintRef}>
@@ -62,7 +70,10 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
             </motion.div>
 
             <form onSubmit={(e) => addItem(e)} className={styles.content}>
-             <input type="submit"  className={styles.button} value="Complete Cocktail"/>        
+             <motion.input type="submit"  className={styles.button}      value="Complete Cocktail"
+                initial={{ y: "-5vw", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition= {{duration: 2, delay: 4}}/>        
             <motion.div className={styles.extraOverview}
                 initial={{ x: "50vw" }}
                 animate={{ x: 0 }}
@@ -91,5 +102,6 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
             </motion.div>  
         </form>
     </motion.div>
+    </>
     )
 }

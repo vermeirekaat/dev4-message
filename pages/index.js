@@ -37,7 +37,7 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("second");
+  const [currentStep, setCurrentStep] = useState("first");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
@@ -157,13 +157,6 @@ export default function Home({ result }) {
   if (currentStep === "third") {
     return (
       <Layout overview={cocktailItem}>
-        <div className={styles.content}>
-          <motion.p className={styles.description}
-              initial={{ y: "-5vw", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 3 }}>
-            Drag the ingredients to add them to your cocktail</motion.p>
-        </div>
       
         <Ingredients ingredients={ingredients} cocktailGlass={glasses.filter((item) => item.fields.name === cocktailItem.glass)} onSubmit={handleSubmitIngredients}/>
       </Layout>

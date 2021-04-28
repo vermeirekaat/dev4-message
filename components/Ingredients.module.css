@@ -7,6 +7,14 @@
     grid-template-columns: 50vw 50vw;
 }
 
+.description {
+    composes: description from "../styles/action.module.css";
+}
+
+.information {
+    composes: information from "../styles/action.module.css";
+}
+
 .glass {
     grid-column: 1; 
     display: flex; 
@@ -59,5 +67,5 @@
 .button {
     composes: button from "../styles/action.module.css";
     display: flex; 
-    place-self: flex-start;
+    place-self: center;
 }
