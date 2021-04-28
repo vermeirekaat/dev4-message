@@ -1,14 +1,16 @@
 import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
-import { useRouter } from "next/router";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
-    const router = useRouter();
-    if (router.isFallback) {
-        return (
-            <p>Loading...</p>
+    if (!cocktail) {
+        return(
+            <Layout>
+                <div className={styles.overview}>
+                    <p className={styles.item}>Preparing your cocktail</p>
+                </div>
+            </Layout>
         )
     }
 

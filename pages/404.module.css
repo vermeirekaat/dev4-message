@@ -1,0 +1,52 @@
+@value values: "../styles/values.module.css";
+@value titleFont, buttonFont, bodyFont, primaryColor, buttonBackground, marginSmall from values;
+
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url(../public/assets/bricks.webp);  
+    background-color: rgba(0, 0, 0, 0.753);           
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: rgba(0,0,0,.5);
+}
+
+.headerImage {
+    position: absolute;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -35vh;
+}
+
+.content {
+    text-align: center;
+    margin-top: 50vh;
+}
+
+.title {
+    color: primaryColor;
+    font-size: titleFont;
+    padding: 1rem;
+  }
+  
+.description {
+    font-size: buttonFont;
+    color: white;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+}

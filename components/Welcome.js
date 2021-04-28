@@ -9,7 +9,7 @@ export default function Welcome({ children }) {
   const [headerImage, setHeaderImage] = useState(true);
 
   setTimeout(() => {
-    setHeaderImage(false)
+    setHeaderImage(!headerImage)
   }, 3000);
 
   const setDelay = e => {
