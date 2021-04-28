@@ -1,6 +1,6 @@
 import styles from "./Message.module.css";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 // import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 export default function Message ({ onSubmit }) {
@@ -53,7 +53,13 @@ export default function Message ({ onSubmit }) {
 
     if (information === true) {
         return (
-            <div className={styles.container}>
+        <AnimatePresence>
+            <motion.div className={styles.container}
+                variants={transformProps}
+                initial="hidden"
+                animate="visible"
+                exit={{y: "50vw", opacity: 0}}
+                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}>
                 <form className={styles.mail} onSubmit={(e) => sendMessage(e)} >
                     <label className={styles.information}>From:
                         <input className={styles.input} name="sender" type="text" placeholder="Your Name"/>
@@ -62,18 +68,24 @@ export default function Message ({ onSubmit }) {
                         <input className={styles.input} name="receiver" type="text" placeholder="Your Friend's Name"/>
                     </label>
 
-                    <input type="submit" className={styles.submitButton} value="Send my Toast"/>
+                    <motion.input type="submit" className={styles.submitButton} value="Send my Toast"
+                        initial={{ y: "-2vw", opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition= {{duration: 2, delay: 4}}
+                    />
                 </form>
-            </div>
+            </motion.div>
+        </AnimatePresence>
         )
     }
 
     return (
-        
-        <motion.div className={styles.container}
+        <AnimatePresence>
+            <motion.div className={styles.container}
                 variants={transformProps}
                 initial="hidden"
                 animate="visible"
+                exit={{ y: "50vw", opacity: 0 }}
                 transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
                 >
 
@@ -82,7 +94,10 @@ export default function Message ({ onSubmit }) {
                     <input className={styles.input} name="message" type="text" rows="20" cols="10" placeholder="Write down your message"/>
                 </label>
 
-                <input type="submit" className={styles.submitButton} value="Save my Toast"/>
+                <motion.input type="submit" className={styles.submitButton} value="Save my Toast"
+                    initial={{ y: "-2vw", opacity: 0 }}
+                    animate={{ y: "5vw", opacity: 1 }}
+                    transition= {{duration: 2, delay: 4}}/>
             </form>
             
             {/* <div className={styles.intro}>
@@ -103,5 +118,6 @@ export default function Message ({ onSubmit }) {
             </div>*/}
 
         </motion.div>
+        </AnimatePresence>
     )
 }

@@ -37,7 +37,7 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("first");
+  const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 

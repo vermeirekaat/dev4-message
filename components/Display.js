@@ -26,7 +26,7 @@ export default function Display({ handleClickChoice, handleClickExtra }) {
                 <motion.button onClick={(e) => handleClickExtra(e.target.name)} 
                                 initial={{ y: "-5vw", opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition= {{duration: 2, delay: 6}}
+                                transition= {{duration: 2, delay: 4}}
                                 name="third" 
                                 className={styles.nextButton}
                 >Add Extra's
