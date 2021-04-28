@@ -54,7 +54,7 @@ export default function Home({ result }) {
     receiver: "",
     nano: nanoid(),
   })
-
+  
   const handleSubmitCocktail = async () => {
     if (cocktailFinal.glass === "") {
       return false;
@@ -132,21 +132,9 @@ export default function Home({ result }) {
 
   if (currentStep === "second" && buttonDrinks === "back") {
     return (
-    <Layout overview={cocktailItem}>
-      <div className={styles.content}>
-          <motion.p className={styles.description}
-           initial={{ y: "-5vw", opacity: 0 }}
-           animate={{ y: 0, opacity: 1 }}
-           transition={{ duration: 1.5, delay: 3 }}
-          >Add some beverages</motion.p>
-      </div>
+    <Layout overview={cocktailItem}>     
 
-      <div className={styles.buttonDisplay}>
-        <button onClick={(e) => setCurrentStep(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
-      </div>
-     
-
-      <Display handleClick={(button) => setButtonDrinks(button)}/>
+      <Display handleClickChoice={(button) => setButtonDrinks(button)}    handleClickExtra={(button) => setCurrentStep(button)}/>
     </Layout>
     )
   }
@@ -215,7 +203,6 @@ export default function Home({ result }) {
 
   return (
     <Welcome>
-
       <div className={styles.content}>
         <motion.p className={styles.description}
           variants={dissolveVariants}
@@ -229,19 +216,11 @@ export default function Home({ result }) {
           variants={dissolveVariants}
           initial="hidden"
           animate="visible"
-          transition= {{duration: 3, delay: 5}}
+          transition= {{duration: 2, delay: 6}}
           onClick={(e) => setCurrentStep(e.target.name)} 
           name="first" 
           className={styles.nextButton}>
           Let's start shaking</motion.button>
-
-          {/* newCocktails.map((item) => (
-            <Link key={item.sys.id} href={"/detail/" + item.sys.id}>
-              <a className={styles.nextButton}>
-                <p>Detail</p>
-              </a>
-          </Link>
-          )) */}
       </div>
     </Welcome>      
   )

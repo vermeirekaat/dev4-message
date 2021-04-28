@@ -89,40 +89,18 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         }
     }
 
-    if (bottle.length === 0) {
-        return (
-            <>
-            <div className={styles.back}>
-                <button onClick={(e) => handleClick(e.currentTarget.name)} name="back" className={styles.backButton}>Back to Bar</button>
-            </div>
-
-            <AnimatePresence>
-                <motion.div className={styles.overview} 
-                    initial={{ x: "-75vw" }}
-                    animate={{ x: 0 }}
-                    transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 2}}
-                    >
-                
-                {drinks.map((drink) => (
-                    <div key={drink.sys.id} className={styles.drinkImage}>
-                        <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.fields.name}>
-                        <Image 
-                            src={"https:" + drink.fields.image.fields.file.url} 
-                            width={drink.fields.image.fields.file.details.image.width / 2.5 } 
-                            height={drink.fields.image.fields.file.details.image.height / 2.5 }/>           
-                        </button>      
-                    </div>
-                ))}
-                </motion.div>
-            </AnimatePresence>     
-        </>
-        )
-    }
-
     if (bottle.length > 0) {
         const bottleObj = bottle[0];
         return (
             <>
+             <div className={styles.information}>
+                <motion.p className={styles.description}
+                            initial={{ y: "-5vw", opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1.5, delay: 3 }}
+                >Add some beverages</motion.p>
+            </div>
+
             <motion.div className={styles.content}
                 initial={{ x: "-5vw", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -167,6 +145,30 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
     }
 
     return (
-        <p>Beverages</p>
+        <>
+        <div className={styles.back}>
+            <button onClick={(e) => handleClick(e.currentTarget.name)} name="back" className={styles.backButton}>Back to Bar</button>
+        </div>
+
+        <AnimatePresence>
+            <motion.div className={styles.overview} 
+                initial={{ x: "-75vw" }}
+                animate={{ x: 0 }}
+                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 2}}
+                >
+            
+            {drinks.map((drink) => (
+                <div key={drink.sys.id} className={styles.drinkImage}>
+                    <button onClick={(e) => handleClickBottle(e)}className={styles.button} name={drink.fields.name}>
+                    <Image 
+                        src={"https:" + drink.fields.image.fields.file.url} 
+                        width={drink.fields.image.fields.file.details.image.width / 2.5 } 
+                        height={drink.fields.image.fields.file.details.image.height / 2.5 }/>           
+                    </button>      
+                </div>
+            ))}
+            </motion.div>
+        </AnimatePresence>     
+    </>
     ) 
 }

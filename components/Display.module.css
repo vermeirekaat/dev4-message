@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value buttonBackground from values;
+@value marginLarge, titleFont, lineHeight, buttonBackground from values;
 
 .display {
     display: grid;
@@ -27,4 +27,21 @@
 
 .button:active {
     background: buttonBackground;
+}
+
+.information {
+    composes: information from "../styles/action.module.css";
+}
+
+.description {
+    composes: description from "../styles/action.module.css";
+}
+
+.buttonDisplay {
+    display: flex; 
+    justify-content: center;
+}
+
+.nextButton {
+    composes: button from "../styles/action.module.css";
 }

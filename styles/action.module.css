@@ -1,5 +1,5 @@
 @value values: "./values.module.css";
-@value primaryColor, buttonBackground from values;
+@value titleFont, lineHeight, marginLarge, primaryColor, buttonBackground from values;
 
 .button {
     border: .2rem solid primaryColor;
@@ -7,4 +7,25 @@
     padding: 1rem 2rem; 
     color: primaryColor;
     background-color: buttonBackground; 
-  }
+}
+
+.information {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  width: 50vw;
+  color: white;
+  font-size: titleFont;
+  line-height: lineHeight;
+  text-align: center;
+  margin-bottom: marginLarge;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
