@@ -17,23 +17,28 @@ export default function Display({ handleClickChoice, handleClickExtra }) {
 
     return (
         <>
-        <motion.div className={styles.information}
-                    initial={{ y: "-5vw", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 3, delayChildren: 1}}>
-                <p className={styles.description}>Add some beverages</p>
+        <div className={styles.information}>
+                <motion.p className={styles.description}
+                initial={{ y: "-5vw", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 3, delayChildren: 1}}>Add some beverages</motion.p>
 
-                <button onClick={(e) => handleClickExtra(e.target.name)} name="third" className={styles.nextButton}>Add Extra's</button>
-        </motion.div>
-        <div className={styles.buttonDisplay}>
-            
+                <motion.button onClick={(e) => handleClickExtra(e.target.name)} 
+                                initial={{ y: "-5vw", opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition= {{duration: 2, delay: 6}}
+                                name="third" 
+                                className={styles.nextButton}
+                >Add Extra's
+                </motion.button>
         </div>
+
         <AnimatePresence>
             <motion.div className={styles.display}
                 variants={transformProps}
                 initial="hidden"
                 animate="visible"
-                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
+                transition={{ type: "tween", duration: 3, ease: "easeOut"}}
                 >
                 <div className={styles.liquor}>
                     <button onClick={(e) => handleClickChoice(e.currentTarget.name)} name="liquor" className={styles.button}>

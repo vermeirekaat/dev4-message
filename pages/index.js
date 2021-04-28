@@ -37,7 +37,7 @@ export default function Home({ result }) {
   } 
 
   // USESTATES
-  const [currentStep, setCurrentStep] = useState("");
+  const [currentStep, setCurrentStep] = useState("second");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
     glass: "", 
@@ -54,7 +54,7 @@ export default function Home({ result }) {
     receiver: "",
     nano: nanoid(),
   })
-  
+
   const handleSubmitCocktail = async () => {
     if (cocktailFinal.glass === "") {
       return false;
@@ -117,13 +117,6 @@ export default function Home({ result }) {
   if (currentStep === "first") {
     return (
       <Layout overview={cocktailItem}>
-        <div className={styles.content}>
-          <motion.p className={styles.description}
-            initial={{ y: "-5vw", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, delay: 3 }}>
-          Choose a glass</motion.p>
-        </div>
 
         <Glasses glasses={glasses} onSubmit={handleSubmitGlasses}/>
       </Layout>
@@ -142,14 +135,7 @@ export default function Home({ result }) {
   if (currentStep === "second" && buttonDrinks === "liquor") {
     return (
       <Layout overview={cocktailItem}>
-        <div className={styles.content}>
-          <motion.p className={styles.description}
-          initial={{ y: "-5vw", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 3 }}
-          >Add some liquor</motion.p>
-        </div>
-  
+
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === true)} 
                 onSubmit={handleSubmitDrinks} 
                 handleClick={(button) => setButtonDrinks(button)}/>
@@ -160,13 +146,6 @@ export default function Home({ result }) {
   if (currentStep === "second" && buttonDrinks === "soda") {
     return (
       <Layout overview={cocktailItem}>
-        <div className={styles.content}>
-          <motion.p className={styles.description}
-                initial={{ y: "-5vw", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1.5, delay: 3 }}>
-              Add some soda</motion.p>
-        </div>
   
         <Drinks drinks={drinks.filter((drink) => drink.fields.alcohol === false)} 
                 onSubmit={handleSubmitDrinks} 

@@ -1,6 +1,14 @@
 @value values: "../styles/values.module.css";
 @value placeholderFont, primaryColor, marginSmall, marginRegular, marginExtra, buttonBackground from values;
 
+.information {
+    composes: information from "../styles/action.module.css";
+}
+
+.description {
+    composes: description from "../styles/action.module.css";
+}
+
 .content {
     width: 100vw;
     grid-row: 2;

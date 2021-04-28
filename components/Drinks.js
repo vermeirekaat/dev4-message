@@ -93,18 +93,10 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
         const bottleObj = bottle[0];
         return (
             <>
-             <div className={styles.information}>
-                <motion.p className={styles.description}
-                            initial={{ y: "-5vw", opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1.5, delay: 3 }}
-                >Add some beverages</motion.p>
-            </div>
-
-            <motion.div className={styles.content}
-                initial={{ x: "-5vw", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1.5, delay: 1.5 }}>
+            <motion.div className={styles.information}
+                initial={{ y: "-5vw", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 2}}>
                 <p className={styles.description}>Click the bottle to fill up the shot</p>
             </motion.div>
             <div className={styles.overview}>
@@ -146,8 +138,20 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
 
     return (
         <>
-        <div className={styles.back}>
-            <button onClick={(e) => handleClick(e.currentTarget.name)} name="back" className={styles.backButton}>Back to Bar</button>
+        <div className={styles.information}>
+            <motion.p className={styles.description}
+                        initial={{ y: "-5vw", opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 3}}>
+                Add some beverages</motion.p>
+            <motion.button onClick={(e) => handleClick(e.currentTarget.name)} 
+                            name="back" 
+                            className={styles.backButton}
+                            initial={{ y: "-5vw", opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition= {{duration: 2, delay: 4}}
+                            >
+                Back to Bar</motion.button>
         </div>
 
         <AnimatePresence>

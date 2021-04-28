@@ -46,7 +46,15 @@ export default function Glasses({ glasses, onSubmit }) {
         <>
         <AnimatePresence>
             {!clicked &&
-            <form className={styles.content}> 
+            <>
+                <motion.div className={styles.information}
+                            initial={{ y: "-5vw", x: 0, opacity: 0 }}
+                            animate={{ y: 0, x: 0, opacity: 1 }}
+                            transition={{ duration: 1.5, delay: 3 }}>
+                            <p className={styles.description}>Choose a glass</p>
+                </motion.div>
+
+                <form className={styles.content}> 
                 <motion.div className={styles.glassOverview}
                     initial={{ x: "50vw" }}
                     animate={{ x: 0 }}
@@ -72,11 +80,21 @@ export default function Glasses({ glasses, onSubmit }) {
                     ))}     
                 </motion.div>     
             </form>
+            </>
         }   
     </AnimatePresence>
     
     <AnimatePresence>
         {clicked && 
+        <motion.div initial={{x: 0, y: 0, scale: 1.2 }}
+                    transition={{ duration: 2, type:"tween", ease: "easeOut" }}
+                    exit={{x: "-50vw", opacity: 0}}>
+        <motion.div className={styles.information}
+                initial={{ y: 0, x: 0, opacity: 1 }}
+                exit={{y: 0, x: "-50vw", opacity: 0}}
+                transition={{ duration: 1.5, delay: 3 }}>
+                <p className={styles.description}>Choose a glass</p>
+            </motion.div>
             <motion.div className={styles.content}
             variants={individualVariants}
                     animate={{x: "-100vw", y: 0}}
@@ -86,14 +104,14 @@ export default function Glasses({ glasses, onSubmit }) {
                     variants={individualVariants}
                     initial={checkedObject[0]}
                     animate={{x: 0, y: 0, scale: 1.2 }}
-                    transition={{ duration: 2, type:"tween", ease: "easeOut" }}
-                    exit={{x: "-50vw"}}>
+                    transition={{ duration: 2, type:"tween", ease: "easeOut" }}>
                     <Image 
                         src={"https:" + checkedObject[0].fields.image.fields.file.url} 
                         width={checkedObject[0].fields.image.fields.file.details.image.width / 1.5} 
                         height={checkedObject[0].fields.image.fields.file.details.image.height / 1.5}/>          
                 </motion.div> 
             </motion.div>   
+            </motion.div>
         }
     </AnimatePresence>
     </>
