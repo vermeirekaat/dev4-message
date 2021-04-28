@@ -6,23 +6,23 @@ import Drinks from "../components/Drinks";
 import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
-import { useEffect, useState, useRouter } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
 
 import { createClient as deliveryClient } from "contentful";
 
 export default function Home({ result }) {
+  const router = useRouter();
 
   const glassesAr = result.items.filter((item) => item.fields.name === "Glasses");
   const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
   const ingredientsAr = result.items.filter((item) => item.fields.name === "Ingredients");
-  const cocktailsAr = result.items.filter((item) => item.fields.name === "Cocktails");
 
   const glasses = glassesAr[0].fields.objects;
   const drinks = drinksAr[0].fields.objects;
   const ingredients = ingredientsAr[0].fields.objects;
-  const newCocktails = cocktailsAr[0].fields.objects;
 
   // MOTION
   const dissolveVariants = {
@@ -54,8 +54,6 @@ export default function Home({ result }) {
     receiver: "",
     nano: nanoid(),
   })
-
-  console.log(cocktailFinal.nano);
 
   const handleSubmitCocktail = async () => {
     if (cocktailFinal.glass === "") {
@@ -109,6 +107,7 @@ export default function Home({ result }) {
     copy.receiver = data.receiver;
 
     setCocktailFinal(copy);
+    router.push("/success");
   };
 
   useEffect(() => {
