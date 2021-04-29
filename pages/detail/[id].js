@@ -1,47 +1,87 @@
 import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion, animatePresence, AnimatePresence } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
+    const [animateGlass, setAnimateGlass] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setAnimateGlass(false);
+        }, 4500)
+    })
+
     if (!cocktail) {
         return(
-            <Layout>
-                <motion.div className={styles.content}
+            <div className={styles.container}>
+                <motion.div className={styles.information}
                   initial={{ opacity: 0, y: -100 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition= {{duration: 2, delay: 1.5, delayChildren: .5}}>
                     <h2 className={styles.title}>LOADING...</h2>
                         <p className={styles.description}>Your cocktail is being made.</p>
-            </motion.div>
-            </Layout>
+                </motion.div>
+            </div>
         )
     }
 
     return (
         <Layout>
 
-        <div className={styles.overview}>
-            <div className={styles.content}>
-                <h2 className={styles.subtitle}>{cocktail.fields.glassName}</h2>
+        <motion.div className={styles.overview}
+                    initial={{ y: "10vh", opacity: 0}}
+                    animate={{ y: 0, opacity: 1}}
+                    transition={{ ease: "easeIn", duration: 2 }}
+                    >
+            <div className={styles.input}>
+                {/* 
+                    <h2 className={styles.subtitle}>{cocktail.fields.glassName}</h2>
                     <p className={styles.item}>{cocktail.fields.beverages}</p>
                     <p className={styles.item}>{cocktail.fields.ingredients}</p>
-                <div className={styles.image}>
-                    <Image 
-                        src={"https:" + cocktail.fields.glass.fields.image.fields.file.url} 
-                        width={cocktail.fields.glass.fields.image.fields.file.details.image.width / 1.5} 
-                        height={cocktail.fields.glass.fields.image.fields.file.details.image.height / 1.5}
-                    />
-                </div>
+                */ }
+                <AnimatePresence>
+                    {animateGlass && 
+                        <motion.div className={styles.image}
+                        initial={{ x: "15vw", scale: 1, opacity: 0}}animate={{ x: "15vw", scale: 1, opacity: 1}}
+                        transition={{ ease:"easeIn", duration: 4, delay: .5}}>
+                            <Image 
+                                src={"https:" + cocktail.fields.glass.fields.image.fields.file.url} 
+                                width={cocktail.fields.glass.fields.image.fields.file.details.image.width} 
+                                height={cocktail.fields.glass.fields.image.fields.file.details.image.height}
+                            />
+                        </motion.div>
+                    }
+                    {!animateGlass &&
+                        <motion.div className={styles.image}
+                        initial={{ y: 0, x: "15vw", scale: 1, opacity: 1 }}
+                        animate={{ y: 0, x: 0, scale: 1, opacity: 1}}
+                        transition={{ delay: .7, ease:"easeOut", duration: 3}}>
+                            <Image 
+                                src={"https:" + cocktail.fields.glass.fields.image.fields.file.url} 
+                                width={cocktail.fields.glass.fields.image.fields.file.details.image.width} 
+                                height={cocktail.fields.glass.fields.image.fields.file.details.image.height}
+                            />
+                        </motion.div>
+                    }
+                </AnimatePresence>
             </div>
 
-            <div className={styles.information}>
+            <motion.div className={styles.content}
+                        initial={{ x: "15vh", opacity: 0}}
+                        animate={{ x: 0, opacity: 1}}
+                        transition={{ delay: 5, duration: 4 }}>
                 <p className={styles.item}>To: {cocktail.fields.receiver}</p>
-                <p className={styles.message}> Message: {cocktail.fields.message}</p>
+                <div className={styles.messageContainer}>
+                <p className={styles.message}>{cocktail.fields.message}</p>
+                </div>
+                
                 <p className={styles.item}>From: {cocktail.fields.sender}</p>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
         </Layout>
     )
 }
@@ -66,7 +106,6 @@ export async function getStaticProps ({ params }) {
 export async function getStaticPaths() {
 
     const response = await client.getEntries({ content_type: "cocktails" });
-    console.log(response);
 
     const paths = response.items.map((item) => {
         return {

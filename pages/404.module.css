@@ -4,7 +4,7 @@
 .container {
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url(../public/assets/bricks.webp);  
+    background-image: url(/assets/bricks.webp);  
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;

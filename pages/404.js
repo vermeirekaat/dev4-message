@@ -8,17 +8,16 @@ import { useRouter } from 'next/router'
 export default function NotFound () {
 
   const [headerImage, setHeaderImage] = useState(true);
-
-  setTimeout(() => {
-    setHeaderImage(false);
-  }, 1500); 
     
   const router = useRouter()
 
   useEffect(() => {
     setTimeout(() => {
+      setHeaderImage(false);
+    }, 1500); 
+    setTimeout(() => {
       router.push('/')
-    }, 5000)
+    }, 5000);
   }, []);
 
   const opacityTransition = {
