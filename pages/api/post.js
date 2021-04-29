@@ -2,6 +2,19 @@ import { createClient as managementClient } from "contentful-management";
 
 export default async (req, res) => {
 
+    const mapItems = array => {
+        const object = {
+            sys: {
+                type: "Link",
+                linkType: "Entry",
+                id: array.map((item) => {
+                    return item
+                }),
+        }}
+
+        return object;
+    }
+
     if (req.method === "POST") {
         
         try {
@@ -27,10 +40,14 @@ export default async (req, res) => {
                     }
                 }, 
                 beverages: {
-                    "en-US": req.body.beverages.toString()
+                    "en-US": [
+                        mapItems(req.body.beverages)
+                    ]
                 },
                 ingredients: {
-                    "en-US": req.body.ingredients.toString()
+                    "en-US": [
+                        mapItems(req.body.ingredients)
+                    ]
                 },
                 message: {
                     "en-US": req.body.message
