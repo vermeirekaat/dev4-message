@@ -76,7 +76,6 @@ export default function Home({ result }) {
     copy.glassName = data.glass;
 
     const check = glasses.filter((item) => item.fields.name === data.glass);
-    console.log(check);
 
     copy.glass = check[0].sys.id
 
@@ -95,6 +94,7 @@ export default function Home({ result }) {
   }
 
   const handleSubmitIngredients = async data => {
+    console.log(data);
     const copy = {...cocktailItem};
     copy.ingredients = data.ingredient;
 

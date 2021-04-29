@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, animatePresence, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {

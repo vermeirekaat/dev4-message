@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     const glass = cocktailGlass[0];
-    console.log(cocktailGlass);
 
     const transformProps = {
         hidden: {
@@ -23,6 +22,8 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
     const [checkedItem, setCheckedItem] = useState("");
     const constraintRef = useRef(null);
 
+    console.log(checkedItem);
+
     const addItem = (e) => {
         e.preventDefault();
 
@@ -32,10 +33,10 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
         onSubmit(data);
     }
 
-    const dragItem = (e, name) => {
+    const dragItem = (e, id) => {
         if (e.x <= 500) {
             const copy = [...checkedItem]
-            copy.push(name);
+            copy.push(id);
             setCheckedItem(copy);
         }
         if (e.x >= 500) {
@@ -84,10 +85,10 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
                 <motion.div key={extra.sys.id}  className={styles.extraButton}
                 drag 
                 dragConstraints={constraintRef}
-                onDragEnd={(e) => dragItem(e, extra.fields.name)}
+                onDragEnd={(e) => dragItem(e, extra.sys.id)}
                 >
                 <input type="checkbox" name="extra" 
-                        value={extra.fields.name} 
+                        value={extra.sys.name} 
                         className={styles.checkbox}
                         />
 

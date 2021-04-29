@@ -15,7 +15,7 @@ export default function Glasses({ glasses, onSubmit }) {
 
         setClicked(true);
         const choice = glasses.filter((glass) => glass.fields.name === e.target.value);
-        setCheckedObject(choice);
+        setCheckedObject(choice[0]);
 
         const data = {
             glass: e.target.value,
@@ -102,13 +102,13 @@ export default function Glasses({ glasses, onSubmit }) {
     
                 <motion.div 
                     variants={individualVariants}
-                    initial={checkedObject[0]}
+                    initial={checkedObject}
                     animate={{x: 0, y: 0, scale: 1.2 }}
                     transition={{ duration: 2, type:"tween", ease: "easeOut" }}>
                     <Image 
-                        src={"https:" + checkedObject[0].fields.image.fields.file.url} 
-                        width={checkedObject[0].fields.image.fields.file.details.image.width / 1.5} 
-                        height={checkedObject[0].fields.image.fields.file.details.image.height / 1.5}/>          
+                        src={"https:" + checkedObject.fields.image.fields.file.url} 
+                        width={checkedObject.fields.image.fields.file.details.image.width / 1.5} 
+                        height={checkedObject.fields.image.fields.file.details.image.height / 1.5}/>          
                 </motion.div> 
             </motion.div>   
             </motion.div>

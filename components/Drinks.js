@@ -17,8 +17,10 @@ export default function Drinks ({ drinks, onSubmit, handleClick }) {
     const handleSubmitShot = (e, name) => {
         e.preventDefault();
 
+        const getId = drinks.filter((item) => item.fields.name === name);
+
         const data = {
-            drink: name,
+            drink: getId[0].sys.id,
         }
 
         setTimeout(() => {
