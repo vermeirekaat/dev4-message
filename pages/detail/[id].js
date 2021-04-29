@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
+import Image from "next/image";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
@@ -7,9 +8,13 @@ export default function Detail ({ cocktail }) {
     if (!cocktail) {
         return(
             <Layout>
-                <div className={styles.overview}>
-                    <p className={styles.item}>Preparing your cocktail</p>
-                </div>
+                <motion.div className={styles.content}
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition= {{duration: 2, delay: 1.5, delayChildren: .5}}>
+                    <h2 className={styles.title}>LOADING...</h2>
+                        <p className={styles.description}>Your cocktail is being made.</p>
+            </motion.div>
             </Layout>
         )
     }
@@ -19,9 +24,16 @@ export default function Detail ({ cocktail }) {
 
         <div className={styles.overview}>
             <div className={styles.content}>
-                <h2 className={styles.subtitle}>{cocktail.fields.glass}</h2>
+                <h2 className={styles.subtitle}>{cocktail.fields.glassName}</h2>
                     <p className={styles.item}>{cocktail.fields.beverages}</p>
                     <p className={styles.item}>{cocktail.fields.ingredients}</p>
+                <div className={styles.image}>
+                    <Image 
+                        src={"https:" + cocktail.fields.glass.fields.image.fields.file.url} 
+                        width={cocktail.fields.glass.fields.image.fields.file.details.image.width / 1.5} 
+                        height={cocktail.fields.glass.fields.image.fields.file.details.image.height / 1.5}
+                    />
+                </div>
             </div>
 
             <div className={styles.information}>
@@ -41,7 +53,7 @@ const client = deliveryClient({
 
 export async function getStaticProps ({ params }) {
 
-    const result = await client.getEntry(params.id );
+    const result = await client.getEntry(params.id);
 
     return {
         props: {
@@ -51,7 +63,7 @@ export async function getStaticProps ({ params }) {
     }
 }; 
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
 
     const response = await client.getEntries({ content_type: "cocktails" });
     console.log(response);
