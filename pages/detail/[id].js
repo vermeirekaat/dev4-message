@@ -5,7 +5,15 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
-export default function Detail ({ cocktail }) {
+export default function Detail ({ cocktail, data }) {
+
+    console.log(data);
+
+    const drinksAr = result.items.filter((item) => item.fields.name === "Drinks"); 
+    const ingredientsAr = result.items.filter((item) => item.fields.name === "Ingredients");
+    
+    const drinks = drinksAr[0].fields.objects;
+    const ingredients = ingredientsAr[0].fields.objects;
 
     const [animateGlass, setAnimateGlass] = useState(true);
 
@@ -94,10 +102,12 @@ const client = deliveryClient({
 export async function getStaticProps ({ params }) {
 
     const result = await client.getEntry(params.id);
+    const data = await client.getEntries({ content_type: "data"});
 
     return {
         props: {
-            cocktail: result
+            cocktail: result,
+            data
         },
         revalidate: 1,
     }

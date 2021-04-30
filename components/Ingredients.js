@@ -21,9 +21,7 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
 
     const [checkedItem, setCheckedItem] = useState("");
     const constraintRef = useRef(null);
-
-    console.log(checkedItem);
-
+    
     const addItem = (e) => {
         e.preventDefault();
 

@@ -94,7 +94,6 @@ export default function Home({ result }) {
   }
 
   const handleSubmitIngredients = async data => {
-    console.log(data);
     const copy = {...cocktailItem};
     copy.ingredients = data.ingredient;
 
@@ -162,9 +161,6 @@ export default function Home({ result }) {
   }
 
   if (currentStep === "third") {
-
-    const checkedGlass = glasses.filter((item) => item.fields.name === cocktailItem.glassName); 
-
     return (
 
       <Layout overview={cocktailItem}>
