@@ -113,7 +113,7 @@ export default function Home({ result }) {
     copy.receiver = data.receiver;
 
     setCocktailFinal(copy);
-    // router.push("/success");
+    router.push("/success");
   };
 
   useEffect(() => {

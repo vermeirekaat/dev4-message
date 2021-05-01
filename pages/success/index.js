@@ -1,13 +1,16 @@
 import Layout from "../../components/Layout";
 import Email from "../../components/Email";
+import Skeleton from "../../components/Skeleton";
 import { useState, useEffect } from "react";
 import { createClient as deliveryClient } from "contentful";
-// import styles from "./Success.module.css";
 
 export default function Success({ result }) {
+
+    if(!result) {
+        return <Skeleton/>
+    }
     
     const cocktail = result.items[0];
-    console.log(cocktail);
 
     const [emailInformation, setEmailInfromation] = useState({
         receiver: cocktail.fields.receiver, 
