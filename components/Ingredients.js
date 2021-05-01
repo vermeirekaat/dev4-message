@@ -71,8 +71,8 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
 
             <form onSubmit={(e) => addItem(e)} className={styles.content}>
              <motion.input type="submit"  className={styles.button}      value="Complete Cocktail"
-                initial={{ y: "-5vw", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: "-5vw", x: "-5vw", opacity: 0 }}
+                animate={{ y: 0, x: "-5vw", opacity: 1 }}
                 transition= {{duration: 2, delay: 4}}/>        
             <motion.div className={styles.extraOverview}
                 initial={{ x: "50vw" }}
