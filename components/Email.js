@@ -1,10 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import styles from "./Email.module.css";
 
 export default function Email ({ onSubmit }) {
-
-    const [sendEmail, setSendEmail] = useState(false);
 
     const handleSubmitEmail = async (e) => {
         e.preventDefault(); 
@@ -14,8 +11,6 @@ export default function Email ({ onSubmit }) {
         }
 
         const res = onSubmit(data);
-        await res;
-        setSendEmail(true);
     }
 
     const transformProps = {
@@ -27,16 +22,6 @@ export default function Email ({ onSubmit }) {
             opacity: 1,
             y: 0,
         },
-    }
-
-    if(sendEmail) {
-        return (
-            <div className={styles.container}>
-                <h2 className={styles.title}>Cheers!</h2>
-
-                <p className={styles.description}>Your virtual cocktail is ready to be served</p>
-            </div>
-        )
     }
 
     return (

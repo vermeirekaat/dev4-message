@@ -33,13 +33,6 @@
     text-align: center;
 }
 
-.description {
-    margin: marginSmall;
-    color: white;
-    font-size: bodyFont;
-    text-align: center;
-}
-
 .title {
     color: primaryColor; 
     font-size: titleFont;

@@ -1,0 +1,26 @@
+@value values: "../../styles/values.module.css";
+@value titleFont, bodyFont, primaryColor, marginSmall, marginRegular from values;
+
+.container {
+    padding: marginRegular;
+    background-color: rgba(0, 0, 0, 0.500);
+    border-radius: 2rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+    max-width: 40vw;
+}
+
+.title {
+    color: primaryColor; 
+    font-size: titleFont;
+    margin-bottom: marginSmall;
+    text-align: center;
+}
+
+.description {
+    margin: marginSmall;
+    color: white;
+    font-size: bodyFont;
+    text-align: center;
+}
+
