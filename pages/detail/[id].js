@@ -75,12 +75,12 @@ const client = deliveryClient({
 export async function getStaticProps ({ params }) {
 
     const result = await client.getEntry(params.id);
-    const data = await client.getEntries({ content_type: "data"});
+    const data = await client.getEntries(params.data);
 
     return {
         props: {
             cocktail: result,
-            data
+            data: data,
         },
         revalidate: 1,
     }
@@ -89,10 +89,11 @@ export async function getStaticProps ({ params }) {
 export async function getStaticPaths() {
 
     const response = await client.getEntries({ content_type: "cocktails" });
+    const data = await client.getEntries({ content_type: "data"});
 
     const paths = response.items.map((item) => {
         return {
-            params: {id: item.sys.id }
+            params: {id: item.sys.id, data: data}
         }
     })
 
