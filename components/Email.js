@@ -13,7 +13,8 @@ export default function Email ({ onSubmit }) {
             email: e.target.email.value,
         }
 
-        onSubmit(data);
+        const res = onSubmit(data);
+        await res;
         setSendEmail(true);
     }
 
