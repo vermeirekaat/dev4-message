@@ -2,24 +2,14 @@ import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import Animation from "../../components/Animation";
 import Final from "../../components/Final";
+import Skeleton from "../../components/Skeleton";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
-    const router = useRouter();
-
-    if (router.isFallback) {
-        return (
-            <div className={styles.container}>
-                <div className={styles.information}>
-                    <h2 className={styles.title}>OOPS...</h2>
-                        <p className={styles.description}>Your cocktail doesn't exist.</p>
-                </div>
-            </div>
-        );
+    if (!cocktail) {
+        return <Skeleton/>
     }
 
     const [animation, setAnimation] = useState(true);
@@ -29,20 +19,6 @@ export default function Detail ({ cocktail }) {
             setAnimation(false);
         }, 20000)
     })
-
-    if (!cocktail) {
-        return(
-            <div className={styles.container}>
-                <motion.div className={styles.information}
-                  initial={{ opacity: 0, y: -100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition= {{duration: 2, delay: 1.5, delayChildren: .5}}>
-                    <h2 className={styles.title}>OOPS...</h2>
-                        <p className={styles.description}>Your cocktail doesn't exist.</p>
-                </motion.div>
-            </div>
-        )
-    }
 
     if (cocktail && animation) {
         return (
@@ -77,18 +53,6 @@ const client = deliveryClient({
     accessToken: process.env.CONTENTFUL_TOKEN,
 });
 
-export async function getStaticProps ({ params }) {
-
-    const result = await client.getEntry(params.id);
-
-    return {
-        props: {
-            cocktail: result,
-        },
-        revalidate: 1,
-    }
-}; 
-
 export async function getStaticPaths() {
 
     const response = await client.getEntries({ content_type: "cocktails" });
@@ -104,3 +68,14 @@ export async function getStaticPaths() {
         fallback: true,
     }
 }
+
+export async function getStaticProps ({ params }) {
+
+    const result = await client.getEntry(params.id);
+
+    return {
+        props: {
+            cocktail: result,
+        }
+    }
+}; 
