@@ -5,28 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
-export default function Detail ({ cocktail, data }) {
-
-    const drinksAr = data.items.filter((item) => item.fields.name === "Drinks"); 
-    const ingredientsAr = data.items.filter((item) => item.fields.name === "Ingredients");
-    
-    const drinks = drinksAr[0].fields.objects;
-    const ingredients = ingredientsAr[0].fields.objects;
-
-    const checkedDrinks = cocktail.fields.beverages.split(",");
-    const checkedExtra = cocktail.fields.ingredients.split(",");
-
-    const mapArray = (array, check) => {
-        const filter = [];
-        array.map((part) => {
-            const filtered = check.filter((item) => item.sys.id === part);
-            filter.push(filtered[0]);
-            }); 
-        return filter;
-    }
-
-    const drinkChoice = mapArray(checkedDrinks, drinks);
-    const extraChoice = mapArray(checkedExtra, ingredients)
+export default function Detail ({ cocktail }) {
 
     const [animateGlass, setAnimateGlass] = useState(true);
 
@@ -55,7 +34,7 @@ export default function Detail ({ cocktail, data }) {
     if (animation) {
         return (
             <Layout>
-                <Animation cocktail={cocktail} drinks={drinkChoice} ingredients={extraChoice}/>
+                <Animation cocktail={cocktail}/>
             </Layout>
         )
     }
@@ -75,12 +54,10 @@ const client = deliveryClient({
 export async function getStaticProps ({ params }) {
 
     const result = await client.getEntry(params.id);
-    const data = await client.getEntries(params.data);
 
     return {
         props: {
             cocktail: result,
-            data: data,
         },
         revalidate: 1,
     }
@@ -89,11 +66,10 @@ export async function getStaticProps ({ params }) {
 export async function getStaticPaths() {
 
     const response = await client.getEntries({ content_type: "cocktails" });
-    const data = await client.getEntries({ content_type: "data"});
 
     const paths = response.items.map((item) => {
         return {
-            params: {id: item.sys.id, data: data}
+            params: {id: item.sys.id}
         }
     })
 
