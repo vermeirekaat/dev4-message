@@ -6,7 +6,7 @@ export default function Email ({ onSubmit }) {
 
     const [sendEmail, setSendEmail] = useState(false);
 
-    const handleSubmitEmail = (e) => {
+    const handleSubmitEmail = async (e) => {
         e.preventDefault(); 
 
         const data = {
