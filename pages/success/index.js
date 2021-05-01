@@ -1,15 +1,9 @@
 import Layout from "../../components/Layout";
 import Email from "../../components/Email";
-import Skeleton from "../../components/Skeleton";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-// import { createClient as deliveryClient } from "contentful";
 
 export default function Success() {
-
-    // console.log(result);
-    
-    // const cocktail = result.items[0];
 
     const router = useRouter();
     const [cocktail, setCocktail] = useState({});
@@ -19,12 +13,6 @@ export default function Success() {
             setCocktail(router.query);
         }
     });
-
-    console.log(cocktail);
-
-/* const [emailInformation, setEmailInfromation] = useState({
-        ,
-    }); */
 
     const handleSendEmail = async (email) => {
         const response = await fetch("/api/email", {
@@ -44,14 +32,9 @@ export default function Success() {
             url: `${process.env.NEXT_PUBLIC_URL_DOMAIN}/detail/` + cocktail.nano, 
             email: data.email,
         }
-
-        const res = handleSendEmail(sendEmail);
-        console.log(res);
+        
+        handleSendEmail(sendEmail);
     }
-
-    /* useEffect(() => {
-        handleSendEmail(emailInformation);
-     },[emailInformation]); */
 
     return (
         <Layout>
@@ -59,20 +42,3 @@ export default function Success() {
         </Layout>
     )
 }
-
-/* export async function getStaticProps() {
-
-    const client = deliveryClient({
-        space: process.env.CONTENTFUL_SPACE,
-        accessToken: process.env.CONTENTFUL_TOKEN,
-    });
-  
-    const result = await client.getEntries({ content_type: "cocktails" }); 
-  
-    return {
-      props: {
-        result
-      },
-      revalidate: 1,
-    }
-  } */

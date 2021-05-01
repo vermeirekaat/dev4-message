@@ -6,7 +6,7 @@ import Drinks from "../components/Drinks";
 import Ingredients from "../components/Ingredients";
 import Message from "../components/Message";
 import styles from "./Home.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
@@ -24,7 +24,6 @@ export default function Home({ result }) {
   const drinks = drinksAr[0].fields.objects;
   const ingredients = ingredientsAr[0].fields.objects;
 
-  // MOTION
   const dissolveVariants = {
     hidden: {
       opacity: 0,
@@ -36,7 +35,6 @@ export default function Home({ result }) {
     },
   } 
 
-  // USESTATES
   const [currentStep, setCurrentStep] = useState("");
   const [buttonDrinks, setButtonDrinks] = useState("back");
   const [cocktailItem, setCocktailItem] = useState({
@@ -44,17 +42,6 @@ export default function Home({ result }) {
     beverages: [], 
     ingredients: [],
   });
-
-  /* const [cocktailFinal, setCocktailFinal] = useState({
-    glassName: "", 
-    glass: "",
-    beverages: [], 
-    ingredients: [],
-    message: "",
-    sender: "", 
-    receiver: "",
-    nano: nanoid(),
-  }) */
 
   const handleSubmitCocktail = async (cocktail) => {
     const response = await fetch("/api/post", {
@@ -66,7 +53,6 @@ export default function Home({ result }) {
     })
     await response.json();
   }
-
 
   const handleSubmitGlasses = async data => {
     const copy = {...cocktailItem};
@@ -110,21 +96,13 @@ export default function Home({ result }) {
       nano: nanoid(),
     }
 
-    // setCocktailFinal(copy);
-
     const res = handleSubmitCocktail(cocktailFinal);
     await res; 
-    console.log(res);
     router.push({
       pathname: "/success",
       query: cocktailFinal,
     })
-    // router.push("/succes");
   };
-
-  /* useEffect(() => {
-     handleSubmitCocktail(cocktailFinal);
-  },[cocktailFinal]); */ 
 
   if (currentStep === "first") {
     return (
