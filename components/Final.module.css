@@ -1,52 +1,29 @@
 @value values: "../styles/values.module.css";
-@value placeholderFont, buttonFont, bodyFont, primaryColor, buttonBackground, marginSmall, marginRegular from values;
+@value placeholderFont, buttonFont, bodyFont, lineHeight, primaryColor, buttonBackground, marginSmall, marginRegular from values;
 
 
 .container {
-  min-height: 100vh;
-  min-width: 100vw;
-  background-image: url(/assets/bricks.webp);  
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.container::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
-  background: rgba(0,0,0,.5);
-}
-
-.overview {
   display: grid; 
-  grid-template-columns: 40vw, 60vw;
-  width: 50vw;
-  margin: marginSmall;
-  /* background: buttonBackground;
-  border-radius: 1rem; */
-  margin-top: 20vh;
-  margin-left: 25vw;
+  grid-template-columns: 25vw 50vw 25vw;
+  grid-template-rows: 25vh 75vh; 
 }
-  
-.input {
-  grid-column: 1;
-  margin-right: marginRegular;
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
+
+.image {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  place-self: center;
+  margin-bottom: 10vh;
 }
 
 .content {
-  grid-column: 2;
-  padding: marginSmall 0;
-  background: buttonBackground;
-  border-radius: 2.5rem
+  grid-row: 2;
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: buttonBackground;
+  padding: marginSmall;
+  place-self: flex-start;
+  border-radius: 2.5rem;
 }
   
 .subtitle {
@@ -65,10 +42,13 @@
   margin: marginSmall;
   border: .5rem solid primaryColor;
   border-radius: 2rem;
-  min-width: 30vw;
+  min-width: 20vw;
   min-height: 20vh;
+  overflow: scroll;
 }
 
 .message {
   padding: marginSmall;
+  font-size: bodyFont; 
+  line-height: calc(lineHeight/2);
 }

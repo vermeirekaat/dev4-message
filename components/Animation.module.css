@@ -4,10 +4,6 @@
     grid-template-rows: 25vh 75vh; 
 }
 
-.input {
-    grid-row: 1; 
-}
-
 .ingredients {
     grid-row: 1;
     grid-column: 2;
