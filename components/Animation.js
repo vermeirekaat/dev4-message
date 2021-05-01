@@ -13,7 +13,7 @@ export default function Animation ({ cocktail }) {
     useEffect(() => {
         setTimeout(() => {
             setRotateBottle(true)
-        }, 8500);
+        }, 6500);
     })
 
     const animateIngredients = {
@@ -56,7 +56,7 @@ export default function Animation ({ cocktail }) {
                         variants={animateIngredients}
                         initial="hidden"
                         animate="visible"
-                        transition={{ duration: 7, delay: 15 }}>
+                        transition={{ duration: 7, delay: 12 }}>
                     {ingredientsAr.map((ingredient) => (
                         <motion.li key={ingredient}  className={styles.ingredientImage}
                                 variants={animateExtra}

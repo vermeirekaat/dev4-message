@@ -1,21 +1,34 @@
 import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import Animation from "../../components/Animation";
+import Final from "../../components/Final";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
-    const [animateGlass, setAnimateGlass] = useState(true);
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.information}>
+                    <h2 className={styles.title}>OOPS...</h2>
+                        <p className={styles.description}>Your cocktail doesn't exist.</p>
+                </div>
+            </div>
+        );
+    }
 
     const [animation, setAnimation] = useState(true);
 
-    /* useEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
-            setAnimateGlass(false);
-        }, 10000)
-    }) */
+            setAnimation(false);
+        }, 20000)
+    })
 
     if (!cocktail) {
         return(
@@ -24,14 +37,14 @@ export default function Detail ({ cocktail }) {
                   initial={{ opacity: 0, y: -100 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition= {{duration: 2, delay: 1.5, delayChildren: .5}}>
-                    <h2 className={styles.title}>LOADING...</h2>
-                        <p className={styles.description}>Your cocktail is being made.</p>
+                    <h2 className={styles.title}>OOPS...</h2>
+                        <p className={styles.description}>Your cocktail doesn't exist.</p>
                 </motion.div>
             </div>
         )
     }
 
-    if (animation) {
+    if (cocktail && animation) {
         return (
             <Layout>
                 <Animation cocktail={cocktail}/>
@@ -39,9 +52,22 @@ export default function Detail ({ cocktail }) {
         )
     }
 
+    if (cocktail && !animation) {
+        return(
+            <Layout>
+                <Final cocktail={cocktail}/>
+            </Layout>
+        )
+    }
+
     return (
         <Layout>
-
+            <div className={styles.container}>
+                <div className={styles.information}>
+                    <h2 className={styles.title}>LOADING...</h2>
+                        <p className={styles.description}>Your cocktail is being made.</p>
+                </div>
+            </div>
         </Layout>
     )
 }

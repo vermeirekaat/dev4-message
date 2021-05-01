@@ -1,4 +1,4 @@
-@value values: "../../styles/values.module.css";
+@value values: "../styles/values.module.css";
 @value placeholderFont, buttonFont, bodyFont, primaryColor, buttonBackground, marginSmall, marginRegular from values;
 
 
@@ -22,22 +22,41 @@
   background: rgba(0,0,0,.5);
 }
 
-.information {
+.overview {
+  display: grid; 
+  grid-template-columns: 40vw, 60vw;
+  width: 50vw;
+  margin: marginSmall;
+  /* background: buttonBackground;
+  border-radius: 1rem; */
+  margin-top: 20vh;
+  margin-left: 25vw;
+}
+  
+.input {
+  grid-column: 1;
+  margin-right: marginRegular;
   display: flex; 
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
 }
+
+.content {
+  grid-column: 2;
+  padding: marginSmall 0;
+  background: buttonBackground;
+  border-radius: 2.5rem
+}
   
-.title {
+.subtitle {
   color: primaryColor;
   font-size: placeholderFont;
   padding: 1rem;
 }
   
-.description {
+.item {
   font-size: bodyFont;
-  color: white;
   padding-left: 2rem;
   padding-bottom: 1rem;
 }
