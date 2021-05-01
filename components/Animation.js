@@ -18,7 +18,7 @@ export default function Animation ({ cocktail }) {
 
     const animateIngredients = {
         hidden: { opacity: 0, y: "-10vh", scale: 1.5},
-        visible: { opacity: 1, y: "20vh", scale: .5 },
+        visible: { opacity: 1, y: "25vh", scale: .5 },
         transition: { ease: "easeIn", duration: 4}
     }
 
