@@ -9,7 +9,6 @@ export default function Glasses({ glasses, onSubmit }) {
     const [clicked, setClicked] = useState(false);
     
     const [checkedObject, setCheckedObject] = useState([]);
-    console.log(glasses);
 
     const addGlass = (e) => {
         e.preventDefault();

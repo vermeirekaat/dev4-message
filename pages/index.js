@@ -45,7 +45,7 @@ export default function Home({ result }) {
     ingredients: [],
   });
 
-  const [cocktailFinal, setCocktailFinal] = useState({
+  /* const [cocktailFinal, setCocktailFinal] = useState({
     glassName: "", 
     glass: "",
     beverages: [], 
@@ -54,18 +54,15 @@ export default function Home({ result }) {
     sender: "", 
     receiver: "",
     nano: nanoid(),
-  })
+  }) */
 
-  const handleSubmitCocktail = async () => {
-    if (cocktailFinal.glass === "") {
-      return false;
-    }
+  const handleSubmitCocktail = async (cocktail) => {
     const response = await fetch("/api/post", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
       }, 
-      body: JSON.stringify(cocktailFinal),
+      body: JSON.stringify(cocktail),
     })
     await response.json();
   }
@@ -102,23 +99,32 @@ export default function Home({ result }) {
   };
 
   const handleSubmitMessage = async data => {
-    const copyItem = {...cocktailItem};
-    const copy = {...cocktailFinal};
-    copy.glassName = copyItem.glassName;
-    copy.glass = copyItem.glass;
-    copy.beverages = copyItem.beverages;
-    copy.ingredients = copyItem.ingredients;
-    copy.message = data.message;
-    copy.sender = data.sender;
-    copy.receiver = data.receiver;
+    const cocktailFinal = {
+      glassName: cocktailItem.glassName, 
+      glass: cocktailItem.glass,
+      beverages: cocktailItem.beverages, 
+      ingredients: cocktailItem.ingredients,
+      message: data.message,
+      sender: data.sender, 
+      receiver: data.receiver,
+      nano: nanoid(),
+    }
 
-    setCocktailFinal(copy);
-    router.push("/success");
+    // setCocktailFinal(copy);
+
+    const res = handleSubmitCocktail(cocktailFinal);
+    await res; 
+    console.log(res);
+    router.push({
+      pathname: "/success",
+      query: cocktailFinal,
+    })
+    // router.push("/succes");
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
      handleSubmitCocktail(cocktailFinal);
-  },[cocktailFinal]);
+  },[cocktailFinal]); */ 
 
   if (currentStep === "first") {
     return (

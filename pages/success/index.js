@@ -2,48 +2,56 @@ import Layout from "../../components/Layout";
 import Email from "../../components/Email";
 import Skeleton from "../../components/Skeleton";
 import { useState, useEffect } from "react";
-import { createClient as deliveryClient } from "contentful";
+import { useRouter } from "next/router";
+// import { createClient as deliveryClient } from "contentful";
 
-export default function Success({ result }) {
+export default function Success() {
 
-    if(!result) {
-        return <Skeleton/>
-    }
+    // console.log(result);
     
-    const cocktail = result.items[0];
+    // const cocktail = result.items[0];
 
-    const [emailInformation, setEmailInfromation] = useState({
-        receiver: cocktail.fields.receiver, 
-        sender: cocktail.fields.sender, 
-        url: `${process.env.NEXT_PUBLIC_URL_DOMAIN}/detail/` + cocktail.sys.id, 
-        email: "",
+    const router = useRouter();
+    const [cocktail, setCocktail] = useState({});
+
+    useEffect(() => {
+        if (router.isReady) {
+            setCocktail(router.query);
+        }
     });
 
-    const handleSendEmail = async () => {
-        if (emailInformation.email === "") {
-            return false;
-        }
+    console.log(cocktail);
 
+/* const [emailInformation, setEmailInfromation] = useState({
+        ,
+    }); */
+
+    const handleSendEmail = async (email) => {
         const response = await fetch("/api/email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(emailInformation),
+            body: JSON.stringify(email),
         });
         await response.json();
     }
 
     const handleSubmitEmail = data => {
+        const sendEmail = {
+            receiver: cocktail.receiver, 
+            sender: cocktail.sender, 
+            url: `${process.env.NEXT_PUBLIC_URL_DOMAIN}/detail/` + cocktail.nano, 
+            email: data.email,
+        }
 
-       const copy = {...emailInformation};
-       copy.email = data.email, 
-       setEmailInfromation(copy);
+        const res = handleSendEmail(sendEmail);
+        console.log(res);
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         handleSendEmail(emailInformation);
-     },[emailInformation]);
+     },[emailInformation]); */
 
     return (
         <Layout>
@@ -52,7 +60,7 @@ export default function Success({ result }) {
     )
 }
 
-export async function getStaticProps() {
+/* export async function getStaticProps() {
 
     const client = deliveryClient({
         space: process.env.CONTENTFUL_SPACE,
@@ -67,4 +75,4 @@ export async function getStaticProps() {
       },
       revalidate: 1,
     }
-  }
+  } */

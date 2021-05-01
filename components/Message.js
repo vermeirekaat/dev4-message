@@ -36,6 +36,7 @@ export default function Message ({ onSubmit }) {
         e.preventDefault();
 
         setTranscript(e.target.message.value);
+        e.target.reset();
         setInformation(!information);
     }
 
@@ -59,7 +60,7 @@ export default function Message ({ onSubmit }) {
                 initial="hidden"
                 animate="visible"
                 exit={{y: "50vw", opacity: 0}}
-                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}>
+                transition={{ type: "tween", duration: 3, ease: "easeOut" }}>
                 <form className={styles.mail} onSubmit={(e) => sendMessage(e)} >
                     <label className={styles.information}>From:
                         <input className={styles.input} name="sender" type="text" placeholder="Your Name"/>
@@ -71,7 +72,7 @@ export default function Message ({ onSubmit }) {
                     <motion.input type="submit" className={styles.submitButton} value="Send my Toast"
                         initial={{ y: "-2vw", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition= {{duration: 2, delay: 4}}
+                        transition= {{duration: 2, delay: 2}}
                     />
                 </form>
             </motion.div>
@@ -86,7 +87,7 @@ export default function Message ({ onSubmit }) {
                 initial="hidden"
                 animate="visible"
                 exit={{ y: "50vw", opacity: 0 }}
-                transition={{ type: "tween", duration: 3, ease: "easeOut", staggerChildren: 1 }}
+                transition={{ type: "tween", duration: 3, ease: "easeOut" }}
                 >
 
             <form className={styles.mail} onSubmit={(e) => saveMessage(e)} >
@@ -97,7 +98,7 @@ export default function Message ({ onSubmit }) {
                 <motion.input type="submit" className={styles.submitButton} value="Save my Toast"
                     initial={{ y: "-2vw", opacity: 0 }}
                     animate={{ y: "5vw", opacity: 1 }}
-                    transition= {{duration: 2, delay: 4}}/>
+                    transition= {{duration: 2, delay: 3}}/>
             </form>
             
             {/* <div className={styles.intro}>
