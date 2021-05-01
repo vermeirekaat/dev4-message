@@ -46,7 +46,7 @@ export default function Glasses({ glasses, onSubmit }) {
     return (
         <>
         <AnimatePresence>
-            {!clicked &&
+            {!clicked && (
             <>
                 <motion.div className={styles.information}
                             initial={{ y: "-5vw", x: 0, opacity: 0 }}
@@ -82,11 +82,11 @@ export default function Glasses({ glasses, onSubmit }) {
                 </motion.div>     
             </form>
             </>
-        }   
+            )}   
     </AnimatePresence>
     
     <AnimatePresence>
-        {clicked && 
+        {clicked && (
         <motion.div initial={{x: 0, y: 0, scale: 1.2 }}
                     transition={{ duration: 2, type:"tween", ease: "easeOut" }}
                     exit={{x: "-50vw", opacity: 0}}>
@@ -113,7 +113,7 @@ export default function Glasses({ glasses, onSubmit }) {
                 </motion.div> 
             </motion.div>   
             </motion.div>
-        }
+         )}
     </AnimatePresence>
     </>
     )
