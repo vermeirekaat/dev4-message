@@ -8,9 +8,7 @@ import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
-    if (!cocktail) {
-        return <Skeleton/>
-    }
+    if (!cocktail) return <Skeleton/>
 
     const [animation, setAnimation] = useState(true);
 
@@ -76,6 +74,8 @@ export async function getStaticProps ({ params }) {
     return {
         props: {
             cocktail: result,
-        }
+        },
+        revalidate: 1,
+        notFound: true,
     }
 }; 
