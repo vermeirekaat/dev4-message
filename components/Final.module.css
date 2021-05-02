@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value placeholderFont, bodyFont, lineHeight, primaryColor, lightBackground, marginSmall from values;
+@value placeholderFont, bodyFont, lineHeight, primaryColor, lightBackground, darkBackground, marginSmall from values;
 
 
 .container {
@@ -51,4 +51,19 @@
   padding: marginSmall;
   font-size: bodyFont; 
   line-height: calc(lineHeight/2);
+}
+
+.button {
+  grid-column: 2;
+  grid-row: 1;
+  place-self: center;
+}
+
+.homeButton {
+  composes: button from "../styles/action.module.css";
+}
+
+.homeButton:active {
+  border: .4rem solid primaryColor;
+  background-color: darkBackground;
 }

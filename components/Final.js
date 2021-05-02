@@ -1,10 +1,20 @@
 import styles from "./Final.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Final ({ cocktail }) {
     return (
         <div className={styles.container}>
+              <motion.div className={styles.button}
+                    initial={{ opacity: 0, y: -100}}
+                    animate={{opacity: 1, y: 0}}
+                    transition= {{duration: 2, delay: 6}}>
+                <Link href="/"> 
+                    <a className={styles.homeButton}>Make your own virtual cocktail</a>                
+                </Link>
+            </motion.div>
+            
             <motion.div className={styles.image}
                         initial={{ opacity: 1, y: 0, x: 0 }}
                         animate={{ opacity: 1, y: 0, x: "-20vw",}}
