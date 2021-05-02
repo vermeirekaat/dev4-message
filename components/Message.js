@@ -1,25 +1,11 @@
 import styles from "./Message.module.css";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-// import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 export default function Message ({ onSubmit }) {
 
-    /* const { transcript, resetTranscript } = useSpeechRecognition("");
-
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        return null
-    }
-
-    const startListening = () => {
-        SpeechRecognition.startListening({
-            continuous: true,
-            language: "en-US"
-        })
-    } */
-
     const [information, setInformation] = useState(false);
-    const [transcript, setTranscript] = useState("");
+    const [message, setMessage] = useState("");
 
     const transformProps = {
         hidden: {
@@ -35,7 +21,7 @@ export default function Message ({ onSubmit }) {
     const saveMessage = (e) => {
         e.preventDefault();
 
-        setTranscript(e.target.message.value);
+        setMessage(e.target.message.value);
         e.target.reset();
         setInformation(!information);
     }
@@ -44,7 +30,7 @@ export default function Message ({ onSubmit }) {
         e.preventDefault();
 
         const data = {
-            message: transcript, 
+            message: message, 
             sender: e.target.sender.value,
             receiver: e.target.receiver.value,
         };
@@ -99,23 +85,6 @@ export default function Message ({ onSubmit }) {
                     animate={{ y: 0, opacity: 1 }}
                     transition= {{duration: 2, delay: 3}}/>
             </form>
-            
-            {/* <div className={styles.intro}>
-                <h2 className={styles.title}>Your Toast</h2>
-                <p className={styles.description}>Let's toast to a better future where we can actually drink cocktails in real life.</p>
-                <input type="button" className={styles.submitButton} onClick={() => setInformation(!information)} value="Save my toast"/>
-            </div>
-
-            <div className={styles.speech}>
-                <div className={styles.transcript}>
-                    <p className={styles.message}>{transcript === "" ? "Click start to record your toast" : transcript}</p>
-                </div>
-                <div className={styles.controls}>
-                    <button className={styles.button} onClick={()=> startListening()}>Start</button>
-                    <button className={styles.button} onClick={() => SpeechRecognition.stopListening}>Stop</button>
-                    <button className={styles.button} onClick={resetTranscript}>Reset</button>
-                </div>
-            </div>*/}
 
         </motion.div>
         </AnimatePresence>
