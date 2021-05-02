@@ -69,7 +69,7 @@ export default function Message ({ onSubmit }) {
                         <input className={styles.input} name="receiver" type="text" placeholder="Your Friend's Name"/>
                     </label>
 
-                    <motion.input type="submit" className={styles.submitButton} value="Send my Toast"
+                    <motion.input type="submit" className={styles.submitButton} value="Save my Order"
                         initial={{ y: "-2vw", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition= {{duration: 2, delay: 2}}
