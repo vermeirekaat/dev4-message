@@ -172,7 +172,7 @@ export default function Home({ result }) {
           initial="hidden"
           animate="visible"
           transition= {{duration: 5, delay: 3}}>
-          Welcome to our online Cocktail Bar where you can mix and match your favourite drinks and toast to a better future!
+          Welcome to our virtual Cocktail Bar where you can mix and match your favourite drinks and toast to a better future!
         </motion.p>
           
         <motion.button 

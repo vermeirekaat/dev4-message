@@ -1,5 +1,5 @@
 import styles from "./Message.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
@@ -86,18 +86,17 @@ export default function Message ({ onSubmit }) {
                 variants={transformProps}
                 initial="hidden"
                 animate="visible"
-                exit={{ y: "50vw", opacity: 0 }}
                 transition={{ type: "tween", duration: 3, ease: "easeOut" }}
                 >
 
             <form className={styles.mail} onSubmit={(e) => saveMessage(e)} >
                 <label className={styles.information}>Your Toast
-                    <input className={styles.input} name="message" type="text" rows="20" cols="10" placeholder="Write down your message"/>
+                    <textarea className={styles.input} name="message" type="textarea" rows="20" cols="10" placeholder="Write down your message"></textarea>
                 </label>
 
                 <motion.input type="submit" className={styles.submitButton} value="Save my Toast"
                     initial={{ y: "-2vw", opacity: 0 }}
-                    animate={{ y: "5vw", opacity: 1 }}
+                    animate={{ y: 0, opacity: 1 }}
                     transition= {{duration: 2, delay: 3}}/>
             </form>
             

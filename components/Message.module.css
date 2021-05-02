@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, bodyFont, lineHeight, buttonFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
+@value titleFont, bodyFont, lineHeight, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, darkBackground from values;
 
 .container {
     display: grid;
@@ -7,7 +7,7 @@
     grid-template-rows: 30vh 70vh; 
     margin: marginLarge;
     padding: marginRegular;
-    background-color: rgba(0, 0, 0, 0.500);
+    background-color: darkBackground;
     border-radius: 2rem;
 }
 
@@ -25,7 +25,7 @@
     margin-top: marginSmall;
     color: white;
     width: 30vw;
-    background:rgba(0, 0, 0, 0.500);
+    background: darkBackground;
     padding: .5rem;
 }
 
@@ -51,7 +51,6 @@
     font-size: titleFont;
     margin-bottom: marginSmall;
 }
-
 
 .transcript {
     width: 50vw;
@@ -86,6 +85,11 @@
     composes: button from "../styles/action.module.css";
 }
 
+.submitButton:active {
+    border: .4rem solid primaryColor;
+    background-color: darkBackground;
+}
+
 .speech {
     grid-row: 2;
     grid-column: 1 / span 2;
@@ -97,14 +101,4 @@
     display: flex; 
     flex-direction: column;
     margin-left: marginRegular;
-}
-
-.button {
-    width: 5rem;
-    height: 2.5rem;
-    background-color: buttonBackground;
-    border-radius: 2rem; 
-    border: .2rem solid primaryColor;
-    font-size: butttonFont;
-    margin: marginSmall;
 }

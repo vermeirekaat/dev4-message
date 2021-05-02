@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value placeholderFont, buttonFont, bodyFont, lineHeight, primaryColor, buttonBackground, marginSmall, marginRegular from values;
+@value placeholderFont, bodyFont, lineHeight, primaryColor, lightBackground, marginSmall from values;
 
 
 .container {
@@ -20,7 +20,7 @@
   grid-column: 3;
   display: flex;
   flex-direction: column;
-  background-color: buttonBackground;
+  background-color: lightBackground;
   padding: marginSmall;
   place-self: flex-start;
   border-radius: 2.5rem;

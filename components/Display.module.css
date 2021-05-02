@@ -1,6 +1,3 @@
-@value values: "../styles/values.module.css";
-@value marginLarge, titleFont, lineHeight, buttonBackground from values;
-
 .display {
     display: grid;
     grid-template-columns: repeat(2, 50vw);
@@ -25,10 +22,6 @@
     border: none;
 }
 
-.button:active {
-    background: buttonBackground;
-}
-
 .information {
     composes: information from "../styles/action.module.css";
 }
@@ -37,11 +30,11 @@
     composes: description from "../styles/action.module.css";
 }
 
-.buttonDisplay {
-    display: flex; 
-    justify-content: center;
-}
-
 .nextButton {
     composes: button from "../styles/action.module.css";
+}
+
+.nextButton:active {
+    border: .4rem solid primaryColor;
+    background-color: darkBackground;
 }

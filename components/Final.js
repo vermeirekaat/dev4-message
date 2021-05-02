@@ -17,9 +17,14 @@ export default function Final ({ cocktail }) {
             </motion.div>
 
             <motion.div className={styles.content}
-                        initial={{ x: 0, opacity: 0}}
-                        animate={{ x: "-35vw", opacity: 1}}
+                        initial={{ x: 0, y: "-3.5vh", opacity: 0}}
+                        animate={{ x: "-30vw", y: "-3.5vh", opacity: 1}}
                         transition={{ duration: 4 }}>
+                <motion.p className={styles.subtitle}
+                             initial={{ y: "-10vh", opacity: 0}}
+                             animate={{ y: 0, opacity: 1}}
+                             transition={{ duration: 1, delay: 2 }}>
+                            Cheers!</motion.p>
                 <p className={styles.item}>To: {cocktail.fields.receiver}</p>
                 <div className={styles.messageContainer}>
                 <p className={styles.message}>{cocktail.fields.message}</p>

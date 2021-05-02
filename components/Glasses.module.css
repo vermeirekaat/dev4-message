@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value placeholderFont, primaryColor, marginSmall, marginRegular, marginExtra, buttonBackground from values;
+@value marginRegular, marginExtra from values;
 
 .information {
     composes: information from "../styles/action.module.css";
@@ -39,18 +39,4 @@
     width: 20rem;
     height: 20rem;
     z-index: 9;
-}
-  
-.radioButton:checked + .label {
-    background-color: buttonBackground;
-    padding: 1rem;
-    border-radius: .5rem;
-}
-
-.label {
-    color: primaryColor;
-    font-size: placeholderFont;
-    text-align: center;
-    margin-top: marginSmall;
-    padding: 1rem;
 }

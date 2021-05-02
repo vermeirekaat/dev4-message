@@ -1,9 +1,9 @@
 @value values: "../../styles/values.module.css";
-@value titleFont, bodyFont, primaryColor, marginSmall, marginRegular from values;
+@value titleFont, bodyFont, primaryColor, marginSmall, marginRegular darkBackground from values;
 
 .container {
     padding: marginRegular;
-    background-color: rgba(0, 0, 0, 0.500);
+    background-color: darkBackground;
     border-radius: 2rem;
     margin: 0 auto;
     margin-top: 10rem;

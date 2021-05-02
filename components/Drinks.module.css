@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value primaryColor, buttonBackground, titleFont, lineHeight, marginSmall, marginLarge, buttonBackground from values;
+@value primaryColor, darkBackground, marginLarge from values;
 
 .overview {
     width: 100vw;
@@ -23,6 +23,11 @@
     composes: button from "../styles/action.module.css";    
 }
 
+.backButton:active {
+    border: .4rem solid primaryColor;
+    background-color: darkBackground;
+}
+
 .drinkImage {
     margin: marginLarge;
     position: relative; 
@@ -35,23 +40,11 @@
     top: -17rem;
 }
 
-.form {
-    display: flex; 
-    flex-direction: column; 
-}
-
 .shot {
     display: flex; 
     align-self: flex-end;
     margin-bottom: calc(marginLarge * 2);
     justify-content: center;
-}
-
-.overlay {
-    width: 10rem;
-    height: 15rem;
-    background-color: rgba(255, 0, 0, 0.8);
-    position: relative;
 }
 
 .button {

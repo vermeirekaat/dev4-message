@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, lineHeight, primaryColor, buttonBackground, marginLarge from values;
+@value titleFont, lineHeight, primaryColor, darkBackground, marginLarge from values;
 
 .content {
   margin-top: 10rem;
@@ -29,4 +29,9 @@
 
 .nextButton {
   composes: button from "../styles/action.module.css";
+}
+
+.nextButton:active {
+  border: .4rem solid primaryColor;
+  background-color: darkBackground;
 }

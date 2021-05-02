@@ -1,5 +1,5 @@
 @value values: "../styles/values.module.css";
-@value titleFont, buttonFont, bodyFont, primaryColor, buttonBackground, marginSmall from values;
+@value titleFont, buttonFont, primaryColor, darkBackground from values;
 
 .container {
     min-height: 100vh;
@@ -18,7 +18,7 @@
     position: absolute;
     left: 0; right: 0;
     top: 0; bottom: 0;
-    background: rgba(0,0,0,.5);
+    background: darkBackground;
 }
 
 .headerImage {

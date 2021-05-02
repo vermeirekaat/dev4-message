@@ -2,14 +2,7 @@ import styles from "./Layout.module.css";
 import Head from "next/head";
 import Image from "next/image";
 
-export default function Layout({ overview, children }) {
-
-  /* overview.beverages.map((drink) => {
-    console.log(drink);
-  });
-  overview.ingredients.map((extra) => {
-    console.log(extra);
-  }) */
+export default function Layout({ children }) {
 
   return (
     <div className={styles.container}>
@@ -29,19 +22,6 @@ export default function Layout({ overview, children }) {
                     />
           </div>
       </div>
-
-      {/* <div className={styles.overview}>
-        <div className={styles.content}>
-        <h2 className={styles.subtitle}>Your Cocktail</h2>
-            <p className={styles.item}>{overview.glass}</p>
-              {/* overview.beverages.map((drink) => {
-                <p className={styles.item}>{drink}</p>
-              })}
-              {overview.ingredients.map((extra) => {
-                <p className={styles.item}>{extra}</p>
-              })}
-        </div>
-            </div>*/}
 
       <main className={styles.main}>{children}</main>
     </div>

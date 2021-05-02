@@ -2,7 +2,7 @@ import styles from "./Welcome.module.css";
 import Head from "next/head";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Welcome({ children }) {
 
@@ -11,31 +11,6 @@ export default function Welcome({ children }) {
   setTimeout(() => {
     setHeaderImage(false);
   }, 3000); 
-
-
-  const sliderTransition = {
-    initial: {
-      x: 0,
-      y: 0,
-      opacity: 0.5,
-    },
-    slideIn: {
-      x: 0,
-      y: 0, 
-      opacity: 1,
-      transition: {duration: 3}
-    }, 
-    slideOutLeft: {
-      x: "-100vw",
-      y: 0,
-      opacity: .5,
-    }, 
-    slideOutRight: {
-      x: "100vw",
-      y: 0, 
-      opacity: .5,
-    }
-  }
 
   const opacityTransition = {
     hidden: {
@@ -55,26 +30,8 @@ export default function Welcome({ children }) {
     }
   }
 
-
   return (
     <div className={styles.container}>
-      <AnimatePresence>
-        <motion.div className={styles.left}
-          variants={sliderTransition}
-          initial="initial"
-          animate="slideIn"
-          exit="slideOutLeft"
-          transition={{duration: 4}}>
-        <motion.div className={styles.right}
-          variants={sliderTransition}
-          initial="initial"
-          animate="slideIn"
-          exit="slideOutRight"
-          transition={{duration: 4}}>
-        </motion.div>
-        </motion.div>
-        
-      </AnimatePresence>
       <Head>
         <title>Cocktail O' Clock</title>
         <link rel="icon" href="/favicon.ico"/>

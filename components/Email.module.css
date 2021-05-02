@@ -1,9 +1,9 @@
 @value values: "../styles/values.module.css";
-@value titleFont, bodyFont, lineHeight, buttonFont, placeholderFont, primaryColor, marginSmall, marginLarge, marginRegular, buttonBackground from values;
+@value titleFont, placeholderFont, primaryColor, marginSmall, marginRegular, darkBackground from values;
 
 .container {
     padding: marginRegular;
-    background-color: rgba(0, 0, 0, 0.500);
+    background-color: darkBackground;
     border-radius: 2rem;
     margin: 0 auto;
     margin-top: 10rem;
@@ -22,7 +22,7 @@
     margin-top: marginSmall;
     color: white;
     width: 30vw;
-    background:rgba(0, 0, 0, 0.500);
+    background: darkBackground;
     padding: .5rem;
 }
 
@@ -42,4 +42,9 @@
 
 .submitButton {
     composes: button from "../styles/action.module.css";
+}
+
+.submitButton:active {
+    border: .4rem solid primaryColor;
+    background-color: darkBackground;
 }

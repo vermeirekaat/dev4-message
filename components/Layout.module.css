@@ -26,31 +26,6 @@
   align-items: flex-end;
 }
 
-.overview {
-  margin: marginSmall;
-  background: buttonBackground;
-  border-radius: 1rem;
-}
-
-.content {
-  display: flex; 
-  flex-direction: column; 
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.subtitle {
-  color: primaryColor;
-  font-size: placeholderFont;
-  padding: 1rem;
-}
-
-.item {
-  font-size: bodyFont;
-  padding-left: 2rem;
-  padding-bottom: 1rem;
-}
-
 .main {
   grid-row: 2;
   grid-column: 1/ span 2;
