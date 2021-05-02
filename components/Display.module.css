@@ -1,3 +1,6 @@
+@value values: "../styles/values.module.css";
+@value darkBackground from values;
+
 .display {
     display: grid;
     grid-template-columns: repeat(2, 50vw);

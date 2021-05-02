@@ -77,7 +77,7 @@ export default function Ingredients({ ingredients, cocktailGlass, onSubmit }) {
             <motion.div className={styles.extraOverview}
                 initial={{ x: "50vw" }}
                 animate={{ x: "15vw" }}
-                transition={{ type: "tween", duration: 3, ease: "easeIn", staggerChildren: .5}}
+                transition={{ type: "tween", duration: 3, ease: "easeIn" }}
                 >
             {ingredients.map((extra) => (
                 <motion.div key={extra.sys.id}  className={styles.dragElement}
