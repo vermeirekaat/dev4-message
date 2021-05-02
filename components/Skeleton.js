@@ -2,21 +2,15 @@ import styles from "./Skeleton.module.css";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
 
 export default function Skeleton () {
 
   const [headerImage, setHeaderImage] = useState(true);
-    
-  const router = useRouter()
 
   useEffect(() => {
     setTimeout(() => {
       setHeaderImage(false);
     }, 1500); 
-    setTimeout(() => {
-      router.push('/')
-    }, 7000);
   }, []);
 
   const opacityTransition = {

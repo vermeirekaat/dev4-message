@@ -2,20 +2,21 @@ import Layout from "../../components/Layout";
 import styles from "./Detail.module.css";
 import Animation from "../../components/Animation";
 import Final from "../../components/Final";
-import Skeleton from "../../components/Skeleton";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
 
-    const router = useRouter(); 
-
-    if (router.isFallback) {
-        return <Skeleton/>
+    if (!cocktail) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.information}>
+                    <h2 className={styles.title}>LOADING...</h2>
+                        <p className={styles.description}>Your cocktail is being made.</p>
+                </div>
+            </div>
+        )
     }
-
-    if (!cocktail) return <Skeleton/>
 
     const [animation, setAnimation] = useState(true);
 
@@ -42,14 +43,12 @@ export default function Detail ({ cocktail }) {
     }
 
     return (
-        <Layout>
-            <div className={styles.container}>
-                <div className={styles.information}>
-                    <h2 className={styles.title}>LOADING...</h2>
-                        <p className={styles.description}>Your cocktail is being made.</p>
-                </div>
+        <div className={styles.container}>
+            <div className={styles.information}>
+                <h2 className={styles.title}>LOADING...</h2>
+                    <p className={styles.description}>Your cocktail is being made.</p>
             </div>
-        </Layout>
+        </div>
     )
 }
 
@@ -76,13 +75,24 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-    const result = await client.getEntry(params.id);
+    const { items } = await client.getEntries({
+        content_type: "cocktails",
+        "sys.id": params.id
+    });
+
+    if (!items.length) {
+        return {
+            redirect: {
+                destination: "/",
+                permanent: false,
+            }
+        }
+    }
 
     return {
         props: {
-            cocktail: result,
+            cocktail: items[0],
         },
-        revalidate: 1,
-        notFound: true,
+        revalidate: 7,
     }
 }; 
