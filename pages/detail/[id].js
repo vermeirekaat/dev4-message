@@ -11,8 +11,8 @@ export default function Detail ({ cocktail }) {
         return (
             <div className={styles.container}>
                 <div className={styles.information}>
-                    <h2 className={styles.title}>LOADING...</h2>
-                        <p className={styles.description}>Your cocktail is being made.</p>
+                    <h2 className={styles.title}>OOPS...</h2>
+                        <p className={styles.description}>Someone else drank your cocktail, it doesn't exist.</p>
                 </div>
             </div>
         )
