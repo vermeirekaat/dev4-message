@@ -4,9 +4,16 @@ import Animation from "../../components/Animation";
 import Final from "../../components/Final";
 import Skeleton from "../../components/Skeleton";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { createClient as deliveryClient } from "contentful";
 
 export default function Detail ({ cocktail }) {
+
+    const router = useRouter(); 
+
+    if (router.isFallback) {
+        return <Skeleton/>
+    }
 
     if (!cocktail) return <Skeleton/>
 
@@ -67,7 +74,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps ({ params }) {
+export async function getStaticProps({ params }) {
 
     const result = await client.getEntry(params.id);
 
